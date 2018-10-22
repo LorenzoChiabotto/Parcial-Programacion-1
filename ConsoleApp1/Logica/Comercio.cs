@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Logica
 {
-    class Comercio
+    class Comercio:Local
     {
         public string RazonSocial { get; set; }
     }

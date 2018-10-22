@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Logica
 {
-    class Sucursal
+    class Sucursal:Local
     {
         public float TasaInteres { get; set; }
     }
