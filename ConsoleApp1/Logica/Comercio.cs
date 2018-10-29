@@ -6,8 +6,22 @@ using System.Threading.Tasks;
 
 namespace Logica
 {
-    class Comercio:Local
+    public class Comercio:Local
     {
         public string RazonSocial { get; set; }
+
+        public Comercio()
+        {
+
+        }
+        public Comercio(int id, string ciudad, string direccion, int codP, string razonSocial)
+        {
+            this.ID = id;
+            this.Ciudad = ciudad;
+            this.Direccion = direccion;
+            this.CodPostal = codP;
+
+            this.RazonSocial = razonSocial;
+        }
     }
 }

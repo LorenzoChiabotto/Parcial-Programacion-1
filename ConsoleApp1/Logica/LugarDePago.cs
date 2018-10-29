@@ -10,5 +10,18 @@ namespace Logica
     {
         public bool EsSucursal { get; set; }
 
+
+        public LugarDePago(int id, string ciudad, string direccion, int codP, string razonSocial, bool esSucur)
+        {
+
+            this.ID = id;
+            this.Ciudad = ciudad;
+            this.Direccion = direccion;
+            this.CodPostal = codP;
+
+            this.RazonSocial = razonSocial;
+
+            this.EsSucursal = esSucur;
+        }
     }
 }

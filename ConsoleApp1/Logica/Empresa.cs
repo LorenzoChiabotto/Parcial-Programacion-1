@@ -12,14 +12,30 @@ namespace Logica
     {
         public List<Cliente> listaCliente = new List<Cliente>();
 
+
+
+
+
         public void altaCliente(TipoDocumento tipo, int documento, string nombre, string email, bool esVip, float montoMax,
             string celular, DateTime nacimiento, Sexo sexo, string domicilio, int codPostal, string localidad)
         {
-            //Validar tipo y nro de doc
+            //TODO: ALTA CLIENTE Validar tipo y nro de doc
 
             Cliente cliente = new Cliente(tipo, documento, nombre, email, esVip, montoMax, celular,
                                             nacimiento, sexo, domicilio, codPostal, localidad);
             listaCliente.Add(cliente);
+        }
+
+        public void modificarCliente()
+        {
+            //TODO: modificarCliente
+        }
+
+
+        public void altaPrestamo(int numC, Comercio comercio, Sucursal sucursal, float montoCr, int cantCu)
+        {
+            //TODO: ALTA PRESTAMO
+            //tomar fecha de hoy para date
         }
 
     }

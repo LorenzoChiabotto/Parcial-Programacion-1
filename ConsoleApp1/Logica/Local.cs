@@ -6,11 +6,23 @@ using System.Threading.Tasks;
 
 namespace Logica
 {
-    class Local
+    public class Local
     {
         public int ID { get; set; }
         public string Ciudad { get; set; }
         public string Direccion { get; set; }
         public int CodPostal { get; set; }
+
+        public Local()
+        {
+
+        }
+        public Local(int id, string ciudad, string direccion, int codP)
+        {
+            this.ID = id;
+            this.Ciudad = ciudad;
+            this.Direccion = direccion;
+            this.CodPostal = codP;
+        }
     }
 }
