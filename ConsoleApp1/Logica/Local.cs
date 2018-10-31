@@ -12,6 +12,7 @@ namespace Logica
         public string Ciudad { get; set; }
         public string Direccion { get; set; }
         public int CodPostal { get; set; }
+        public bool Baja { get; set; }
 
         public Local()
         {

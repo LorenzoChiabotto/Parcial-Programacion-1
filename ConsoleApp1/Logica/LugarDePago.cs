@@ -6,11 +6,14 @@ using System.Threading.Tasks;
 
 namespace Logica
 {
-    class LugarDePago:Comercio
+    public class LugarDePago:Comercio
     {
         public bool EsSucursal { get; set; }
 
+        public LugarDePago()
+        {
 
+        }
         public LugarDePago(int id, string ciudad, string direccion, int codP, string razonSocial, bool esSucur)
         {
 

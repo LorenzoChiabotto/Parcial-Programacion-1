@@ -18,8 +18,12 @@ namespace Logica
         public float MontoCuota { get; set; }
         public int CantidadCuotas { get; set; }
         public List<Pago> ListaPagos { get; set; }
+        public bool Baja { get; set; }
 
+        public Prestamo()
+        {
 
+        }
         public Prestamo(int numC, DateTime fecha, Comercio comercio, Sucursal sucursal, float montoCr, float tasa, int cantCu)
         {
             this.NumCredito = numC;

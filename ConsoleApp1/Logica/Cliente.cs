@@ -22,7 +22,12 @@ namespace Logica
         public string Localidad { get; set; }
         public bool EsVip { get; set; }
         public float MontoMaximoAutorizar { get; set; }
+        public bool Baja { get; set; }
 
+        public Cliente()
+        {
+
+        }    
 
         public Cliente(TipoDocumento tipo, int documento, string nombre, string email, bool esVip, float montoMax,
             string celular, DateTime nacimiento, Sexo sexo, string domicilio, int codPostal, string localidad)

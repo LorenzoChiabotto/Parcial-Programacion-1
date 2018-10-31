@@ -10,6 +10,10 @@ namespace Logica
     {
         public float TasaInteres { get; set; }
 
+        public Sucursal()
+        {
+
+        }
         public Sucursal(int id, string ciudad, string direccion, int codP, float tasa)
         {
             this.ID = id;
