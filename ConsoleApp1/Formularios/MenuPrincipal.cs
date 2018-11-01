@@ -16,5 +16,17 @@ namespace Formularios
         {
             InitializeComponent();
         }
+
+        private void altaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form NuevoCLiente = new AltaCliente();
+            NuevoCLiente.Owner = this;
+            NuevoCLiente.ShowDialog();
+        }
+
+        private void MenuPrincipal_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
