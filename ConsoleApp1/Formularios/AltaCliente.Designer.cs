@@ -289,7 +289,7 @@
             // 
             // bGuardar
             // 
-            this.bGuardar.Location = new System.Drawing.Point(445, 273);
+            this.bGuardar.Location = new System.Drawing.Point(501, 266);
             this.bGuardar.Name = "bGuardar";
             this.bGuardar.Size = new System.Drawing.Size(128, 49);
             this.bGuardar.TabIndex = 29;
@@ -330,6 +330,7 @@
             this.Controls.Add(this.cbTipoDocumento);
             this.Controls.Add(this.lbTipoDocumento);
             this.Name = "AltaCliente";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AltaCliente";
             this.Load += new System.EventHandler(this.AltaCliente_Load);
             this.ResumeLayout(false);

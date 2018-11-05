@@ -16,6 +16,7 @@ namespace Formularios
         public AltaCliente()
         {
             InitializeComponent();
+            
         }
 
         private void lbTipoDocumento_Click(object sender, EventArgs e)

@@ -12,3 +12,21 @@ C:\Users\USER\Desktop\Manuel\Educación\Ingenieria en informatica\2do año\Anual
 C:\Users\USER\Desktop\Manuel\Educación\Ingenieria en informatica\2do año\Anual\TP2018.NET\ConsoleApp1\Formularios\obj\Debug\Formularios.csproj.CopyComplete
 C:\Users\USER\Desktop\Manuel\Educación\Ingenieria en informatica\2do año\Anual\TP2018.NET\ConsoleApp1\Formularios\obj\Debug\Formularios.exe
 C:\Users\USER\Desktop\Manuel\Educación\Ingenieria en informatica\2do año\Anual\TP2018.NET\ConsoleApp1\Formularios\obj\Debug\Formularios.pdb
+C:\TPProgramacionNet\ConsoleApp1\Formularios\bin\Debug\Formularios.exe.config
+C:\TPProgramacionNet\ConsoleApp1\Formularios\bin\Debug\Formularios.exe
+C:\TPProgramacionNet\ConsoleApp1\Formularios\bin\Debug\Formularios.pdb
+C:\TPProgramacionNet\ConsoleApp1\Formularios\bin\Debug\Logica.dll
+C:\TPProgramacionNet\ConsoleApp1\Formularios\bin\Debug\Logica.pdb
+C:\TPProgramacionNet\ConsoleApp1\Formularios\obj\Debug\Formularios.csprojAssemblyReference.cache
+C:\TPProgramacionNet\ConsoleApp1\Formularios\obj\Debug\Formularios.AltaCliente.resources
+C:\TPProgramacionNet\ConsoleApp1\Formularios\obj\Debug\Formularios.MenuPrincipal.resources
+C:\TPProgramacionNet\ConsoleApp1\Formularios\obj\Debug\Formularios.Properties.Resources.resources
+C:\TPProgramacionNet\ConsoleApp1\Formularios\obj\Debug\Formularios.csproj.GenerateResource.cache
+C:\TPProgramacionNet\ConsoleApp1\Formularios\obj\Debug\Formularios.csproj.CoreCompileInputs.cache
+C:\TPProgramacionNet\ConsoleApp1\Formularios\obj\Debug\Formularios.csproj.CopyComplete
+C:\TPProgramacionNet\ConsoleApp1\Formularios\obj\Debug\Formularios.exe
+C:\TPProgramacionNet\ConsoleApp1\Formularios\obj\Debug\Formularios.pdb
+C:\TPProgramacionNet\ConsoleApp1\Formularios\obj\Debug\Formularios.AltaPrestamo.resources
+C:\TPProgramacionNet\ConsoleApp1\Formularios\obj\Debug\Formularios.ABMSucursal.resources
+C:\TPProgramacionNet\ConsoleApp1\Formularios\obj\Debug\Formularios.ABMComercioAdherido.resources
+C:\TPProgramacionNet\ConsoleApp1\Formularios\obj\Debug\Formularios.ABMLugarDePago.resources

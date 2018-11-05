@@ -4,3 +4,9 @@ C:\Users\USER\Desktop\Manuel\Educación\Ingenieria en informatica\2do año\Anual
 C:\Users\USER\Desktop\Manuel\Educación\Ingenieria en informatica\2do año\Anual\TP2018.NET\ConsoleApp1\Logica\obj\Debug\Logica.csproj.CoreCompileInputs.cache
 C:\Users\USER\Desktop\Manuel\Educación\Ingenieria en informatica\2do año\Anual\TP2018.NET\ConsoleApp1\Logica\obj\Debug\Logica.dll
 C:\Users\USER\Desktop\Manuel\Educación\Ingenieria en informatica\2do año\Anual\TP2018.NET\ConsoleApp1\Logica\obj\Debug\Logica.pdb
+C:\TPProgramacionNet\ConsoleApp1\Logica\bin\Debug\Logica.dll
+C:\TPProgramacionNet\ConsoleApp1\Logica\bin\Debug\Logica.pdb
+C:\TPProgramacionNet\ConsoleApp1\Logica\obj\Debug\Logica.csprojAssemblyReference.cache
+C:\TPProgramacionNet\ConsoleApp1\Logica\obj\Debug\Logica.csproj.CoreCompileInputs.cache
+C:\TPProgramacionNet\ConsoleApp1\Logica\obj\Debug\Logica.dll
+C:\TPProgramacionNet\ConsoleApp1\Logica\obj\Debug\Logica.pdb

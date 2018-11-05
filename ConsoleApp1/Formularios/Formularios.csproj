@@ -45,11 +45,35 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ABMComercioAdherido.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ABMComercioAdherido.Designer.cs">
+      <DependentUpon>ABMComercioAdherido.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ABMLugarDePago.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ABMLugarDePago.Designer.cs">
+      <DependentUpon>ABMLugarDePago.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ABMSucursal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ABMSucursal.Designer.cs">
+      <DependentUpon>ABMSucursal.cs</DependentUpon>
+    </Compile>
     <Compile Include="AltaCliente.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="AltaCliente.Designer.cs">
       <DependentUpon>AltaCliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AltaPrestamo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AltaPrestamo.Designer.cs">
+      <DependentUpon>AltaPrestamo.cs</DependentUpon>
     </Compile>
     <Compile Include="MenuPrincipal.cs">
       <SubType>Form</SubType>
@@ -59,8 +83,20 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="ABMComercioAdherido.resx">
+      <DependentUpon>ABMComercioAdherido.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ABMLugarDePago.resx">
+      <DependentUpon>ABMLugarDePago.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ABMSucursal.resx">
+      <DependentUpon>ABMSucursal.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AltaCliente.resx">
       <DependentUpon>AltaCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AltaPrestamo.resx">
+      <DependentUpon>AltaPrestamo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MenuPrincipal.resx">
       <DependentUpon>MenuPrincipal.cs</DependentUpon>

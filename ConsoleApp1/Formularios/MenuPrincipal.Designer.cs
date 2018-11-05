@@ -72,6 +72,7 @@
             this.listadoToolStripMenuItem.Name = "listadoToolStripMenuItem";
             this.listadoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.listadoToolStripMenuItem.Text = "Listado";
+            this.listadoToolStripMenuItem.Click += new System.EventHandler(this.listadoToolStripMenuItem_Click);
             // 
             // altaToolStripMenuItem
             // 
@@ -93,20 +94,23 @@
             // sucursalesToolStripMenuItem
             // 
             this.sucursalesToolStripMenuItem.Name = "sucursalesToolStripMenuItem";
-            this.sucursalesToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
+            this.sucursalesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.sucursalesToolStripMenuItem.Text = "Sucursales";
+            this.sucursalesToolStripMenuItem.Click += new System.EventHandler(this.sucursalesToolStripMenuItem_Click);
             // 
             // lugaresDePagoToolStripMenuItem
             // 
             this.lugaresDePagoToolStripMenuItem.Name = "lugaresDePagoToolStripMenuItem";
-            this.lugaresDePagoToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
+            this.lugaresDePagoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.lugaresDePagoToolStripMenuItem.Text = "Lugares de Pago";
+            this.lugaresDePagoToolStripMenuItem.Click += new System.EventHandler(this.lugaresDePagoToolStripMenuItem_Click);
             // 
             // comercioToolStripMenuItem
             // 
             this.comercioToolStripMenuItem.Name = "comercioToolStripMenuItem";
-            this.comercioToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
+            this.comercioToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.comercioToolStripMenuItem.Text = "Comercio";
+            this.comercioToolStripMenuItem.Click += new System.EventHandler(this.comercioToolStripMenuItem_Click);
             // 
             // prestamosToolStripMenuItem
             // 
@@ -126,8 +130,9 @@
             // nuevoPrestamoToolStripMenuItem
             // 
             this.nuevoPrestamoToolStripMenuItem.Name = "nuevoPrestamoToolStripMenuItem";
-            this.nuevoPrestamoToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
+            this.nuevoPrestamoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.nuevoPrestamoToolStripMenuItem.Text = "Nuevo Prestamo";
+            this.nuevoPrestamoToolStripMenuItem.Click += new System.EventHandler(this.nuevoPrestamoToolStripMenuItem_Click);
             // 
             // verBienestarFinancieroToolStripMenuItem
             // 
@@ -144,8 +149,9 @@
             this.ClientSize = new System.Drawing.Size(982, 366);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "MenuPrincipal";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.MenuPrincipal_Load);
             this.menuStrip1.ResumeLayout(false);
