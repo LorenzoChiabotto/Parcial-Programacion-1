@@ -9,7 +9,14 @@ namespace Logica
     public class Pago
     {
         public bool Pagado { get; set; }
-        public DateTime fechaCobro{ get; set; }
-    
+        public DateTime FechaCobro { get; set; }
+        public LugarDePago LugarPago{ get; set; }
+
+        public Pago(DateTime fecha)
+        {
+            this.FechaCobro = fecha;
+            this.Pagado = false;
+        }
+        
     }
 }

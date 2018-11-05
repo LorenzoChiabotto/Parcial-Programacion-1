@@ -15,27 +15,45 @@ namespace Logica
         public List<Sucursal> listaSucursal = new List<Sucursal>();
         public List<Comercio> listaComercio = new List<Comercio>();
         public List<LugarDePago> listaLugarPago = new List<LugarDePago>();
+        
+        public Resultado validarSucursal(Sucursal pSucursal, bool pSeModifica)
+        {
+            Resultado result = new Resultado();
+            
+            if (pSeModifica && ! this.listaSucursal.Exists(x => x.ID == pSucursal.ID))
+            {
+                result.listaMsjs.Add("Esta sucursal no existe");
+            }
+            else
+            {
 
+            }
+
+
+            return result;
+        }
 
         //Cargar Sucursal
-        public void altaSucursal(Sucursal pSucursal)
+        public Resultado altaSucursal(Sucursal pSucursal)
         {
-            Sucursal sucursal = new Sucursal();
-            sucursal.ID = pSucursal.ID;
-            sucursal.Ciudad = pSucursal.Ciudad;
-            sucursal.Direccion = pSucursal.Direccion;
-            sucursal.CodPostal = pSucursal.CodPostal;
-            sucursal.TasaInteres = pSucursal.TasaInteres;
-            sucursal.Baja = false;
+            Resultado result = validarSucursal(pSucursal,false);
 
+            if (result.FueCorrecto)
+            {
+                pSucursal.ID = this.listaSucursal.Max(x => x.ID) + 1;
+                listaSucursal.Add(pSucursal);
+            }
+
+            return result;
         }
 
         //ModificarEliminarSucursal
-        public void modificarEliminarSucursal(Sucursal pSucursal, bool pSeModifica)
+        public Resultado modificarEliminarSucursal(Sucursal pSucursal, bool pSeModifica)
         {
+            Resultado result = validarSucursal(pSucursal, true);
+
             foreach (var item in listaSucursal)
             {
-
                 if (item.ID == pSucursal.ID)
                 {
                     if (pSeModifica)
@@ -49,23 +67,21 @@ namespace Logica
                     else
                     {
                         item.Baja = true;
+                        result.FueCorrecto = true;
                     }
                 }
             }
+            return result;
         }
 
         // Carga Comercio
         public void altaComercioAdherido(Comercio pComercio)
         {
-            Comercio Data = new Comercio();
-            Data.ID = pComercio.ID;
-            Data.Ciudad = pComercio.Ciudad;
-            Data.Direccion = pComercio.Direccion;
-            Data.CodPostal = pComercio.CodPostal;
-            Data.RazonSocial = pComercio.RazonSocial;
-            Data.Baja = false;
+            //TODO: Validar Comercio
+            pComercio.ID = this.listaComercio.Max(x => x.ID) + 1;
 
-            listaComercio.Add(Data);
+            listaComercio.Add(pComercio);
+            
         }
         //ModificarEliminarComercioAdherido
         public void modificarEliminarComercio(Comercio pComercio, bool pSeModifica)
@@ -81,10 +97,12 @@ namespace Logica
                         item.Direccion = pComercio.Direccion;
                         item.CodPostal = pComercio.CodPostal;
                         item.RazonSocial = pComercio.RazonSocial;
+                        return;
                     }
                     else
                     {
                         item.Baja = true;
+                        return;
                     }
                 }
             }
@@ -93,16 +111,10 @@ namespace Logica
         // Cargar LugarPago
         public void altaLugarPago(LugarDePago pLugarPago)
         {
-            LugarDePago Data = new LugarDePago();
-            Data.ID = pLugarPago.ID;
-            Data.Ciudad = pLugarPago.Ciudad;
-            Data.Direccion = pLugarPago.Direccion;
-            Data.CodPostal = pLugarPago.CodPostal;
-            Data.RazonSocial = pLugarPago.RazonSocial;
-            Data.EsSucursal = pLugarPago.EsSucursal;
-            Data.Baja = false;
+            //TODO: Validar LugarPago
+            pLugarPago.ID = this.listaLugarPago.Max(x => x.ID) + 1;
 
-            listaComercio.Add(Data);
+            listaComercio.Add(pLugarPago);
         }
 
         //ModificarEliminarLugarPago
@@ -120,10 +132,12 @@ namespace Logica
                         item.CodPostal = pLugarDePago.CodPostal;
                         item.RazonSocial = pLugarDePago.RazonSocial;
                         item.EsSucursal = pLugarDePago.EsSucursal;
+                        return;
                     }
                     else
                     {
                         item.Baja = true;
+                        return;
                     }
                 }
             }
@@ -131,22 +145,9 @@ namespace Logica
         //Cargar Cliente
         public void altaCliente(Cliente pcliente)
         {
-            //Falta ver el tema de validaar que no sea el mismo
-            Cliente NuevoCliente = new Cliente();
-            NuevoCliente.TipoDoc = pcliente.TipoDoc;
-            NuevoCliente.Documento = pcliente.Documento;
-            NuevoCliente.NombreCompleto = pcliente.NombreCompleto;
-            NuevoCliente.Email = pcliente.Email;
-            NuevoCliente.Celular = pcliente.Celular;
-            NuevoCliente.FechaNacimiento = pcliente.FechaNacimiento;
-            NuevoCliente.Sexo = pcliente.Sexo;
-            NuevoCliente.Domicilio = pcliente.Domicilio;
-            NuevoCliente.CodPostal = pcliente.CodPostal;
-            NuevoCliente.Localidad = pcliente.Localidad;
-            NuevoCliente.EsVip = pcliente.EsVip;
-            NuevoCliente.MontoMaximoAutorizar = pcliente.MontoMaximoAutorizar;
-            NuevoCliente.Baja = false;
-            listaCliente.Add(NuevoCliente);
+            //TODO: Validar Cliente
+
+            listaCliente.Add(pcliente);
         }
 
 
@@ -172,10 +173,12 @@ namespace Logica
                         item.Localidad = pCliente.Localidad;
                         item.EsVip = pCliente.EsVip;
                         item.MontoMaximoAutorizar = pCliente.MontoMaximoAutorizar;
+                        return;
                     }
                     else
                     {
                         item.Baja = true;
+                        return;
                     }
                 }
             }
@@ -184,22 +187,13 @@ namespace Logica
 
         public void altaPrestamo(Prestamo pPrestamo)
         {
-            //TODO: ALTA PRESTAMO
-            //tomar fecha de hoy para date
-            Prestamo NuevoPrestamo = new Prestamo();
-            NuevoPrestamo.NumCredito = this.listaCliente.Count + 1;
-            NuevoPrestamo.FechaCredito = DateTime.Now;
-            NuevoPrestamo.ComercioAdherido = pPrestamo.ComercioAdherido;
-            NuevoPrestamo.Sucursal = pPrestamo.Sucursal;
-            NuevoPrestamo.MontoCredito = pPrestamo.MontoCredito;
-            NuevoPrestamo.Tasa = pPrestamo.Tasa;
-            NuevoPrestamo.MontoCuota = pPrestamo.MontoCuota;
-            NuevoPrestamo.CantidadCuotas = pPrestamo.CantidadCuotas;
+            //TODO: validar Prestamo
+            
+            pPrestamo.NumCredito = this.listaPrestamo.Max(x => x.NumCredito) + 1;
 
-            listaPrestamo.Add(NuevoPrestamo);
+            listaPrestamo.Add(pPrestamo);
+            
         }
-
-
     }
 }
 
