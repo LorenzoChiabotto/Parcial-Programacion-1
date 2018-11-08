@@ -75,6 +75,18 @@
     <Compile Include="AltaPrestamo.Designer.cs">
       <DependentUpon>AltaPrestamo.cs</DependentUpon>
     </Compile>
+    <Compile Include="GrillaClientes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GrillaClientes.Designer.cs">
+      <DependentUpon>GrillaClientes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GrillaPrestamos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GrillaPrestamos.Designer.cs">
+      <DependentUpon>GrillaPrestamos.cs</DependentUpon>
+    </Compile>
     <Compile Include="MenuPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -97,6 +109,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AltaPrestamo.resx">
       <DependentUpon>AltaPrestamo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GrillaClientes.resx">
+      <DependentUpon>GrillaClientes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GrillaPrestamos.resx">
+      <DependentUpon>GrillaPrestamos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MenuPrincipal.resx">
       <DependentUpon>MenuPrincipal.cs</DependentUpon>
@@ -128,6 +146,9 @@
       <Project>{b4600eb6-bbfe-460b-9c20-40f0a16fe84f}</Project>
       <Name>Logica</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Interfaces\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

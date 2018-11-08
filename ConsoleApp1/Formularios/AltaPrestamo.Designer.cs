@@ -40,6 +40,10 @@
             this.lbTasa = new System.Windows.Forms.Label();
             this.txtTasa = new System.Windows.Forms.TextBox();
             this.btGuardar = new System.Windows.Forms.Button();
+            this.lbDoc = new System.Windows.Forms.Label();
+            this.cbTipoDocumento = new System.Windows.Forms.ComboBox();
+            this.lbTipoDocumento = new System.Windows.Forms.Label();
+            this.txtDocumento = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // lbTituloAltaPrestamo
@@ -52,7 +56,7 @@
             // 
             // lbFechaCredito
             // 
-            this.lbFechaCredito.Location = new System.Drawing.Point(12, 67);
+            this.lbFechaCredito.Location = new System.Drawing.Point(12, 103);
             this.lbFechaCredito.Name = "lbFechaCredito";
             this.lbFechaCredito.Size = new System.Drawing.Size(100, 23);
             this.lbFechaCredito.TabIndex = 1;
@@ -60,7 +64,7 @@
             // 
             // lbComercioAdherido
             // 
-            this.lbComercioAdherido.Location = new System.Drawing.Point(12, 105);
+            this.lbComercioAdherido.Location = new System.Drawing.Point(12, 175);
             this.lbComercioAdherido.Name = "lbComercioAdherido";
             this.lbComercioAdherido.Size = new System.Drawing.Size(100, 23);
             this.lbComercioAdherido.TabIndex = 2;
@@ -68,7 +72,7 @@
             // 
             // lbSucursal
             // 
-            this.lbSucursal.Location = new System.Drawing.Point(12, 140);
+            this.lbSucursal.Location = new System.Drawing.Point(12, 145);
             this.lbSucursal.Name = "lbSucursal";
             this.lbSucursal.Size = new System.Drawing.Size(100, 23);
             this.lbSucursal.TabIndex = 3;
@@ -76,7 +80,7 @@
             // 
             // lbMontoCredito
             // 
-            this.lbMontoCredito.Location = new System.Drawing.Point(12, 183);
+            this.lbMontoCredito.Location = new System.Drawing.Point(12, 216);
             this.lbMontoCredito.Name = "lbMontoCredito";
             this.lbMontoCredito.Size = new System.Drawing.Size(100, 23);
             this.lbMontoCredito.TabIndex = 4;
@@ -84,37 +88,37 @@
             // 
             // txtFechaCredito
             // 
-            this.txtFechaCredito.Location = new System.Drawing.Point(133, 67);
+            this.txtFechaCredito.Location = new System.Drawing.Point(133, 106);
             this.txtFechaCredito.Name = "txtFechaCredito";
             this.txtFechaCredito.Size = new System.Drawing.Size(183, 20);
-            this.txtFechaCredito.TabIndex = 5;
+            this.txtFechaCredito.TabIndex = 4;
             this.txtFechaCredito.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // cbSucursal
             // 
             this.cbSucursal.FormattingEnabled = true;
-            this.cbSucursal.Location = new System.Drawing.Point(133, 141);
+            this.cbSucursal.Location = new System.Drawing.Point(133, 142);
             this.cbSucursal.Name = "cbSucursal";
             this.cbSucursal.Size = new System.Drawing.Size(183, 21);
-            this.cbSucursal.TabIndex = 6;
+            this.cbSucursal.TabIndex = 5;
             // 
             // txtComercioAdherido
             // 
-            this.txtComercioAdherido.Location = new System.Drawing.Point(133, 107);
+            this.txtComercioAdherido.Location = new System.Drawing.Point(133, 178);
             this.txtComercioAdherido.Name = "txtComercioAdherido";
             this.txtComercioAdherido.Size = new System.Drawing.Size(183, 20);
-            this.txtComercioAdherido.TabIndex = 7;
+            this.txtComercioAdherido.TabIndex = 6;
             // 
             // txtMontoCredito
             // 
-            this.txtMontoCredito.Location = new System.Drawing.Point(133, 183);
+            this.txtMontoCredito.Location = new System.Drawing.Point(133, 219);
             this.txtMontoCredito.Name = "txtMontoCredito";
             this.txtMontoCredito.Size = new System.Drawing.Size(183, 20);
-            this.txtMontoCredito.TabIndex = 8;
+            this.txtMontoCredito.TabIndex = 7;
             // 
             // lbTasa
             // 
-            this.lbTasa.Location = new System.Drawing.Point(12, 219);
+            this.lbTasa.Location = new System.Drawing.Point(12, 255);
             this.lbTasa.Name = "lbTasa";
             this.lbTasa.Size = new System.Drawing.Size(100, 23);
             this.lbTasa.TabIndex = 9;
@@ -122,25 +126,67 @@
             // 
             // txtTasa
             // 
-            this.txtTasa.Location = new System.Drawing.Point(133, 216);
+            this.txtTasa.Location = new System.Drawing.Point(133, 255);
             this.txtTasa.Name = "txtTasa";
             this.txtTasa.Size = new System.Drawing.Size(100, 20);
-            this.txtTasa.TabIndex = 10;
+            this.txtTasa.TabIndex = 8;
             // 
             // btGuardar
             // 
             this.btGuardar.Location = new System.Drawing.Point(315, 237);
             this.btGuardar.Name = "btGuardar";
             this.btGuardar.Size = new System.Drawing.Size(85, 49);
-            this.btGuardar.TabIndex = 11;
+            this.btGuardar.TabIndex = 9;
             this.btGuardar.Text = "Guardar";
             this.btGuardar.UseVisualStyleBackColor = true;
+            // 
+            // lbDoc
+            // 
+            this.lbDoc.AutoSize = true;
+            this.lbDoc.Location = new System.Drawing.Point(12, 75);
+            this.lbDoc.Name = "lbDoc";
+            this.lbDoc.Size = new System.Drawing.Size(65, 13);
+            this.lbDoc.TabIndex = 12;
+            this.lbDoc.Text = "Documento:";
+            // 
+            // cbTipoDocumento
+            // 
+            this.cbTipoDocumento.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbTipoDocumento.FormattingEnabled = true;
+            this.cbTipoDocumento.Items.AddRange(new object[] {
+            "DNI",
+            "LE",
+            "LC"});
+            this.cbTipoDocumento.Location = new System.Drawing.Point(133, 44);
+            this.cbTipoDocumento.Name = "cbTipoDocumento";
+            this.cbTipoDocumento.Size = new System.Drawing.Size(183, 21);
+            this.cbTipoDocumento.TabIndex = 2;
+            // 
+            // lbTipoDocumento
+            // 
+            this.lbTipoDocumento.AutoSize = true;
+            this.lbTipoDocumento.Location = new System.Drawing.Point(12, 44);
+            this.lbTipoDocumento.Name = "lbTipoDocumento";
+            this.lbTipoDocumento.Size = new System.Drawing.Size(86, 13);
+            this.lbTipoDocumento.TabIndex = 13;
+            this.lbTipoDocumento.Text = "Tipo Documento";
+            // 
+            // txtDocumento
+            // 
+            this.txtDocumento.Location = new System.Drawing.Point(133, 75);
+            this.txtDocumento.Name = "txtDocumento";
+            this.txtDocumento.Size = new System.Drawing.Size(183, 20);
+            this.txtDocumento.TabIndex = 3;
             // 
             // AltaPrestamo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(590, 298);
+            this.Controls.Add(this.txtDocumento);
+            this.Controls.Add(this.cbTipoDocumento);
+            this.Controls.Add(this.lbTipoDocumento);
+            this.Controls.Add(this.lbDoc);
             this.Controls.Add(this.btGuardar);
             this.Controls.Add(this.txtTasa);
             this.Controls.Add(this.lbTasa);
@@ -176,5 +222,9 @@
         private System.Windows.Forms.Label lbTasa;
         private System.Windows.Forms.TextBox txtTasa;
         private System.Windows.Forms.Button btGuardar;
+        private System.Windows.Forms.Label lbDoc;
+        private System.Windows.Forms.ComboBox cbTipoDocumento;
+        private System.Windows.Forms.Label lbTipoDocumento;
+        private System.Windows.Forms.TextBox txtDocumento;
     }
 }

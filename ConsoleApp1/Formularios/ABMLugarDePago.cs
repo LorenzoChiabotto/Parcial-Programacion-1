@@ -15,6 +15,7 @@ namespace Formularios
         public ABMLugarDePago()
         {
             InitializeComponent();
+            HabilitarDeshabilitar(false);
         }
 
         private void ABMLugarDePago_Load(object sender, EventArgs e)

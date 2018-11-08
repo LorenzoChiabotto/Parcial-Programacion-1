@@ -30,3 +30,5 @@ C:\TPProgramacionNet\ConsoleApp1\Formularios\obj\Debug\Formularios.AltaPrestamo.
 C:\TPProgramacionNet\ConsoleApp1\Formularios\obj\Debug\Formularios.ABMSucursal.resources
 C:\TPProgramacionNet\ConsoleApp1\Formularios\obj\Debug\Formularios.ABMComercioAdherido.resources
 C:\TPProgramacionNet\ConsoleApp1\Formularios\obj\Debug\Formularios.ABMLugarDePago.resources
+C:\TPProgramacionNet\ConsoleApp1\Formularios\obj\Debug\Formularios.GrillaClientes.resources
+C:\TPProgramacionNet\ConsoleApp1\Formularios\obj\Debug\Formularios.GrillaPrestamos.resources

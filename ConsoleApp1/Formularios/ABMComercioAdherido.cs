@@ -15,11 +15,13 @@ namespace Formularios
         public ABMComercioAdherido()
         {
             InitializeComponent();
+            HabilitarDeshabilitar(false);
         }
 
         private void btAgregarNuevo_Click(object sender, EventArgs e)
         {
-            dgvComercio.Enabled = false;
+            dgvComercio.Enabled = true;
+            HabilitarDeshabilitar(true);
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -29,7 +31,9 @@ namespace Formularios
 
         private void ABMComercioAdherido_Load(object sender, EventArgs e)
         {
-
+            
+            
+            
         }
         public void HabilitarDeshabilitar(bool EstaActivo)
         {
@@ -44,5 +48,6 @@ namespace Formularios
             btGuardar.Enabled = EstaActivo;
             btCancelar.Enabled = EstaActivo;
         }
+
     }
 }
