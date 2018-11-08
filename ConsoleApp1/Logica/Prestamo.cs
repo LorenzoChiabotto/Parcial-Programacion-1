@@ -10,6 +10,7 @@ namespace Logica
     {
         public int NumCredito { get; set; }
         public DateTime FechaCredito { get; set; }
+        public Cliente Cliente { get; set; }
         public Comercio ComercioAdherido { get; set; }
         public Sucursal Sucursal { get; set; }
         public float MontoCredito { get; set; }
@@ -24,7 +25,7 @@ namespace Logica
         {
 
         }
-        public Prestamo(int numC, Comercio comercio, Sucursal sucursal, float montoCr, float tasa, int cantCu)
+        public Prestamo(Cliente cl, int numC, Comercio comercio, Sucursal sucursal, float montoCr, float tasa, int cantCu)
         {
             this.NumCredito = numC;
             this.FechaCredito = DateTime.Today;

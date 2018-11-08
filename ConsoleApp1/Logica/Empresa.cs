@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -52,7 +54,7 @@ namespace Logica
         {
             Resultado result = validarSucursal(pSucursal, true);
 
-            foreach (var item in listaSucursal)
+            foreach (var item in getSucursales())
             {
                 if (item.ID == pSucursal.ID)
                 {
@@ -63,6 +65,8 @@ namespace Logica
                         item.Direccion = pSucursal.Direccion;
                         item.CodPostal = pSucursal.CodPostal;
                         item.TasaInteres = pSucursal.TasaInteres;
+
+                        result.FueCorrecto = true;
                     }
                     else
                     {
@@ -70,6 +74,11 @@ namespace Logica
                         result.FueCorrecto = true;
                     }
                 }
+            }
+
+            if (result.FueCorrecto)
+            {
+                // guardararchivo
             }
             return result;
         }
@@ -84,9 +93,10 @@ namespace Logica
             
         }
         //ModificarEliminarComercioAdherido
-        public void modificarEliminarComercio(Comercio pComercio, bool pSeModifica)
+        public Resultado modificarEliminarComercio(Comercio pComercio, bool pSeModifica)
         {
-            foreach (var item in listaComercio)
+            Resultado result = new Resultado();
+            foreach (var item in getComercios())
             {
                 if (item.ID == pComercio.ID)
                 {
@@ -97,15 +107,21 @@ namespace Logica
                         item.Direccion = pComercio.Direccion;
                         item.CodPostal = pComercio.CodPostal;
                         item.RazonSocial = pComercio.RazonSocial;
-                        return;
+                        result.FueCorrecto = true;
                     }
                     else
                     {
                         item.Baja = true;
-                        return;
+                        result.FueCorrecto = true;
                     }
                 }
             }
+
+            if (result.FueCorrecto)
+            {
+                // guardararchivo
+            }
+            return result;
         }
 
         // Cargar LugarPago
@@ -194,6 +210,148 @@ namespace Logica
             listaPrestamo.Add(pPrestamo);
             
         }
+
+
+
+
+        // ARCHIVOS
+
+        public void crearArchivos()
+        {
+            FileStream file;
+            string path = @"C:\Users\loren\Desktop\Clientes.txt";
+            if (!File.Exists(path))
+            {
+                file = File.Create(path);
+                file.Close();
+            }
+
+            path = @"C:\Users\loren\Desktop\Sucursales.txt";
+            if (!File.Exists(path))
+            {
+                file = File.Create(path);
+                file.Close();
+            }
+
+            path = @"C:\Users\loren\Desktop\Comercios.txt";
+            if (!File.Exists(path))
+            {
+                file = File.Create(path);
+                file.Close();
+            }
+
+            path = @"C:\Users\loren\Desktop\LugaresDePago.txt";
+            if (!File.Exists(path))
+            {
+                file = File.Create(path);
+                file.Close();
+            }
+
+            path = @"C:\Users\loren\Desktop\Prestamos.txt";
+            if (!File.Exists(path))
+            {
+                file = File.Create(path);
+                file.Close();
+            }
+        }
+
+        public List<Cliente> getClientes()
+        {
+            try
+            {
+                string path = @"C:\Users\loren\Desktop\Clientes.txt";   
+
+                string conte;
+                using (StreamReader reader = new StreamReader(path))
+                {
+                    conte = reader.ReadToEnd();
+                }
+
+                return JsonConvert.DeserializeObject<List<Cliente>>(conte);
+            }
+            catch (Exception)
+            {
+
+                return null;
+            }
+            
+        }
+        public List<Sucursal> getSucursales()
+        {
+            try
+            {
+                string path = @"C:\Users\loren\Desktop\Sucursales.txt";
+
+                string conte;
+                using (StreamReader reader = new StreamReader(path))
+                {
+                    conte = reader.ReadToEnd();
+                }
+
+                return JsonConvert.DeserializeObject<List<Sucursal>>(conte);
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+        public List<Comercio> getComercios()
+        {
+            try
+            {
+                string path = @"C:\Users\loren\Desktop\Comercio.txt";
+
+                string conte;
+                using (StreamReader reader = new StreamReader(path))
+                {
+                    conte = reader.ReadToEnd();
+                }
+
+                return JsonConvert.DeserializeObject<List<Comercio>>(conte);
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+        public List<LugarDePago> getLugaresPago()
+        {
+            try
+            {
+                string path = @"C:\Users\loren\Desktop\LugaresDePagos.txt";
+
+                string conte;
+                using (StreamReader reader = new StreamReader(path))
+                {
+                    conte = reader.ReadToEnd();
+                }
+
+                return JsonConvert.DeserializeObject<List<LugarDePago>>(conte);
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+        public List<Prestamo> getPrestamo()
+        {
+            try
+            {
+                string path = @"C:\Users\loren\Desktop\Prestamos.txt";
+
+                string conte;
+                using (StreamReader reader = new StreamReader(path))
+                {
+                    conte = reader.ReadToEnd();
+                }
+
+                return JsonConvert.DeserializeObject<List<Prestamo>>(conte);
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+        
     }
 }
-
