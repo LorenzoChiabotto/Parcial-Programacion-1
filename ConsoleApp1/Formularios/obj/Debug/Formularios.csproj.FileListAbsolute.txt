@@ -32,3 +32,5 @@ C:\TPProgramacionNet\ConsoleApp1\Formularios\obj\Debug\Formularios.ABMComercioAd
 C:\TPProgramacionNet\ConsoleApp1\Formularios\obj\Debug\Formularios.ABMLugarDePago.resources
 C:\TPProgramacionNet\ConsoleApp1\Formularios\obj\Debug\Formularios.GrillaClientes.resources
 C:\TPProgramacionNet\ConsoleApp1\Formularios\obj\Debug\Formularios.GrillaPrestamos.resources
+C:\TPProgramacionNet\ConsoleApp1\Formularios\bin\Debug\Newtonsoft.Json.dll
+C:\TPProgramacionNet\ConsoleApp1\Formularios\bin\Debug\Newtonsoft.Json.xml

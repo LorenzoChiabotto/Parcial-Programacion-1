@@ -20,7 +20,7 @@ namespace Formularios
 
         private void btAgregarNuevo_Click(object sender, EventArgs e)
         {
-            dgvComercio.Enabled = true;
+            dgvComercio.Enabled = false;
             HabilitarDeshabilitar(true);
         }
 
@@ -49,5 +49,14 @@ namespace Formularios
             btCancelar.Enabled = EstaActivo;
         }
 
+        private void btGuardar_Click(object sender, EventArgs e)
+        {
+            HabilitarDeshabilitar(false);
+        }
+
+        private void btCancelar_Click(object sender, EventArgs e)
+        {
+            HabilitarDeshabilitar(false);
+        }
     }
 }

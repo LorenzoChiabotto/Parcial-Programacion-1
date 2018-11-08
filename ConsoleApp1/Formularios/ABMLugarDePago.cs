@@ -35,5 +35,21 @@ namespace Formularios
             btGuardar.Enabled = EstaActivo;
             btCancelar.Enabled = EstaActivo;
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            HabilitarDeshabilitar(true);
+        }
+
+        private void btGuardar_Click(object sender, EventArgs e)
+        {
+            HabilitarDeshabilitar(false);
+
+        }
+
+        private void btCancelar_Click(object sender, EventArgs e)
+        {
+            HabilitarDeshabilitar(false);
+        }
     }
 }

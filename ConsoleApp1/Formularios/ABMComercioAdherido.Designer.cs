@@ -40,6 +40,11 @@
             this.lbCiudad = new System.Windows.Forms.Label();
             this.btAgregarNuevo = new System.Windows.Forms.Button();
             this.dgvComercio = new System.Windows.Forms.DataGridView();
+            this.lbTituloMenu = new System.Windows.Forms.Label();
+            this.Ciudad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Direccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CodigoPostal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.RazonSocial = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvComercio)).BeginInit();
             this.SuspendLayout();
             // 
@@ -51,6 +56,7 @@
             this.btCancelar.TabIndex = 24;
             this.btCancelar.Text = "Cancelar";
             this.btCancelar.UseVisualStyleBackColor = true;
+            this.btCancelar.Click += new System.EventHandler(this.btCancelar_Click);
             // 
             // btGuardar
             // 
@@ -60,6 +66,7 @@
             this.btGuardar.TabIndex = 23;
             this.btGuardar.Text = "Guardar";
             this.btGuardar.UseVisualStyleBackColor = true;
+            this.btGuardar.Click += new System.EventHandler(this.btGuardar_Click);
             // 
             // txtLocalidad
             // 
@@ -127,28 +134,64 @@
             // 
             // btAgregarNuevo
             // 
-            this.btAgregarNuevo.Location = new System.Drawing.Point(331, 359);
+            this.btAgregarNuevo.Location = new System.Drawing.Point(7, 66);
             this.btAgregarNuevo.Name = "btAgregarNuevo";
             this.btAgregarNuevo.Size = new System.Drawing.Size(112, 36);
             this.btAgregarNuevo.TabIndex = 14;
-            this.btAgregarNuevo.Text = "Agregar Nuevo";
+            this.btAgregarNuevo.Text = "NUEVO";
             this.btAgregarNuevo.UseVisualStyleBackColor = true;
             this.btAgregarNuevo.Click += new System.EventHandler(this.btAgregarNuevo_Click);
             // 
             // dgvComercio
             // 
             this.dgvComercio.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvComercio.Location = new System.Drawing.Point(22, 56);
+            this.dgvComercio.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Ciudad,
+            this.Direccion,
+            this.CodigoPostal,
+            this.RazonSocial});
+            this.dgvComercio.Location = new System.Drawing.Point(125, 53);
             this.dgvComercio.Name = "dgvComercio";
             this.dgvComercio.Size = new System.Drawing.Size(421, 297);
             this.dgvComercio.TabIndex = 13;
             this.dgvComercio.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            // 
+            // lbTituloMenu
+            // 
+            this.lbTituloMenu.AutoSize = true;
+            this.lbTituloMenu.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbTituloMenu.Location = new System.Drawing.Point(37, 9);
+            this.lbTituloMenu.Name = "lbTituloMenu";
+            this.lbTituloMenu.Size = new System.Drawing.Size(212, 24);
+            this.lbTituloMenu.TabIndex = 29;
+            this.lbTituloMenu.Text = "Comercios Adheridos";
+            // 
+            // Ciudad
+            // 
+            this.Ciudad.HeaderText = "Ciudad";
+            this.Ciudad.Name = "Ciudad";
+            // 
+            // Direccion
+            // 
+            this.Direccion.HeaderText = "Dirección";
+            this.Direccion.Name = "Direccion";
+            // 
+            // CodigoPostal
+            // 
+            this.CodigoPostal.HeaderText = "Código Postal";
+            this.CodigoPostal.Name = "CodigoPostal";
+            // 
+            // RazonSocial
+            // 
+            this.RazonSocial.HeaderText = "Razón Social";
+            this.RazonSocial.Name = "RazonSocial";
             // 
             // ABMComercioAdherido
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.lbTituloMenu);
             this.Controls.Add(this.btCancelar);
             this.Controls.Add(this.btGuardar);
             this.Controls.Add(this.txtLocalidad);
@@ -184,5 +227,10 @@
         private System.Windows.Forms.Label lbCiudad;
         private System.Windows.Forms.Button btAgregarNuevo;
         private System.Windows.Forms.DataGridView dgvComercio;
+        private System.Windows.Forms.Label lbTituloMenu;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Ciudad;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Direccion;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CodigoPostal;
+        private System.Windows.Forms.DataGridViewTextBoxColumn RazonSocial;
     }
 }

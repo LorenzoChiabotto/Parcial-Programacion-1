@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.lbTituloAltaPrestamo = new System.Windows.Forms.Label();
             this.lbFechaCredito = new System.Windows.Forms.Label();
             this.lbComercioAdherido = new System.Windows.Forms.Label();
             this.lbSucursal = new System.Windows.Forms.Label();
@@ -44,15 +43,8 @@
             this.cbTipoDocumento = new System.Windows.Forms.ComboBox();
             this.lbTipoDocumento = new System.Windows.Forms.Label();
             this.txtDocumento = new System.Windows.Forms.TextBox();
+            this.lbTituloMenu = new System.Windows.Forms.Label();
             this.SuspendLayout();
-            // 
-            // lbTituloAltaPrestamo
-            // 
-            this.lbTituloAltaPrestamo.Location = new System.Drawing.Point(102, 18);
-            this.lbTituloAltaPrestamo.Name = "lbTituloAltaPrestamo";
-            this.lbTituloAltaPrestamo.Size = new System.Drawing.Size(100, 23);
-            this.lbTituloAltaPrestamo.TabIndex = 0;
-            this.lbTituloAltaPrestamo.Text = "Alta Prestamo";
             // 
             // lbFechaCredito
             // 
@@ -133,7 +125,7 @@
             // 
             // btGuardar
             // 
-            this.btGuardar.Location = new System.Drawing.Point(315, 237);
+            this.btGuardar.Location = new System.Drawing.Point(334, 237);
             this.btGuardar.Name = "btGuardar";
             this.btGuardar.Size = new System.Drawing.Size(85, 49);
             this.btGuardar.TabIndex = 9;
@@ -178,11 +170,22 @@
             this.txtDocumento.Size = new System.Drawing.Size(183, 20);
             this.txtDocumento.TabIndex = 3;
             // 
+            // lbTituloMenu
+            // 
+            this.lbTituloMenu.AutoSize = true;
+            this.lbTituloMenu.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbTituloMenu.Location = new System.Drawing.Point(55, 9);
+            this.lbTituloMenu.Name = "lbTituloMenu";
+            this.lbTituloMenu.Size = new System.Drawing.Size(138, 24);
+            this.lbTituloMenu.TabIndex = 28;
+            this.lbTituloMenu.Text = "Alta Prestamo";
+            // 
             // AltaPrestamo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(590, 298);
+            this.Controls.Add(this.lbTituloMenu);
             this.Controls.Add(this.txtDocumento);
             this.Controls.Add(this.cbTipoDocumento);
             this.Controls.Add(this.lbTipoDocumento);
@@ -198,7 +201,6 @@
             this.Controls.Add(this.lbSucursal);
             this.Controls.Add(this.lbComercioAdherido);
             this.Controls.Add(this.lbFechaCredito);
-            this.Controls.Add(this.lbTituloAltaPrestamo);
             this.Name = "AltaPrestamo";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AltaPrestamo";
@@ -209,8 +211,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Label lbTituloAltaPrestamo;
         private System.Windows.Forms.Label lbFechaCredito;
         private System.Windows.Forms.Label lbComercioAdherido;
         private System.Windows.Forms.Label lbSucursal;
@@ -226,5 +226,6 @@
         private System.Windows.Forms.ComboBox cbTipoDocumento;
         private System.Windows.Forms.Label lbTipoDocumento;
         private System.Windows.Forms.TextBox txtDocumento;
+        private System.Windows.Forms.Label lbTituloMenu;
     }
 }

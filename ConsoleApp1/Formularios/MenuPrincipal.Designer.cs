@@ -94,21 +94,21 @@
             // sucursalesToolStripMenuItem
             // 
             this.sucursalesToolStripMenuItem.Name = "sucursalesToolStripMenuItem";
-            this.sucursalesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.sucursalesToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
             this.sucursalesToolStripMenuItem.Text = "Sucursales";
             this.sucursalesToolStripMenuItem.Click += new System.EventHandler(this.sucursalesToolStripMenuItem_Click);
             // 
             // lugaresDePagoToolStripMenuItem
             // 
             this.lugaresDePagoToolStripMenuItem.Name = "lugaresDePagoToolStripMenuItem";
-            this.lugaresDePagoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.lugaresDePagoToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
             this.lugaresDePagoToolStripMenuItem.Text = "Lugares de Pago";
             this.lugaresDePagoToolStripMenuItem.Click += new System.EventHandler(this.lugaresDePagoToolStripMenuItem_Click);
             // 
             // comercioToolStripMenuItem
             // 
             this.comercioToolStripMenuItem.Name = "comercioToolStripMenuItem";
-            this.comercioToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.comercioToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
             this.comercioToolStripMenuItem.Text = "Comercio";
             this.comercioToolStripMenuItem.Click += new System.EventHandler(this.comercioToolStripMenuItem_Click);
             // 
@@ -124,8 +124,9 @@
             // listadoToolStripMenuItem1
             // 
             this.listadoToolStripMenuItem1.Name = "listadoToolStripMenuItem1";
-            this.listadoToolStripMenuItem1.Size = new System.Drawing.Size(162, 22);
+            this.listadoToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.listadoToolStripMenuItem1.Text = "Listado";
+            this.listadoToolStripMenuItem1.Click += new System.EventHandler(this.listadoToolStripMenuItem1_Click);
             // 
             // nuevoPrestamoToolStripMenuItem
             // 
@@ -152,7 +153,7 @@
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "MenuPrincipal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form1";
+            this.Text = "Menu Principal";
             this.Load += new System.EventHandler(this.MenuPrincipal_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
