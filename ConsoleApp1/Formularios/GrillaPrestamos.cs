@@ -21,5 +21,12 @@ namespace Formularios
         {
 
         }
+
+        private void btNuevo_Click(object sender, EventArgs e)
+        {
+            AltaPrestamo formNuevoPrestamo= new AltaPrestamo();
+            formNuevoPrestamo.Owner = this;
+            formNuevoPrestamo.ShowDialog();
+        }
     }
 }

@@ -9,27 +9,13 @@ namespace Formularios.Interfaces
 {
     public interface IMenuPrincipal
     {
-        
-        Empresa Empresa { get; }
 
-        //Clientes
-        void GuardarClientes(Cliente parametro_clientes);
-        void Modificar_EliminarClientes(Cliente ClienteModElim,bool pSeModifica);
+        List<Cliente> ObtenerCliente(int? dni);
 
-        // Prestamo
-        void altaPrestamo(Prestamo pPrestamo);
-    
-        //Lugar de Pago
-        void altaLugarPago(LugarDePago pLugarPago);
+        Resultado NuevoCliente(Cliente paciente);
 
-        //Sucursal
-        Resultado altaSucursal(Sucursal pSucursal);
-        Resultado modificarEliminarSucursal(Sucursal pSucursal, bool pSeModifica);
+        Resultado ModificacionEliminacionCliente(Cliente paciente, bool pSeModifica);
 
-        //Comercio Adherido
-
-        void altaComercioAdherido(Comercio pComercio);
-        Resultado modificarEliminarComercio(Comercio pComercio, bool pSeModifica)
 
     }
 }

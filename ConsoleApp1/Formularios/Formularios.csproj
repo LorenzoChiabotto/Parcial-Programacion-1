@@ -90,6 +90,7 @@
     <Compile Include="GrillaPrestamos.Designer.cs">
       <DependentUpon>GrillaPrestamos.cs</DependentUpon>
     </Compile>
+    <Compile Include="Interfaces\IGrilla.cs" />
     <Compile Include="Interfaces\IMenuPrincipal.cs" />
     <Compile Include="MenuPrincipal.cs">
       <SubType>Form</SubType>

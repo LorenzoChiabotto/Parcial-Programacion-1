@@ -29,13 +29,6 @@
         private void InitializeComponent()
         {
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.lbFiltrar = new System.Windows.Forms.Label();
-            this.cbTipoDocumento = new System.Windows.Forms.ComboBox();
-            this.lbDocumento = new System.Windows.Forms.Label();
-            this.txbDocumento = new System.Windows.Forms.TextBox();
-            this.btBuscar = new System.Windows.Forms.Button();
-            this.btNuevo = new System.Windows.Forms.Button();
-            this.lbTituloMenu = new System.Windows.Forms.Label();
             this.Cliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NumCredito = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FechaCredito = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -45,6 +38,13 @@
             this.Tasa = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MontoCuota = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CantidadCuotas = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lbFiltrar = new System.Windows.Forms.Label();
+            this.cbTipoDocumento = new System.Windows.Forms.ComboBox();
+            this.lbDocumento = new System.Windows.Forms.Label();
+            this.txbDocumento = new System.Windows.Forms.TextBox();
+            this.btBuscar = new System.Windows.Forms.Button();
+            this.btNuevo = new System.Windows.Forms.Button();
+            this.lbTituloMenu = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -66,6 +66,51 @@
             this.dataGridView1.Size = new System.Drawing.Size(549, 313);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            // 
+            // Cliente
+            // 
+            this.Cliente.HeaderText = "Cliente";
+            this.Cliente.Name = "Cliente";
+            // 
+            // NumCredito
+            // 
+            this.NumCredito.HeaderText = "N° Credito";
+            this.NumCredito.Name = "NumCredito";
+            // 
+            // FechaCredito
+            // 
+            this.FechaCredito.HeaderText = "Fecha de Crédito";
+            this.FechaCredito.Name = "FechaCredito";
+            // 
+            // ComAdherido
+            // 
+            this.ComAdherido.HeaderText = "Comercio Adherido";
+            this.ComAdherido.Name = "ComAdherido";
+            // 
+            // Sucursal
+            // 
+            this.Sucursal.HeaderText = "Sucursal";
+            this.Sucursal.Name = "Sucursal";
+            // 
+            // MontoCredito
+            // 
+            this.MontoCredito.HeaderText = "Monto del Crédito";
+            this.MontoCredito.Name = "MontoCredito";
+            // 
+            // Tasa
+            // 
+            this.Tasa.HeaderText = "Tasa";
+            this.Tasa.Name = "Tasa";
+            // 
+            // MontoCuota
+            // 
+            this.MontoCuota.HeaderText = "Monto Cuota";
+            this.MontoCuota.Name = "MontoCuota";
+            // 
+            // CantidadCuotas
+            // 
+            this.CantidadCuotas.HeaderText = "Cantidad Cuotas";
+            this.CantidadCuotas.Name = "CantidadCuotas";
             // 
             // lbFiltrar
             // 
@@ -117,6 +162,7 @@
             this.btNuevo.TabIndex = 10;
             this.btNuevo.Text = "NUEVO";
             this.btNuevo.UseVisualStyleBackColor = true;
+            this.btNuevo.Click += new System.EventHandler(this.btNuevo_Click);
             // 
             // lbTituloMenu
             // 
@@ -127,51 +173,6 @@
             this.lbTituloMenu.Size = new System.Drawing.Size(107, 24);
             this.lbTituloMenu.TabIndex = 29;
             this.lbTituloMenu.Text = "Prestamos";
-            // 
-            // Cliente
-            // 
-            this.Cliente.HeaderText = "Cliente";
-            this.Cliente.Name = "Cliente";
-            // 
-            // NumCredito
-            // 
-            this.NumCredito.HeaderText = "N° Credito";
-            this.NumCredito.Name = "NumCredito";
-            // 
-            // FechaCredito
-            // 
-            this.FechaCredito.HeaderText = "Fecha de Crédito";
-            this.FechaCredito.Name = "FechaCredito";
-            // 
-            // ComAdherido
-            // 
-            this.ComAdherido.HeaderText = "Comercio Adherido";
-            this.ComAdherido.Name = "ComAdherido";
-            // 
-            // Sucursal
-            // 
-            this.Sucursal.HeaderText = "Sucursal";
-            this.Sucursal.Name = "Sucursal";
-            // 
-            // MontoCredito
-            // 
-            this.MontoCredito.HeaderText = "Monto del Crédito";
-            this.MontoCredito.Name = "MontoCredito";
-            // 
-            // Tasa
-            // 
-            this.Tasa.HeaderText = "Tasa";
-            this.Tasa.Name = "Tasa";
-            // 
-            // MontoCuota
-            // 
-            this.MontoCuota.HeaderText = "Monto Cuota";
-            this.MontoCuota.Name = "MontoCuota";
-            // 
-            // CantidadCuotas
-            // 
-            this.CantidadCuotas.HeaderText = "Cantidad Cuotas";
-            this.CantidadCuotas.Name = "CantidadCuotas";
             // 
             // GrillaPrestamos
             // 

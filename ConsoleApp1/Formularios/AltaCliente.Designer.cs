@@ -282,10 +282,14 @@
             // 
             this.cbTipodeCliente.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbTipodeCliente.FormattingEnabled = true;
+            this.cbTipodeCliente.Items.AddRange(new object[] {
+            "Regular",
+            "VIP"});
             this.cbTipodeCliente.Location = new System.Drawing.Point(473, 219);
             this.cbTipodeCliente.Name = "cbTipodeCliente";
             this.cbTipodeCliente.Size = new System.Drawing.Size(156, 21);
             this.cbTipodeCliente.TabIndex = 28;
+            this.cbTipodeCliente.SelectedIndexChanged += new System.EventHandler(this.cbTipodeCliente_SelectedIndexChanged);
             // 
             // bGuardar
             // 

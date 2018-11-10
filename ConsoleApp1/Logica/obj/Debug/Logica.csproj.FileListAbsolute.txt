@@ -10,3 +10,12 @@ C:\TPProgramacionNet\ConsoleApp1\Logica\obj\Debug\Logica.csprojAssemblyReference
 C:\TPProgramacionNet\ConsoleApp1\Logica\obj\Debug\Logica.csproj.CoreCompileInputs.cache
 C:\TPProgramacionNet\ConsoleApp1\Logica\obj\Debug\Logica.dll
 C:\TPProgramacionNet\ConsoleApp1\Logica\obj\Debug\Logica.pdb
+C:\Users\USER\Desktop\TPNETCHIABOMUSSO\ConsoleApp1\Logica\bin\Debug\Logica.dll
+C:\Users\USER\Desktop\TPNETCHIABOMUSSO\ConsoleApp1\Logica\bin\Debug\Logica.pdb
+C:\Users\USER\Desktop\TPNETCHIABOMUSSO\ConsoleApp1\Logica\bin\Debug\Newtonsoft.Json.dll
+C:\Users\USER\Desktop\TPNETCHIABOMUSSO\ConsoleApp1\Logica\bin\Debug\Newtonsoft.Json.xml
+C:\Users\USER\Desktop\TPNETCHIABOMUSSO\ConsoleApp1\Logica\obj\Debug\Logica.csprojAssemblyReference.cache
+C:\Users\USER\Desktop\TPNETCHIABOMUSSO\ConsoleApp1\Logica\obj\Debug\Logica.csproj.CoreCompileInputs.cache
+C:\Users\USER\Desktop\TPNETCHIABOMUSSO\ConsoleApp1\Logica\obj\Debug\Logica.csproj.CopyComplete
+C:\Users\USER\Desktop\TPNETCHIABOMUSSO\ConsoleApp1\Logica\obj\Debug\Logica.dll
+C:\Users\USER\Desktop\TPNETCHIABOMUSSO\ConsoleApp1\Logica\obj\Debug\Logica.pdb

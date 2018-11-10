@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Logica;
-
+using Formularios.Interfaces;
 namespace Formularios
 {
     public partial class AltaCliente : Form
@@ -34,8 +34,44 @@ namespace Formularios
             switch (ComprobarCampos())
             {
                 case 0:
-          
-                    //Por Aca seria el camino feliz
+
+                    Resultado resultado = new Resultado();
+                    Cliente nuevoCliente = new Cliente();
+
+                    // nuevoCliente.TipoDoc = cbTipoDocumento;
+                    nuevoCliente.Documento = Convert.ToInt32(txtDNI.Text);
+
+                    nuevoCliente.NombreCompleto = txtNombreCompleto.Text;
+                    nuevoCliente.Email = txtCorreo.Text;
+                    nuevoCliente.Celular = txtCelular.Text;
+                    // nuevoCliente.Sexo = rbHombre;
+                    nuevoCliente.Domicilio = txtDomicilio.Text;
+                    nuevoCliente.CodPostal = int.Parse(txtCodigoPostal.Text);
+                    nuevoCliente.Localidad = txtLocalidad.Text;
+                    //nuevoCliente.FechaNacimiento = mkTxtFechaNacimiento.text
+                    nuevoCliente.MontoMaximoAutorizar = int.Parse(txtMontoMaximoaAutorizar.Text);
+                    //Falta el alta del tipo de cliente nuevoCliente.
+
+                    IMenuPrincipal formPrincipal = this.Owner as IMenuPrincipal;
+                    if (formPrincipal != null)
+                    {
+                        resultado = formPrincipal.NuevoCliente(nuevoCliente);
+                    }
+                    else
+                    {
+                        IGrilla formGrilla = this.Owner as IGrilla;
+                        if (formGrilla != null)
+                        {
+                            {
+                                resultado = formGrilla.NuevoCliente(nuevoCliente);
+                            }
+                        }
+                    }
+                    if (resultado.FueCorrecto )
+                    {
+                        MessageBox.Show("La Operacion se realizo con exito");
+                        this.Close();
+                    }
                     
                     break;
 
@@ -117,6 +153,11 @@ namespace Formularios
         private void cbTipoDocumento_SelectedIndexChanged(object sender, EventArgs e)
         {
       
+
+        }
+
+        private void cbTipodeCliente_SelectedIndexChanged(object sender, EventArgs e)
+        {
 
         }
     }

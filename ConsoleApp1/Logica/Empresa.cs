@@ -159,17 +159,22 @@ namespace Logica
             }
         }
         //Cargar Cliente
-        public void altaCliente(Cliente pcliente)
+        public Resultado altaCliente(Cliente pcliente)
         {
             //TODO: Validar Cliente
+            Resultado resultado = new Resultado();
 
             listaCliente.Add(pcliente);
+            resultado.FueCorrecto = true;
+            return resultado;
+          
         }
 
 
         //ModificarEliminarCliente
-        public void modificarEliminarCliente(Cliente pCliente, bool pSeModifica)
+        public Resultado modificarEliminarCliente(Cliente pCliente, bool pSeModifica)
         {
+            Resultado resultado = new Resultado();
             //TODO: modificarCliente
             foreach (var item in listaCliente)
             {
@@ -189,15 +194,18 @@ namespace Logica
                         item.Localidad = pCliente.Localidad;
                         item.EsVip = pCliente.EsVip;
                         item.MontoMaximoAutorizar = pCliente.MontoMaximoAutorizar;
-                        return;
+                        resultado.FueCorrecto = true;
+                        return resultado;
                     }
                     else
                     {
                         item.Baja = true;
-                        return;
+                        resultado.FueCorrecto = true;
+                        return resultado;
                     }
                 }
             }
+            return resultado;
         }
 
 
@@ -212,42 +220,40 @@ namespace Logica
         }
 
 
-
-
         // ARCHIVOS
 
         public void crearArchivos()
         {
             FileStream file;
-            string path = @"C:\Users\loren\Desktop\Clientes.txt";
+            string path = @"C:\Users\USER\Desktop\TPNETCHIABOMUSSO\ConsoleApp1\Clientes.txt";
             if (!File.Exists(path))
             {
                 file = File.Create(path);
                 file.Close();
             }
 
-            path = @"C:\Users\loren\Desktop\Sucursales.txt";
+            path = @"C:\Users\USER\Desktop\TPNETCHIABOMUSSO\ConsoleApp1\Sucursales.txt";
             if (!File.Exists(path))
             {
                 file = File.Create(path);
                 file.Close();
             }
 
-            path = @"C:\Users\loren\Desktop\Comercios.txt";
+            path = @"C:\Users\USER\Desktop\TPNETCHIABOMUSSO\ConsoleApp1\Comercios.txt";
             if (!File.Exists(path))
             {
                 file = File.Create(path);
                 file.Close();
             }
 
-            path = @"C:\Users\loren\Desktop\LugaresDePago.txt";
+            path = @"C:\Users\USER\Desktop\TPNETCHIABOMUSSO\ConsoleApp1\LugaresDePago.txt";
             if (!File.Exists(path))
             {
                 file = File.Create(path);
                 file.Close();
             }
 
-            path = @"C:\Users\loren\Desktop\Prestamos.txt";
+            path = @"C:\Users\USER\Desktop\TPNETCHIABOMUSSO\ConsoleApp1\Prestamos.txt";
             if (!File.Exists(path))
             {
                 file = File.Create(path);
@@ -259,7 +265,7 @@ namespace Logica
         {
             try
             {
-                string path = @"C:\Users\loren\Desktop\Clientes.txt";   
+                string path = @"C:\Users\USER\Desktop\TPNETCHIABOMUSSO\ConsoleApp1\Clientes.txt";   
 
                 string conte;
                 using (StreamReader reader = new StreamReader(path))
@@ -280,7 +286,7 @@ namespace Logica
         {
             try
             {
-                string path = @"C:\Users\loren\Desktop\Sucursales.txt";
+                string path = @"C:\Users\USER\Desktop\TPNETCHIABOMUSSO\ConsoleApp1\Sucursales.txt";
 
                 string conte;
                 using (StreamReader reader = new StreamReader(path))
@@ -299,7 +305,7 @@ namespace Logica
         {
             try
             {
-                string path = @"C:\Users\loren\Desktop\Comercio.txt";
+                string path = @"C:\Users\USER\Desktop\TPNETCHIABOMUSSO\ConsoleApp1\Comercio.txt";
 
                 string conte;
                 using (StreamReader reader = new StreamReader(path))
@@ -318,7 +324,7 @@ namespace Logica
         {
             try
             {
-                string path = @"C:\Users\loren\Desktop\LugaresDePagos.txt";
+                string path = @"C:\Users\USER\Desktop\TPNETCHIABOMUSSO\ConsoleApp1\LugaresDePagos.txt";
 
                 string conte;
                 using (StreamReader reader = new StreamReader(path))
@@ -337,7 +343,7 @@ namespace Logica
         {
             try
             {
-                string path = @"C:\Users\loren\Desktop\Prestamos.txt";
+                string path = @"C:\Users\USER\Desktop\TPNETCHIABOMUSSO\ConsoleApp1\Prestamos.txt";
 
                 string conte;
                 using (StreamReader reader = new StreamReader(path))
@@ -352,6 +358,13 @@ namespace Logica
                 return null;
             }
         }
-        
+        public List<Cliente> ObtenerCliente(int? dni)
+        {
+           
+            return listaCliente.Where(x => dni.HasValue ? x.Documento == dni : true).ToList();
+
+        }
+
+
     }
 }

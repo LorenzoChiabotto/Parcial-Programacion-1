@@ -28,18 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.lbFiltros = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.mskFechDesde = new System.Windows.Forms.MaskedTextBox();
-            this.lbFechaDesde = new System.Windows.Forms.Label();
-            this.lbFechaHasta = new System.Windows.Forms.Label();
-            this.mskFechaDesde = new System.Windows.Forms.MaskedTextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.btBuscar = new System.Windows.Forms.Button();
-            this.btNuevo = new System.Windows.Forms.Button();
-            this.BTModificar = new System.Windows.Forms.Button();
-            this.btEliminar = new System.Windows.Forms.Button();
+            this.dgvClientes = new System.Windows.Forms.DataGridView();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NombreCompleto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -51,14 +40,25 @@
             this.Localidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TipodeCliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MontoMaximo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lbFiltros = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.mskFechDesde = new System.Windows.Forms.MaskedTextBox();
+            this.lbFechaDesde = new System.Windows.Forms.Label();
+            this.lbFechaHasta = new System.Windows.Forms.Label();
+            this.mskFechaDesde = new System.Windows.Forms.MaskedTextBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.btBuscar = new System.Windows.Forms.Button();
+            this.btNuevo = new System.Windows.Forms.Button();
+            this.BTModificar = new System.Windows.Forms.Button();
+            this.btEliminar = new System.Windows.Forms.Button();
             this.lbTituloMenu = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvClientes)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // dgvClientes
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvClientes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ID,
             this.NombreCompleto,
             this.Email,
@@ -70,11 +70,66 @@
             this.Localidad,
             this.TipodeCliente,
             this.MontoMaximo});
-            this.dataGridView1.Location = new System.Drawing.Point(95, 157);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(680, 294);
-            this.dataGridView1.TabIndex = 0;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.dgvClientes.Location = new System.Drawing.Point(95, 157);
+            this.dgvClientes.Name = "dgvClientes";
+            this.dgvClientes.Size = new System.Drawing.Size(680, 294);
+            this.dgvClientes.TabIndex = 0;
+            this.dgvClientes.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            // 
+            // ID
+            // 
+            this.ID.HeaderText = "Documento";
+            this.ID.Name = "ID";
+            // 
+            // NombreCompleto
+            // 
+            this.NombreCompleto.HeaderText = "Nombre Completo";
+            this.NombreCompleto.Name = "NombreCompleto";
+            // 
+            // Email
+            // 
+            this.Email.HeaderText = "Correo Electrónico";
+            this.Email.Name = "Email";
+            // 
+            // Celular
+            // 
+            this.Celular.HeaderText = "Celular";
+            this.Celular.Name = "Celular";
+            // 
+            // FechadeNacimiento
+            // 
+            this.FechadeNacimiento.HeaderText = "Fecha de Nacimiento";
+            this.FechadeNacimiento.Name = "FechadeNacimiento";
+            // 
+            // Sexo
+            // 
+            this.Sexo.HeaderText = "Sexo";
+            this.Sexo.Name = "Sexo";
+            // 
+            // Domicilio
+            // 
+            this.Domicilio.HeaderText = "Domicilio";
+            this.Domicilio.Name = "Domicilio";
+            // 
+            // CodigoPostal
+            // 
+            this.CodigoPostal.HeaderText = "Código Postal";
+            this.CodigoPostal.Name = "CodigoPostal";
+            // 
+            // Localidad
+            // 
+            this.Localidad.HeaderText = "Localidad";
+            this.Localidad.Name = "Localidad";
+            // 
+            // TipodeCliente
+            // 
+            this.TipodeCliente.HeaderText = "Tipo De Cliente";
+            this.TipodeCliente.Name = "TipodeCliente";
+            // 
+            // MontoMaximo
+            // 
+            this.MontoMaximo.HeaderText = "Monto Máximo a Autorizar";
+            this.MontoMaximo.Name = "MontoMaximo";
             // 
             // lbFiltros
             // 
@@ -153,6 +208,7 @@
             this.btNuevo.TabIndex = 9;
             this.btNuevo.Text = "NUEVO";
             this.btNuevo.UseVisualStyleBackColor = true;
+            this.btNuevo.Click += new System.EventHandler(this.btNuevo_Click);
             // 
             // BTModificar
             // 
@@ -171,61 +227,6 @@
             this.btEliminar.TabIndex = 11;
             this.btEliminar.Text = "ELIMINAR";
             this.btEliminar.UseVisualStyleBackColor = true;
-            // 
-            // ID
-            // 
-            this.ID.HeaderText = "Documento";
-            this.ID.Name = "ID";
-            // 
-            // NombreCompleto
-            // 
-            this.NombreCompleto.HeaderText = "Nombre Completo";
-            this.NombreCompleto.Name = "NombreCompleto";
-            // 
-            // Email
-            // 
-            this.Email.HeaderText = "Correo Electrónico";
-            this.Email.Name = "Email";
-            // 
-            // Celular
-            // 
-            this.Celular.HeaderText = "Celular";
-            this.Celular.Name = "Celular";
-            // 
-            // FechadeNacimiento
-            // 
-            this.FechadeNacimiento.HeaderText = "Fecha de Nacimiento";
-            this.FechadeNacimiento.Name = "FechadeNacimiento";
-            // 
-            // Sexo
-            // 
-            this.Sexo.HeaderText = "Sexo";
-            this.Sexo.Name = "Sexo";
-            // 
-            // Domicilio
-            // 
-            this.Domicilio.HeaderText = "Domicilio";
-            this.Domicilio.Name = "Domicilio";
-            // 
-            // CodigoPostal
-            // 
-            this.CodigoPostal.HeaderText = "Código Postal";
-            this.CodigoPostal.Name = "CodigoPostal";
-            // 
-            // Localidad
-            // 
-            this.Localidad.HeaderText = "Localidad";
-            this.Localidad.Name = "Localidad";
-            // 
-            // TipodeCliente
-            // 
-            this.TipodeCliente.HeaderText = "Tipo De Cliente";
-            this.TipodeCliente.Name = "TipodeCliente";
-            // 
-            // MontoMaximo
-            // 
-            this.MontoMaximo.HeaderText = "Monto Máximo a Autorizar";
-            this.MontoMaximo.Name = "MontoMaximo";
             // 
             // lbTituloMenu
             // 
@@ -254,11 +255,11 @@
             this.Controls.Add(this.mskFechDesde);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.lbFiltros);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dgvClientes);
             this.Name = "GrillaClientes";
             this.Text = "GrillaClientes";
             this.Load += new System.EventHandler(this.GrillaClientes_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvClientes)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -266,7 +267,7 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvClientes;
         private System.Windows.Forms.Label lbFiltros;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.MaskedTextBox mskFechDesde;

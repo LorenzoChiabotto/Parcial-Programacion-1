@@ -18,6 +18,8 @@ namespace Formularios
     public partial class MenuPrincipal : Form, IMenuPrincipal
     {
         Empresa NuevaEmpresa = new Empresa();
+        private List<Cliente> ListaCliente { get; set; }
+
         public Empresa Empresa
         {
             get
@@ -88,51 +90,21 @@ namespace Formularios
             ListaPrestamo.ShowDialog();
         }
 
-        //Cliente
 
-        //Alta 
-        public void GuardarClientes(Cliente parametro_clientes)
+        public List<Cliente> ObtenerCliente(int? dni)
         {
-            NuevaEmpresa.altaCliente(parametro_clientes);
-        }
-        //Modificar - Eliminar
-        public void Modificar_EliminarClientes(Cliente ClienteModElim, bool pSeModifica)
-        {
-            NuevaEmpresa.modificarEliminarCliente(ClienteModElim, pSeModifica);
+            return NuevaEmpresa.ObtenerCliente(dni);
+           
         }
 
-        // Prestamo
-        public void altaPrestamo(Prestamo pPrestamo)
+        public Resultado NuevoCliente(Cliente cliente)
         {
-            NuevaEmpresa.altaPrestamo(pPrestamo);
+            return NuevaEmpresa.altaCliente(cliente);
         }
 
-        //Lugar de Pago
-        public void altaLugarPago(LugarDePago pLugarPago)
+       public Resultado ModificacionEliminacionCliente(Cliente cliente, bool pSeModifica)
         {
-            NuevaEmpresa.altaLugarPago(pLugarPago);
+            return NuevaEmpresa.modificarEliminarCliente(cliente, pSeModifica);
         }
-
-        //Sucursal
-        public Resultado altaSucursal(Sucursal pSucursal)
-        {
-            return NuevaEmpresa.altaSucursal(pSucursal);
-        }
-        public Resultado modificarEliminarSucursal(Sucursal pSucursal, bool pSeModifica)
-        {
-            return NuevaEmpresa.modificarEliminarSucursal(pSucursal, pSeModifica);
-        }
-        //Comercio Adherido
-
-        public void altaComercioAdherido(Comercio pComercio)
-        {
-            NuevaEmpresa.altaComercioAdherido(pComercio);
-        }
-        public Resultado modificarEliminarComercio(Comercio pComercio, bool pSeModifica)
-        {
-            return NuevaEmpresa.modificarEliminarComercio(pComercio, pSeModifica);
-        }
-
-
     }
 }
