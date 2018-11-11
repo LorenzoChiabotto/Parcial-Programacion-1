@@ -11,10 +11,14 @@ namespace Formularios.Interfaces
     {
 
         List<Cliente> ObtenerCliente(int? dni);
+        List<Prestamo> ObtenerPrestamo(int? Id); 
 
-        Resultado NuevoCliente(Cliente paciente);
+        Resultado NuevoCliente(Cliente cliente);
 
-        Resultado ModificacionEliminacionCliente(Cliente paciente, bool pSeModifica);
+        Resultado ModificacionEliminacionCliente(Cliente cliente, bool pSeModifica);
+
+        Resultado NuevoPrestamo(Prestamo prestamo);
+   
 
 
     }

@@ -277,8 +277,9 @@ namespace Logica
         }
 
 
-        public void altaPrestamo(Prestamo pPrestamo)
+        public Resultado altaPrestamo(Prestamo pPrestamo)
         {
+            Resultado resultado = new Resultado();
             listaPrestamo = getPrestamo();
             if (listaPrestamo == null)
             {
@@ -290,6 +291,8 @@ namespace Logica
 
             listaPrestamo.Add(pPrestamo);
             guardarPrestamos();
+            resultado.FueCorrecto = true;
+            return resultado;
         }
 
 
@@ -298,35 +301,35 @@ namespace Logica
         public void crearArchivos()
         {
             FileStream file;
-            string path = @"C:\Users\loren\Desktop\Clientes.txt";
+            string path = @"C:\Users\USER\Desktop\TPNETOFICIAL\Clientes.txt";
             if (!File.Exists(path))
             {
                 file = File.Create(path);
                 file.Close();
             }
 
-            path = @"C:\Users\loren\Desktop\Sucursales.txt";
+            path = @"C:\Users\USER\Desktop\TPNETOFICIAL\Sucursales.txt";
             if (!File.Exists(path))
             {
                 file = File.Create(path);
                 file.Close();
             }
 
-            path = @"C:\Users\loren\Desktop\Comercios.txt";
+            path = @"C:\Users\USER\Desktop\TPNETOFICIAL\Comercios.txt";
             if (!File.Exists(path))
             {
                 file = File.Create(path);
                 file.Close();
             }
 
-            path = @"C:\Users\loren\Desktop\LugaresDePago.txt";
+            path = @"C:\Users\USER\Desktop\TPNETOFICIAL\LugaresDePago.txt";
             if (!File.Exists(path))
             {
                 file = File.Create(path);
                 file.Close();
             }
 
-            path = @"C:\Users\loren\Desktop\Prestamos.txt";
+            path = @"C:\Users\USER\Desktop\TPNETOFICIAL\Prestamos.txt";
             if (!File.Exists(path))
             {
                 file = File.Create(path);
@@ -338,7 +341,7 @@ namespace Logica
         {
             try
             {
-                string path = @"C:\Users\loren\Desktop\Clientes.txt";   
+                string path = @"C:\Users\USER\Desktop\TPNETOFICIAL\Clientes.txt";   
 
                 string conte;
                 using (StreamReader reader = new StreamReader(path))
@@ -358,7 +361,7 @@ namespace Logica
         {
             try
             {
-                string path = @"C:\Users\USER\Desktop\TPNETCHIABOMUSSO\ConsoleApp1\Sucursales.txt";
+                string path = @"C:\Users\USER\Desktop\TPNETOFICIAL\Sucursales.txt";
 
                 string conte;
                 using (StreamReader reader = new StreamReader(path))
@@ -377,7 +380,7 @@ namespace Logica
         {
             try
             {
-                string path = @"C:\Users\USER\Desktop\TPNETCHIABOMUSSO\ConsoleApp1\Comercio.txt";
+                string path = @"C:\Users\USER\Desktop\TPNETOFICIAL\Comercio.txt";
 
                 string conte;
                 using (StreamReader reader = new StreamReader(path))
@@ -396,7 +399,7 @@ namespace Logica
         {
             try
             {
-                string path = @"C:\Users\USER\Desktop\TPNETCHIABOMUSSO\ConsoleApp1\LugaresDePagos.txt";
+                string path = @"C:\Users\USER\Desktop\TPNETOFICIAL\LugaresDePagos.txt";
 
                 string conte;
                 using (StreamReader reader = new StreamReader(path))
@@ -415,7 +418,7 @@ namespace Logica
         {
             try
             {
-                string path = @"C:\Users\USER\Desktop\TPNETCHIABOMUSSO\ConsoleApp1\Prestamos.txt";
+                string path = @"C:\Users\USER\Desktop\TPNETOFICIAL\Prestamos.txt";
 
                 string conte;
                 using (StreamReader reader = new StreamReader(path))
@@ -441,7 +444,7 @@ namespace Logica
         public void guardarClientes()
         {
             string output = JsonConvert.SerializeObject(listaCliente);
-            using (StreamWriter file = new System.IO.StreamWriter(@"C:\Users\loren\Desktop\Clientes.txt", false))
+            using (StreamWriter file = new System.IO.StreamWriter(@"C:\Users\USER\Desktop\TPNETOFICIAL\Clientes.txt", false))
             {
                 file.Write(output);
             }
@@ -449,7 +452,7 @@ namespace Logica
         public void guardarSucursales()
         {
             string output = JsonConvert.SerializeObject(listaSucursal);
-            using (StreamWriter file = new System.IO.StreamWriter(@"C:\Users\loren\Desktop\Sucursales.txt", false))
+            using (StreamWriter file = new System.IO.StreamWriter(@"C:\Users\USER\Desktop\TPNETOFICIAL\Sucursales.txt", false))
             {
                 file.Write(output);
             }
@@ -457,7 +460,7 @@ namespace Logica
         public void guardarComercios()
         {
             string output = JsonConvert.SerializeObject(listaComercio);
-            using (StreamWriter file = new System.IO.StreamWriter(@"C:\Users\loren\Desktop\Comercios.txt", false))
+            using (StreamWriter file = new System.IO.StreamWriter(@"C:\Users\USER\Desktop\TPNETOFICIAL\Comercios.txt", false))
             {
                 file.Write(output);
             }
@@ -465,7 +468,7 @@ namespace Logica
         public void guardarLugaresPago()
         {
             string output = JsonConvert.SerializeObject(listaLugarPago);
-            using (StreamWriter file = new System.IO.StreamWriter(@"C:\Users\loren\Desktop\LugaresDePago.txt", false))
+            using (StreamWriter file = new System.IO.StreamWriter(@"C:\Users\USER\Desktop\TPNETOFICIAL\LugaresDePago.txt", false))
             {
                 file.Write(output);
             }

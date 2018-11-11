@@ -29,6 +29,11 @@
         private void InitializeComponent()
         {
             this.dgvSucursal = new System.Windows.Forms.DataGridView();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ciudad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Direccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CodPostal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TasadeInteres = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btAgregarNuevo = new System.Windows.Forms.Button();
             this.lbCiudad = new System.Windows.Forms.Label();
             this.txtCiudad = new System.Windows.Forms.TextBox();
@@ -42,11 +47,6 @@
             this.btCancelar = new System.Windows.Forms.Button();
             this.btModificar = new System.Windows.Forms.Button();
             this.btEliminar = new System.Windows.Forms.Button();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Ciudad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Direccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CodPostal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TasadeInteres = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lbTituloMenu = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSucursal)).BeginInit();
             this.SuspendLayout();
@@ -64,6 +64,31 @@
             this.dgvSucursal.Name = "dgvSucursal";
             this.dgvSucursal.Size = new System.Drawing.Size(498, 270);
             this.dgvSucursal.TabIndex = 0;
+            // 
+            // ID
+            // 
+            this.ID.HeaderText = "ID";
+            this.ID.Name = "ID";
+            // 
+            // Ciudad
+            // 
+            this.Ciudad.HeaderText = "Ciudad";
+            this.Ciudad.Name = "Ciudad";
+            // 
+            // Direccion
+            // 
+            this.Direccion.HeaderText = "Dirección";
+            this.Direccion.Name = "Direccion";
+            // 
+            // CodPostal
+            // 
+            this.CodPostal.HeaderText = "Codigo Postal";
+            this.CodPostal.Name = "CodPostal";
+            // 
+            // TasadeInteres
+            // 
+            this.TasadeInteres.HeaderText = "Tasa de Interés";
+            this.TasadeInteres.Name = "TasadeInteres";
             // 
             // btAgregarNuevo
             // 
@@ -167,6 +192,7 @@
             this.btModificar.TabIndex = 13;
             this.btModificar.Text = "MODIFICAR";
             this.btModificar.UseVisualStyleBackColor = true;
+            this.btModificar.Click += new System.EventHandler(this.btModificar_Click);
             // 
             // btEliminar
             // 
@@ -176,31 +202,6 @@
             this.btEliminar.TabIndex = 14;
             this.btEliminar.Text = "ELIMINAR";
             this.btEliminar.UseVisualStyleBackColor = true;
-            // 
-            // ID
-            // 
-            this.ID.HeaderText = "ID";
-            this.ID.Name = "ID";
-            // 
-            // Ciudad
-            // 
-            this.Ciudad.HeaderText = "Ciudad";
-            this.Ciudad.Name = "Ciudad";
-            // 
-            // Direccion
-            // 
-            this.Direccion.HeaderText = "Dirección";
-            this.Direccion.Name = "Direccion";
-            // 
-            // CodPostal
-            // 
-            this.CodPostal.HeaderText = "Codigo Postal";
-            this.CodPostal.Name = "CodPostal";
-            // 
-            // TasadeInteres
-            // 
-            this.TasadeInteres.HeaderText = "Tasa de Interés";
-            this.TasadeInteres.Name = "TasadeInteres";
             // 
             // lbTituloMenu
             // 

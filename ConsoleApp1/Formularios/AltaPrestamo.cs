@@ -7,11 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Formularios.Interfaces;
+using Logica;
 
 namespace Formularios
 {
     public partial class AltaPrestamo : Form
     {
+      
         public AltaPrestamo()
         {
             InitializeComponent();
@@ -26,6 +29,13 @@ namespace Formularios
         {
             txtFechaCredito.Text = DateTime.Now.ToString("dd/MM/yyyy");
             txtFechaCredito.Enabled = false;
+
+        }
+
+        private void btGuardar_Click(object sender, EventArgs e)
+        {
+
+          
         }
     }
 }

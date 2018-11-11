@@ -106,5 +106,16 @@ namespace Formularios
         {
             return NuevaEmpresa.modificarEliminarCliente(cliente, pSeModifica);
         }
+        //Prestamo
+        public List<Prestamo> ObtenerPrestamo(int? Num)
+        {
+            return NuevaEmpresa.getPrestamo();
+
+        }
+        public Resultado NuevoPrestamo(Prestamo prestamo)
+        {
+            return NuevaEmpresa.altaPrestamo(prestamo);
+        }
+
     }
 }

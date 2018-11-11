@@ -39,14 +39,14 @@
             this.txtCiudad = new System.Windows.Forms.TextBox();
             this.lbCiudad = new System.Windows.Forms.Label();
             this.dgvSucursal = new System.Windows.Forms.DataGridView();
-            this.btEliminar = new System.Windows.Forms.Button();
-            this.btModificar = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.Ciudad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Direccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CodigoPostal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RazonSocial = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btEliminar = new System.Windows.Forms.Button();
+            this.btModificar = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.lbTituloMenu = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSucursal)).BeginInit();
             this.SuspendLayout();
@@ -149,34 +149,6 @@
             this.dgvSucursal.Size = new System.Drawing.Size(448, 268);
             this.dgvSucursal.TabIndex = 13;
             // 
-            // btEliminar
-            // 
-            this.btEliminar.Location = new System.Drawing.Point(21, 159);
-            this.btEliminar.Name = "btEliminar";
-            this.btEliminar.Size = new System.Drawing.Size(112, 36);
-            this.btEliminar.TabIndex = 27;
-            this.btEliminar.Text = "ELIMINAR";
-            this.btEliminar.UseVisualStyleBackColor = true;
-            // 
-            // btModificar
-            // 
-            this.btModificar.Location = new System.Drawing.Point(21, 117);
-            this.btModificar.Name = "btModificar";
-            this.btModificar.Size = new System.Drawing.Size(112, 36);
-            this.btModificar.TabIndex = 26;
-            this.btModificar.Text = "MODIFICAR";
-            this.btModificar.UseVisualStyleBackColor = true;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(21, 75);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(112, 36);
-            this.button1.TabIndex = 25;
-            this.button1.Text = "NUEVO";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // Ciudad
             // 
             this.Ciudad.HeaderText = "Ciudad";
@@ -201,6 +173,35 @@
             // 
             this.ID.HeaderText = "ID";
             this.ID.Name = "ID";
+            // 
+            // btEliminar
+            // 
+            this.btEliminar.Location = new System.Drawing.Point(21, 159);
+            this.btEliminar.Name = "btEliminar";
+            this.btEliminar.Size = new System.Drawing.Size(112, 36);
+            this.btEliminar.TabIndex = 27;
+            this.btEliminar.Text = "ELIMINAR";
+            this.btEliminar.UseVisualStyleBackColor = true;
+            // 
+            // btModificar
+            // 
+            this.btModificar.Location = new System.Drawing.Point(21, 117);
+            this.btModificar.Name = "btModificar";
+            this.btModificar.Size = new System.Drawing.Size(112, 36);
+            this.btModificar.TabIndex = 26;
+            this.btModificar.Text = "MODIFICAR";
+            this.btModificar.UseVisualStyleBackColor = true;
+            this.btModificar.Click += new System.EventHandler(this.btModificar_Click);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(21, 75);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(112, 36);
+            this.button1.TabIndex = 25;
+            this.button1.Text = "NUEVO";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // lbTituloMenu
             // 

@@ -19,13 +19,17 @@ namespace Formularios
         public GrillaClientes()
         {
             InitializeComponent();
+  
+
+           
         }
 
         private void GrillaClientes_Load(object sender, EventArgs e)
         {
             owner = this.Owner as IMenuPrincipal;
-
+            
             this.dgvClientes.AutoGenerateColumns = true;
+            dgvClientes.Columns["id_dts"].Visible = false;
 
             ActualizardgvClientes();
 
@@ -93,6 +97,21 @@ namespace Formularios
         }
 
         private void btModificar_Click(object sender, EventArgs e)
+        {
+            if (dgvClientes.SelectedRows.Count == 1)
+            {
+                if (owner != null)
+                { 
+                    AltaCliente NuevaModificacion = new AltaCliente(dgvClientes.SelectedRows[0].DataBoundItem as Cliente,true);
+                    NuevaModificacion.Owner = this;
+                    NuevaModificacion.ShowDialog();
+           
+                }
+            }      
+
+        }
+
+        private void dgvClientes_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }

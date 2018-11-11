@@ -16,22 +16,48 @@ namespace Formularios
         Cliente cliente;
         IGrilla ownerGrilla;
         IMenuPrincipal ownerMenu;
+        public bool Modifica { get; set; }
 
+        public AltaCliente()
+        {
+
+        }
         public AltaCliente(Cliente cl)
         {
             cliente = cl;
+            Modifica = false;
             InitializeComponent();
+        }
+        public AltaCliente(Cliente pcliente, bool pModificacion)
+        {
+            // cbTipoDocumento = nuevoCliente.TipoDoc  ;           
+            cliente = pcliente;
+            InitializeComponent();
+            txtDNI.Text = cliente.Documento.ToString();
+
+            txtNombreCompleto.Text = cliente.NombreCompleto;
+            txtCorreo.Text = cliente.Email;
+            txtCelular.Text = cliente.Celular;
+            // rbHombre = nuevoCliente.Sexo  ;
+            txtDomicilio.Text = pcliente.Domicilio;
+            txtCodigoPostal.Text = pcliente.CodPostal.ToString();
+            txtLocalidad.Text = pcliente.Localidad;
+            //mkTxtFechaNacimiento.text = nuevoCliente.FechaNacimiento 
+            txtMontoMaximoaAutorizar.Text = pcliente.MontoMaximoAutorizar.ToString();
+            //Falta el alta del tipo de cliente nuevoCliente.
+            Modifica = true;
         }
 
         private void AltaCliente_Load(object sender, EventArgs e)
         {
+            
             ownerGrilla = this.Owner as IGrilla;
             ownerMenu = this.Owner as IMenuPrincipal;
-
-            if (cliente.Documento == 0)
+           /* if (cliente.Documento == 0)
             {
-                // FILL CAMPOS CON DATOS DE CLIENTES
-            }
+
+            }*/
+            
         }
 
         private void bGuardar_Click(object sender, EventArgs e)
@@ -58,23 +84,30 @@ namespace Formularios
 
                     if (ownerGrilla != null)
                     {
-                        if(cliente.Documento != 0)
+                        if(Modifica)
                         {
-                            resultado = ownerGrilla.NuevoCliente(cliente);
+                            resultado = ownerGrilla.ModificacionCliente(cliente, true);
+                            
                         }
                         else
                         {
-                            resultado = ownerGrilla.ModificacionCliente(cliente,true);
+                            resultado = ownerGrilla.NuevoCliente(cliente);
                         }
                     }
                     else
                     {
                         if (ownerMenu != null)
                         {
+                            if (Modifica)
+                            {
+                                resultado = ownerMenu.ModificacionEliminacionCliente(cliente,true);
+                            }
+                            else
                             {
                                 resultado = ownerMenu.NuevoCliente(cliente);
                             }
                         }
+
                     }
                     if (resultado.FueCorrecto )
                     {

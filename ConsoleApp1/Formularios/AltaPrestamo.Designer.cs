@@ -125,12 +125,13 @@
             // 
             // btGuardar
             // 
-            this.btGuardar.Location = new System.Drawing.Point(334, 237);
+            this.btGuardar.Location = new System.Drawing.Point(350, 237);
             this.btGuardar.Name = "btGuardar";
             this.btGuardar.Size = new System.Drawing.Size(85, 49);
             this.btGuardar.TabIndex = 9;
             this.btGuardar.Text = "Guardar";
             this.btGuardar.UseVisualStyleBackColor = true;
+            this.btGuardar.Click += new System.EventHandler(this.btGuardar_Click);
             // 
             // lbDoc
             // 

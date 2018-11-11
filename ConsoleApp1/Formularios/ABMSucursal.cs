@@ -53,5 +53,10 @@ namespace Formularios
             HabilitarDeshabilitar(false);
             dgvSucursal.Enabled = true;
         }
+
+        private void btModificar_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -7,11 +7,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Formularios.Interfaces;
+using Logica;
 
 namespace Formularios
 {
     public partial class GrillaPrestamos : Form
+
     {
+        
         public GrillaPrestamos()
         {
             InitializeComponent();
@@ -24,9 +28,15 @@ namespace Formularios
 
         private void btNuevo_Click(object sender, EventArgs e)
         {
-            AltaPrestamo formNuevoPrestamo= new AltaPrestamo();
+            AltaPrestamo formNuevoPrestamo = new AltaPrestamo();
             formNuevoPrestamo.Owner = this;
             formNuevoPrestamo.ShowDialog();
         }
+
+        private void GrillaPrestamos_Load(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }

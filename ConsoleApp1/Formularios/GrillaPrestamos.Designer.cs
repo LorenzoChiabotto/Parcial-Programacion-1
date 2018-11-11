@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgvPrestamos = new System.Windows.Forms.DataGridView();
             this.Cliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NumCredito = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FechaCredito = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -45,13 +45,13 @@
             this.btBuscar = new System.Windows.Forms.Button();
             this.btNuevo = new System.Windows.Forms.Button();
             this.lbTituloMenu = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPrestamos)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // dgvPrestamos
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvPrestamos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvPrestamos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Cliente,
             this.NumCredito,
             this.FechaCredito,
@@ -61,11 +61,11 @@
             this.Tasa,
             this.MontoCuota,
             this.CantidadCuotas});
-            this.dataGridView1.Location = new System.Drawing.Point(254, 61);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(549, 313);
-            this.dataGridView1.TabIndex = 0;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.dgvPrestamos.Location = new System.Drawing.Point(254, 61);
+            this.dgvPrestamos.Name = "dgvPrestamos";
+            this.dgvPrestamos.Size = new System.Drawing.Size(549, 313);
+            this.dgvPrestamos.TabIndex = 0;
+            this.dgvPrestamos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // Cliente
             // 
@@ -186,10 +186,11 @@
             this.Controls.Add(this.lbDocumento);
             this.Controls.Add(this.cbTipoDocumento);
             this.Controls.Add(this.lbFiltrar);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dgvPrestamos);
             this.Name = "GrillaPrestamos";
             this.Text = "ListarPrestamos";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.Load += new System.EventHandler(this.GrillaPrestamos_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPrestamos)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -197,7 +198,7 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvPrestamos;
         private System.Windows.Forms.Label lbFiltrar;
         private System.Windows.Forms.ComboBox cbTipoDocumento;
         private System.Windows.Forms.Label lbDocumento;
