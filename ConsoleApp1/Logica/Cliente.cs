@@ -26,12 +26,14 @@ namespace Logica
 
         public Cliente()
         {
-
+            this.Baja = false;
         }    
 
         public Cliente(TipoDocumento tipo, int documento, string nombre, string email, bool esVip, float montoMax,
             string celular, DateTime nacimiento, Sexo sexo, string domicilio, int codPostal, string localidad)
         {
+            this.Baja = false;
+
             this.TipoDoc = tipo;
             this.Documento = documento;
             this.NombreCompleto = nombre;

@@ -13,20 +13,25 @@ namespace Formularios
 {
     public partial class AltaCliente : Form
     {
-        public AltaCliente()
+        Cliente cliente;
+        IGrilla ownerGrilla;
+        IMenuPrincipal ownerMenu;
+
+        public AltaCliente(Cliente cl)
         {
+            cliente = cl;
             InitializeComponent();
-            
-        }
-
-        private void lbTipoDocumento_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void AltaCliente_Load(object sender, EventArgs e)
         {
+            ownerGrilla = this.Owner as IGrilla;
+            ownerMenu = this.Owner as IMenuPrincipal;
 
+            if (cliente.Documento == 0)
+            {
+                // FILL CAMPOS CON DATOS DE CLIENTES
+            }
         }
 
         private void bGuardar_Click(object sender, EventArgs e)
@@ -36,34 +41,38 @@ namespace Formularios
                 case 0:
 
                     Resultado resultado = new Resultado();
-                    Cliente nuevoCliente = new Cliente();
 
                     // nuevoCliente.TipoDoc = cbTipoDocumento;
-                    nuevoCliente.Documento = Convert.ToInt32(txtDNI.Text);
+                    cliente.Documento = Convert.ToInt32(txtDNI.Text);
 
-                    nuevoCliente.NombreCompleto = txtNombreCompleto.Text;
-                    nuevoCliente.Email = txtCorreo.Text;
-                    nuevoCliente.Celular = txtCelular.Text;
+                    cliente.NombreCompleto = txtNombreCompleto.Text;
+                    cliente.Email = txtCorreo.Text;
+                    cliente.Celular = txtCelular.Text;
                     // nuevoCliente.Sexo = rbHombre;
-                    nuevoCliente.Domicilio = txtDomicilio.Text;
-                    nuevoCliente.CodPostal = int.Parse(txtCodigoPostal.Text);
-                    nuevoCliente.Localidad = txtLocalidad.Text;
+                    cliente.Domicilio = txtDomicilio.Text;
+                    cliente.CodPostal = int.Parse(txtCodigoPostal.Text);
+                    cliente.Localidad = txtLocalidad.Text;
                     //nuevoCliente.FechaNacimiento = mkTxtFechaNacimiento.text
-                    nuevoCliente.MontoMaximoAutorizar = int.Parse(txtMontoMaximoaAutorizar.Text);
+                    cliente.MontoMaximoAutorizar = int.Parse(txtMontoMaximoaAutorizar.Text);
                     //Falta el alta del tipo de cliente nuevoCliente.
 
-                    IMenuPrincipal formPrincipal = this.Owner as IMenuPrincipal;
-                    if (formPrincipal != null)
+                    if (ownerGrilla != null)
                     {
-                        resultado = formPrincipal.NuevoCliente(nuevoCliente);
+                        if(cliente.Documento != 0)
+                        {
+                            resultado = ownerGrilla.NuevoCliente(cliente);
+                        }
+                        else
+                        {
+                            resultado = ownerGrilla.ModificacionCliente(cliente,true);
+                        }
                     }
                     else
                     {
-                        IGrilla formGrilla = this.Owner as IGrilla;
-                        if (formGrilla != null)
+                        if (ownerMenu != null)
                         {
                             {
-                                resultado = formGrilla.NuevoCliente(nuevoCliente);
+                                resultado = ownerMenu.NuevoCliente(cliente);
                             }
                         }
                     }
@@ -92,10 +101,6 @@ namespace Formularios
                     break;
             }
         }
-        private void txtCorreo_TextChanged(object sender, EventArgs e)
-        {
-
-        }
 
         private int ComprobarCampos()
         {
@@ -112,53 +117,38 @@ namespace Formularios
                 string.IsNullOrWhiteSpace(txtCorreo.Text) || 
                 string.IsNullOrWhiteSpace(cbTipodeCliente.Text) || string.IsNullOrWhiteSpace(txtMontoMaximoaAutorizar.Text))
                 {
-                if (String.IsNullOrWhiteSpace(cbTipoDocumento.Text))
-                {
-                    Comprobar = 1;
-                }
-                else
-                {
-                    if (string.IsNullOrWhiteSpace(txtDNI.Text))
+                    if (String.IsNullOrWhiteSpace(cbTipoDocumento.Text))
                     {
-                        Comprobar = 2;
+                        Comprobar = 1;
                     }
                     else
                     {
-                        if (string.IsNullOrWhiteSpace(txtCorreo.Text))
+                        if (string.IsNullOrWhiteSpace(txtDNI.Text))
                         {
-                            Comprobar = 3;
+                            Comprobar = 2;
                         }
                         else
                         {
-                            if (string.IsNullOrWhiteSpace(cbTipodeCliente.Text))
+                            if (string.IsNullOrWhiteSpace(txtCorreo.Text))
                             {
-                                Comprobar = 4;
+                                Comprobar = 3;
                             }
                             else
                             {
-                                Comprobar = 5;
+                                if (string.IsNullOrWhiteSpace(cbTipodeCliente.Text))
+                                {
+                                    Comprobar = 4;
+                                }
+                                else
+                                {
+                                    Comprobar = 5;
 
+                                }
                             }
                         }
                     }
-                }
-
-                }
-
-
-         
+                }         
             return Comprobar;
-        }
-
-        private void cbTipoDocumento_SelectedIndexChanged(object sender, EventArgs e)
-        {
-      
-
-        }
-
-        private void cbTipodeCliente_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }

@@ -12,12 +12,17 @@ namespace Logica
     public enum Sexo { MASCULINO, FEMENINO }
     public class Empresa
     {
-        public List<Cliente> listaCliente = new List<Cliente>();
+        public List<Cliente> listaCliente;
         public List<Prestamo> listaPrestamo = new List<Prestamo>();
         public List<Sucursal> listaSucursal = new List<Sucursal>();
         public List<Comercio> listaComercio = new List<Comercio>();
         public List<LugarDePago> listaLugarPago = new List<LugarDePago>();
-        
+
+        public Empresa()
+        {
+            crearArchivos();
+        }
+
         public Resultado validarSucursal(Sucursal pSucursal, bool pSeModifica)
         {
             Resultado result = new Resultado();
@@ -38,12 +43,19 @@ namespace Logica
         //Cargar Sucursal
         public Resultado altaSucursal(Sucursal pSucursal)
         {
+            listaSucursal = getSucursales();
+            if (listaSucursal == null)
+            {
+                listaSucursal = new List<Sucursal>();
+            }
+
             Resultado result = validarSucursal(pSucursal,false);
 
             if (result.FueCorrecto)
             {
                 pSucursal.ID = this.listaSucursal.Max(x => x.ID) + 1;
                 listaSucursal.Add(pSucursal);
+                guardarSucursales();
             }
 
             return result;
@@ -52,6 +64,11 @@ namespace Logica
         //ModificarEliminarSucursal
         public Resultado modificarEliminarSucursal(Sucursal pSucursal, bool pSeModifica)
         {
+            listaSucursal = getSucursales();
+            if (listaSucursal == null)
+            {
+                listaSucursal = new List<Sucursal>();
+            }
             Resultado result = validarSucursal(pSucursal, true);
 
             foreach (var item in getSucursales())
@@ -78,7 +95,7 @@ namespace Logica
 
             if (result.FueCorrecto)
             {
-                // guardararchivo
+                guardarSucursales();
             }
             return result;
         }
@@ -86,15 +103,26 @@ namespace Logica
         // Carga Comercio
         public void altaComercioAdherido(Comercio pComercio)
         {
+            listaComercio = getComercios();
+            if (listaComercio == null)
+            {
+                listaComercio = new List<Comercio>();
+            }
             //TODO: Validar Comercio
             pComercio.ID = this.listaComercio.Max(x => x.ID) + 1;
 
             listaComercio.Add(pComercio);
+            guardarComercios();
             
         }
         //ModificarEliminarComercioAdherido
         public Resultado modificarEliminarComercio(Comercio pComercio, bool pSeModifica)
         {
+            listaComercio = getComercios();
+            if (listaComercio == null)
+            {
+                listaComercio = new List<Comercio>();
+            }
             Resultado result = new Resultado();
             foreach (var item in getComercios())
             {
@@ -119,23 +147,38 @@ namespace Logica
 
             if (result.FueCorrecto)
             {
-                // guardararchivo
+                guardarComercios();
             }
             return result;
         }
 
+        
         // Cargar LugarPago
         public void altaLugarPago(LugarDePago pLugarPago)
         {
+
+            listaLugarPago = getLugaresPago();
+            if (listaLugarPago == null)
+            {
+                listaLugarPago = new List<LugarDePago>();
+            }
+
             //TODO: Validar LugarPago
             pLugarPago.ID = this.listaLugarPago.Max(x => x.ID) + 1;
 
-            listaComercio.Add(pLugarPago);
+            listaLugarPago.Add(pLugarPago);
         }
 
         //ModificarEliminarLugarPago
-        public void modificarEliminarComercio(LugarDePago pLugarDePago, bool pSeModifica)
+        public Resultado modificarEliminarLugarPago(LugarDePago pLugarDePago, bool pSeModifica)
         {
+            listaLugarPago = getLugaresPago();
+            if (listaLugarPago == null)
+            {
+                listaLugarPago = new List<LugarDePago>();
+            }
+            Resultado result = new Resultado();
+
             foreach (var item in listaLugarPago)
             {
                 if (item.ID == pLugarDePago.ID)
@@ -148,32 +191,55 @@ namespace Logica
                         item.CodPostal = pLugarDePago.CodPostal;
                         item.RazonSocial = pLugarDePago.RazonSocial;
                         item.EsSucursal = pLugarDePago.EsSucursal;
-                        return;
+                        result.FueCorrecto = true;
                     }
                     else
                     {
                         item.Baja = true;
-                        return;
+                        result.FueCorrecto = true;
                     }
                 }
             }
+
+            if(result.FueCorrecto){
+                guardarLugaresPago();
+            }
+
+            return result;
         }
+        
+        
         //Cargar Cliente
         public Resultado altaCliente(Cliente pcliente)
         {
             //TODO: Validar Cliente
+            listaCliente = getClientes();
+            if (listaCliente == null)
+            {
+                listaCliente = new List<Cliente>();
+            }
             Resultado resultado = new Resultado();
-
-            listaCliente.Add(pcliente);
             resultado.FueCorrecto = true;
+
+            if (resultado.FueCorrecto)
+            {
+                listaCliente.Add(pcliente);
+                guardarClientes();
+            }
+
             return resultado;
-          
+
         }
-
-
+        
         //ModificarEliminarCliente
         public Resultado modificarEliminarCliente(Cliente pCliente, bool pSeModifica)
         {
+            listaCliente = getClientes();
+            if (listaCliente == null)
+            {
+                listaCliente = new List<Cliente>();
+            }
+
             Resultado resultado = new Resultado();
             //TODO: modificarCliente
             foreach (var item in listaCliente)
@@ -195,15 +261,17 @@ namespace Logica
                         item.EsVip = pCliente.EsVip;
                         item.MontoMaximoAutorizar = pCliente.MontoMaximoAutorizar;
                         resultado.FueCorrecto = true;
-                        return resultado;
                     }
                     else
                     {
                         item.Baja = true;
                         resultado.FueCorrecto = true;
-                        return resultado;
                     }
                 }
+            }
+            if (resultado.FueCorrecto)
+            {
+                guardarClientes();
             }
             return resultado;
         }
@@ -211,12 +279,17 @@ namespace Logica
 
         public void altaPrestamo(Prestamo pPrestamo)
         {
+            listaPrestamo = getPrestamo();
+            if (listaPrestamo == null)
+            {
+                listaPrestamo = new List<Prestamo>();
+            }
             //TODO: validar Prestamo
-            
+
             pPrestamo.NumCredito = this.listaPrestamo.Max(x => x.NumCredito) + 1;
 
             listaPrestamo.Add(pPrestamo);
-            
+            guardarPrestamos();
         }
 
 
@@ -225,35 +298,35 @@ namespace Logica
         public void crearArchivos()
         {
             FileStream file;
-            string path = @"C:\Users\USER\Desktop\TPNETCHIABOMUSSO\ConsoleApp1\Clientes.txt";
+            string path = @"C:\Users\loren\Desktop\Clientes.txt";
             if (!File.Exists(path))
             {
                 file = File.Create(path);
                 file.Close();
             }
 
-            path = @"C:\Users\USER\Desktop\TPNETCHIABOMUSSO\ConsoleApp1\Sucursales.txt";
+            path = @"C:\Users\loren\Desktop\Sucursales.txt";
             if (!File.Exists(path))
             {
                 file = File.Create(path);
                 file.Close();
             }
 
-            path = @"C:\Users\USER\Desktop\TPNETCHIABOMUSSO\ConsoleApp1\Comercios.txt";
+            path = @"C:\Users\loren\Desktop\Comercios.txt";
             if (!File.Exists(path))
             {
                 file = File.Create(path);
                 file.Close();
             }
 
-            path = @"C:\Users\USER\Desktop\TPNETCHIABOMUSSO\ConsoleApp1\LugaresDePago.txt";
+            path = @"C:\Users\loren\Desktop\LugaresDePago.txt";
             if (!File.Exists(path))
             {
                 file = File.Create(path);
                 file.Close();
             }
 
-            path = @"C:\Users\USER\Desktop\TPNETCHIABOMUSSO\ConsoleApp1\Prestamos.txt";
+            path = @"C:\Users\loren\Desktop\Prestamos.txt";
             if (!File.Exists(path))
             {
                 file = File.Create(path);
@@ -265,7 +338,7 @@ namespace Logica
         {
             try
             {
-                string path = @"C:\Users\USER\Desktop\TPNETCHIABOMUSSO\ConsoleApp1\Clientes.txt";   
+                string path = @"C:\Users\loren\Desktop\Clientes.txt";   
 
                 string conte;
                 using (StreamReader reader = new StreamReader(path))
@@ -277,7 +350,6 @@ namespace Logica
             }
             catch (Exception)
             {
-
                 return null;
             }
             
@@ -358,6 +430,7 @@ namespace Logica
                 return null;
             }
         }
+
         public List<Cliente> ObtenerCliente(int? dni)
         {
            
@@ -365,6 +438,45 @@ namespace Logica
 
         }
 
-
+        public void guardarClientes()
+        {
+            string output = JsonConvert.SerializeObject(listaCliente);
+            using (StreamWriter file = new System.IO.StreamWriter(@"C:\Users\loren\Desktop\Clientes.txt", false))
+            {
+                file.Write(output);
+            }
+        }
+        public void guardarSucursales()
+        {
+            string output = JsonConvert.SerializeObject(listaSucursal);
+            using (StreamWriter file = new System.IO.StreamWriter(@"C:\Users\loren\Desktop\Sucursales.txt", false))
+            {
+                file.Write(output);
+            }
+        }
+        public void guardarComercios()
+        {
+            string output = JsonConvert.SerializeObject(listaComercio);
+            using (StreamWriter file = new System.IO.StreamWriter(@"C:\Users\loren\Desktop\Comercios.txt", false))
+            {
+                file.Write(output);
+            }
+        }
+        public void guardarLugaresPago()
+        {
+            string output = JsonConvert.SerializeObject(listaLugarPago);
+            using (StreamWriter file = new System.IO.StreamWriter(@"C:\Users\loren\Desktop\LugaresDePago.txt", false))
+            {
+                file.Write(output);
+            }
+        }
+        public void guardarPrestamos()
+        {
+            string output = JsonConvert.SerializeObject(listaPrestamo);
+            using (StreamWriter file = new System.IO.StreamWriter(@"C:\Users\loren\Desktop\Prestamos.txt", false))
+            {
+                file.Write(output);
+            }
+        }
     }
 }

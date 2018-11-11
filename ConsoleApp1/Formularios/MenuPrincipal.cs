@@ -35,7 +35,7 @@ namespace Formularios
 
         private void altaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Form NuevoCLiente = new AltaCliente();
+            Form NuevoCLiente = new AltaCliente(new Cliente());
             NuevoCLiente.Owner = this;
             NuevoCLiente.ShowDialog();
 
@@ -93,7 +93,7 @@ namespace Formularios
 
         public List<Cliente> ObtenerCliente(int? dni)
         {
-            return NuevaEmpresa.ObtenerCliente(dni);
+            return NuevaEmpresa.getClientes();
            
         }
 
