@@ -10,7 +10,7 @@ namespace Formularios.Interfaces
     public interface IMenuPrincipal
     {
 
-        List<Cliente> ObtenerCliente(int? dni);
+        List<Cliente> ObtenerCliente(int? dni, TipoDocumento? tipo);
         List<Prestamo> ObtenerPrestamo(int? Id);
         List<Sucursal> ObtenerSucursal(int? Id);
         List<Comercio> ObtenerComercio(int? Id);

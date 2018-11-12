@@ -34,100 +34,94 @@
             this.lbMontoCredito = new System.Windows.Forms.Label();
             this.txtFechaCredito = new System.Windows.Forms.TextBox();
             this.cbSucursal = new System.Windows.Forms.ComboBox();
-            this.txtComercioAdherido = new System.Windows.Forms.TextBox();
             this.txtMontoCredito = new System.Windows.Forms.TextBox();
-            this.lbTasa = new System.Windows.Forms.Label();
-            this.txtTasa = new System.Windows.Forms.TextBox();
             this.btGuardar = new System.Windows.Forms.Button();
             this.lbDoc = new System.Windows.Forms.Label();
             this.cbTipoDocumento = new System.Windows.Forms.ComboBox();
             this.lbTipoDocumento = new System.Windows.Forms.Label();
             this.txtDocumento = new System.Windows.Forms.TextBox();
             this.lbTituloMenu = new System.Windows.Forms.Label();
+            this.cbComercio = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.lblValorTasa = new System.Windows.Forms.Label();
+            this.txtCuotas = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lbFechaCredito
             // 
-            this.lbFechaCredito.Location = new System.Drawing.Point(12, 103);
+            this.lbFechaCredito.AutoSize = true;
+            this.lbFechaCredito.Location = new System.Drawing.Point(16, 127);
+            this.lbFechaCredito.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbFechaCredito.Name = "lbFechaCredito";
-            this.lbFechaCredito.Size = new System.Drawing.Size(100, 23);
+            this.lbFechaCredito.Size = new System.Drawing.Size(117, 17);
             this.lbFechaCredito.TabIndex = 1;
             this.lbFechaCredito.Text = "Fecha del credito";
             // 
             // lbComercioAdherido
             // 
-            this.lbComercioAdherido.Location = new System.Drawing.Point(12, 175);
+            this.lbComercioAdherido.AutoSize = true;
+            this.lbComercioAdherido.Location = new System.Drawing.Point(10, 163);
+            this.lbComercioAdherido.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbComercioAdherido.Name = "lbComercioAdherido";
-            this.lbComercioAdherido.Size = new System.Drawing.Size(100, 23);
+            this.lbComercioAdherido.Size = new System.Drawing.Size(128, 17);
             this.lbComercioAdherido.TabIndex = 2;
             this.lbComercioAdherido.Text = "Comercio Adherido";
             // 
             // lbSucursal
             // 
-            this.lbSucursal.Location = new System.Drawing.Point(12, 145);
+            this.lbSucursal.AutoSize = true;
+            this.lbSucursal.Location = new System.Drawing.Point(394, 87);
+            this.lbSucursal.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbSucursal.Name = "lbSucursal";
-            this.lbSucursal.Size = new System.Drawing.Size(100, 23);
+            this.lbSucursal.Size = new System.Drawing.Size(67, 17);
             this.lbSucursal.TabIndex = 3;
             this.lbSucursal.Text = "Sucursal:";
             // 
             // lbMontoCredito
             // 
-            this.lbMontoCredito.Location = new System.Drawing.Point(12, 216);
+            this.lbMontoCredito.AutoSize = true;
+            this.lbMontoCredito.Location = new System.Drawing.Point(342, 53);
+            this.lbMontoCredito.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbMontoCredito.Name = "lbMontoCredito";
-            this.lbMontoCredito.Size = new System.Drawing.Size(100, 23);
+            this.lbMontoCredito.Size = new System.Drawing.Size(119, 17);
             this.lbMontoCredito.TabIndex = 4;
             this.lbMontoCredito.Text = "Monto del Crédito";
             // 
             // txtFechaCredito
             // 
-            this.txtFechaCredito.Location = new System.Drawing.Point(133, 106);
+            this.txtFechaCredito.Location = new System.Drawing.Point(145, 124);
+            this.txtFechaCredito.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtFechaCredito.Name = "txtFechaCredito";
-            this.txtFechaCredito.Size = new System.Drawing.Size(183, 20);
+            this.txtFechaCredito.Size = new System.Drawing.Size(188, 22);
             this.txtFechaCredito.TabIndex = 4;
-            this.txtFechaCredito.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // cbSucursal
             // 
+            this.cbSucursal.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbSucursal.FormattingEnabled = true;
-            this.cbSucursal.Location = new System.Drawing.Point(133, 142);
+            this.cbSucursal.Location = new System.Drawing.Point(469, 84);
+            this.cbSucursal.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cbSucursal.Name = "cbSucursal";
-            this.cbSucursal.Size = new System.Drawing.Size(183, 21);
+            this.cbSucursal.Size = new System.Drawing.Size(259, 24);
             this.cbSucursal.TabIndex = 5;
-            // 
-            // txtComercioAdherido
-            // 
-            this.txtComercioAdherido.Location = new System.Drawing.Point(133, 178);
-            this.txtComercioAdherido.Name = "txtComercioAdherido";
-            this.txtComercioAdherido.Size = new System.Drawing.Size(183, 20);
-            this.txtComercioAdherido.TabIndex = 6;
+            this.cbSucursal.SelectedIndexChanged += new System.EventHandler(this.cbSucursal_SelectedIndexChanged);
             // 
             // txtMontoCredito
             // 
-            this.txtMontoCredito.Location = new System.Drawing.Point(133, 219);
+            this.txtMontoCredito.Location = new System.Drawing.Point(469, 50);
+            this.txtMontoCredito.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtMontoCredito.Name = "txtMontoCredito";
-            this.txtMontoCredito.Size = new System.Drawing.Size(183, 20);
+            this.txtMontoCredito.Size = new System.Drawing.Size(113, 22);
             this.txtMontoCredito.TabIndex = 7;
-            // 
-            // lbTasa
-            // 
-            this.lbTasa.Location = new System.Drawing.Point(12, 255);
-            this.lbTasa.Name = "lbTasa";
-            this.lbTasa.Size = new System.Drawing.Size(100, 23);
-            this.lbTasa.TabIndex = 9;
-            this.lbTasa.Text = "Tasa";
-            // 
-            // txtTasa
-            // 
-            this.txtTasa.Location = new System.Drawing.Point(133, 255);
-            this.txtTasa.Name = "txtTasa";
-            this.txtTasa.Size = new System.Drawing.Size(100, 20);
-            this.txtTasa.TabIndex = 8;
+            this.txtMontoCredito.TextChanged += new System.EventHandler(this.txtMontoCredito_TextChanged);
             // 
             // btGuardar
             // 
-            this.btGuardar.Location = new System.Drawing.Point(350, 237);
+            this.btGuardar.Location = new System.Drawing.Point(538, 160);
+            this.btGuardar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btGuardar.Name = "btGuardar";
-            this.btGuardar.Size = new System.Drawing.Size(85, 49);
+            this.btGuardar.Size = new System.Drawing.Size(190, 66);
             this.btGuardar.TabIndex = 9;
             this.btGuardar.Text = "Guardar";
             this.btGuardar.UseVisualStyleBackColor = true;
@@ -136,9 +130,10 @@
             // lbDoc
             // 
             this.lbDoc.AutoSize = true;
-            this.lbDoc.Location = new System.Drawing.Point(12, 75);
+            this.lbDoc.Location = new System.Drawing.Point(16, 92);
+            this.lbDoc.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbDoc.Name = "lbDoc";
-            this.lbDoc.Size = new System.Drawing.Size(65, 13);
+            this.lbDoc.Size = new System.Drawing.Size(84, 17);
             this.lbDoc.TabIndex = 12;
             this.lbDoc.Text = "Documento:";
             // 
@@ -146,62 +141,113 @@
             // 
             this.cbTipoDocumento.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbTipoDocumento.FormattingEnabled = true;
-            this.cbTipoDocumento.Items.AddRange(new object[] {
-            "DNI",
-            "LE",
-            "LC"});
-            this.cbTipoDocumento.Location = new System.Drawing.Point(133, 44);
+            this.cbTipoDocumento.Location = new System.Drawing.Point(145, 48);
+            this.cbTipoDocumento.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cbTipoDocumento.Name = "cbTipoDocumento";
-            this.cbTipoDocumento.Size = new System.Drawing.Size(183, 21);
+            this.cbTipoDocumento.Size = new System.Drawing.Size(188, 24);
             this.cbTipoDocumento.TabIndex = 2;
             // 
             // lbTipoDocumento
             // 
             this.lbTipoDocumento.AutoSize = true;
-            this.lbTipoDocumento.Location = new System.Drawing.Point(12, 44);
+            this.lbTipoDocumento.Location = new System.Drawing.Point(16, 54);
+            this.lbTipoDocumento.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbTipoDocumento.Name = "lbTipoDocumento";
-            this.lbTipoDocumento.Size = new System.Drawing.Size(86, 13);
+            this.lbTipoDocumento.Size = new System.Drawing.Size(112, 17);
             this.lbTipoDocumento.TabIndex = 13;
             this.lbTipoDocumento.Text = "Tipo Documento";
             // 
             // txtDocumento
             // 
-            this.txtDocumento.Location = new System.Drawing.Point(133, 75);
+            this.txtDocumento.Location = new System.Drawing.Point(145, 86);
+            this.txtDocumento.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtDocumento.Name = "txtDocumento";
-            this.txtDocumento.Size = new System.Drawing.Size(183, 20);
+            this.txtDocumento.Size = new System.Drawing.Size(188, 22);
             this.txtDocumento.TabIndex = 3;
+            this.txtDocumento.TextChanged += new System.EventHandler(this.txtDocumento_TextChanged);
             // 
             // lbTituloMenu
             // 
             this.lbTituloMenu.AutoSize = true;
             this.lbTituloMenu.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbTituloMenu.Location = new System.Drawing.Point(55, 9);
+            this.lbTituloMenu.Location = new System.Drawing.Point(73, 11);
+            this.lbTituloMenu.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbTituloMenu.Name = "lbTituloMenu";
-            this.lbTituloMenu.Size = new System.Drawing.Size(138, 24);
+            this.lbTituloMenu.Size = new System.Drawing.Size(175, 29);
             this.lbTituloMenu.TabIndex = 28;
             this.lbTituloMenu.Text = "Alta Prestamo";
             // 
+            // cbComercio
+            // 
+            this.cbComercio.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbComercio.FormattingEnabled = true;
+            this.cbComercio.Location = new System.Drawing.Point(145, 160);
+            this.cbComercio.Name = "cbComercio";
+            this.cbComercio.Size = new System.Drawing.Size(188, 24);
+            this.cbComercio.TabIndex = 29;
+            this.cbComercio.SelectedIndexChanged += new System.EventHandler(this.cbComercio_SelectedIndexChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(417, 122);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(44, 17);
+            this.label1.TabIndex = 30;
+            this.label1.Text = "Tasa:";
+            // 
+            // lblValorTasa
+            // 
+            this.lblValorTasa.AutoSize = true;
+            this.lblValorTasa.Location = new System.Drawing.Point(466, 122);
+            this.lblValorTasa.Name = "lblValorTasa";
+            this.lblValorTasa.Size = new System.Drawing.Size(103, 17);
+            this.lblValorTasa.TabIndex = 31;
+            this.lblValorTasa.Text = "[VALOR TASA]";
+            // 
+            // txtCuotas
+            // 
+            this.txtCuotas.Location = new System.Drawing.Point(673, 50);
+            this.txtCuotas.Margin = new System.Windows.Forms.Padding(4);
+            this.txtCuotas.Name = "txtCuotas";
+            this.txtCuotas.Size = new System.Drawing.Size(55, 22);
+            this.txtCuotas.TabIndex = 33;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(593, 53);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(72, 17);
+            this.label2.TabIndex = 32;
+            this.label2.Text = "N° Cuotas";
+            // 
             // AltaPrestamo
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(590, 298);
+            this.AutoSize = true;
+            this.ClientSize = new System.Drawing.Size(778, 288);
+            this.Controls.Add(this.txtCuotas);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.lblValorTasa);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.cbComercio);
             this.Controls.Add(this.lbTituloMenu);
             this.Controls.Add(this.txtDocumento);
             this.Controls.Add(this.cbTipoDocumento);
             this.Controls.Add(this.lbTipoDocumento);
             this.Controls.Add(this.lbDoc);
             this.Controls.Add(this.btGuardar);
-            this.Controls.Add(this.txtTasa);
-            this.Controls.Add(this.lbTasa);
             this.Controls.Add(this.txtMontoCredito);
-            this.Controls.Add(this.txtComercioAdherido);
             this.Controls.Add(this.cbSucursal);
             this.Controls.Add(this.txtFechaCredito);
             this.Controls.Add(this.lbMontoCredito);
             this.Controls.Add(this.lbSucursal);
             this.Controls.Add(this.lbComercioAdherido);
             this.Controls.Add(this.lbFechaCredito);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "AltaPrestamo";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AltaPrestamo";
@@ -218,15 +264,17 @@
         private System.Windows.Forms.Label lbMontoCredito;
         private System.Windows.Forms.TextBox txtFechaCredito;
         private System.Windows.Forms.ComboBox cbSucursal;
-        private System.Windows.Forms.TextBox txtComercioAdherido;
         private System.Windows.Forms.TextBox txtMontoCredito;
-        private System.Windows.Forms.Label lbTasa;
-        private System.Windows.Forms.TextBox txtTasa;
         private System.Windows.Forms.Button btGuardar;
         private System.Windows.Forms.Label lbDoc;
         private System.Windows.Forms.ComboBox cbTipoDocumento;
         private System.Windows.Forms.Label lbTipoDocumento;
         private System.Windows.Forms.TextBox txtDocumento;
         private System.Windows.Forms.Label lbTituloMenu;
+        private System.Windows.Forms.ComboBox cbComercio;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblValorTasa;
+        private System.Windows.Forms.TextBox txtCuotas;
+        private System.Windows.Forms.Label label2;
     }
 }

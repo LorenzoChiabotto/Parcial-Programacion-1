@@ -19,7 +19,7 @@ namespace Formularios
         {
             if (owner != null)
             {
-                this.dgvClientes.DataSource = owner.ObtenerCliente(null);
+                this.dgvClientes.DataSource = owner.ObtenerCliente(null,null);
             }
         }
 

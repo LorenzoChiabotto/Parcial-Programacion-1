@@ -29,15 +29,6 @@
         private void InitializeComponent()
         {
             this.dgvPrestamos = new System.Windows.Forms.DataGridView();
-            this.Cliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NumCredito = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FechaCredito = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ComAdherido = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Sucursal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MontoCredito = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Tasa = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MontoCuota = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CantidadCuotas = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lbFiltrar = new System.Windows.Forms.Label();
             this.cbTipoDocumento = new System.Windows.Forms.ComboBox();
             this.lbDocumento = new System.Windows.Forms.Label();
@@ -50,115 +41,69 @@
             // 
             // dgvPrestamos
             // 
+            this.dgvPrestamos.AllowUserToAddRows = false;
+            this.dgvPrestamos.AllowUserToDeleteRows = false;
             this.dgvPrestamos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvPrestamos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Cliente,
-            this.NumCredito,
-            this.FechaCredito,
-            this.ComAdherido,
-            this.Sucursal,
-            this.MontoCredito,
-            this.Tasa,
-            this.MontoCuota,
-            this.CantidadCuotas});
-            this.dgvPrestamos.Location = new System.Drawing.Point(254, 61);
+            this.dgvPrestamos.Location = new System.Drawing.Point(339, 75);
+            this.dgvPrestamos.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dgvPrestamos.Name = "dgvPrestamos";
-            this.dgvPrestamos.Size = new System.Drawing.Size(549, 313);
+            this.dgvPrestamos.Size = new System.Drawing.Size(732, 385);
             this.dgvPrestamos.TabIndex = 0;
             this.dgvPrestamos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            // 
-            // Cliente
-            // 
-            this.Cliente.HeaderText = "Cliente";
-            this.Cliente.Name = "Cliente";
-            // 
-            // NumCredito
-            // 
-            this.NumCredito.HeaderText = "N° Credito";
-            this.NumCredito.Name = "NumCredito";
-            // 
-            // FechaCredito
-            // 
-            this.FechaCredito.HeaderText = "Fecha de Crédito";
-            this.FechaCredito.Name = "FechaCredito";
-            // 
-            // ComAdherido
-            // 
-            this.ComAdherido.HeaderText = "Comercio Adherido";
-            this.ComAdherido.Name = "ComAdherido";
-            // 
-            // Sucursal
-            // 
-            this.Sucursal.HeaderText = "Sucursal";
-            this.Sucursal.Name = "Sucursal";
-            // 
-            // MontoCredito
-            // 
-            this.MontoCredito.HeaderText = "Monto del Crédito";
-            this.MontoCredito.Name = "MontoCredito";
-            // 
-            // Tasa
-            // 
-            this.Tasa.HeaderText = "Tasa";
-            this.Tasa.Name = "Tasa";
-            // 
-            // MontoCuota
-            // 
-            this.MontoCuota.HeaderText = "Monto Cuota";
-            this.MontoCuota.Name = "MontoCuota";
-            // 
-            // CantidadCuotas
-            // 
-            this.CantidadCuotas.HeaderText = "Cantidad Cuotas";
-            this.CantidadCuotas.Name = "CantidadCuotas";
             // 
             // lbFiltrar
             // 
             this.lbFiltrar.AutoSize = true;
-            this.lbFiltrar.Location = new System.Drawing.Point(12, 61);
+            this.lbFiltrar.Location = new System.Drawing.Point(16, 75);
+            this.lbFiltrar.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbFiltrar.Name = "lbFiltrar";
-            this.lbFiltrar.Size = new System.Drawing.Size(86, 13);
+            this.lbFiltrar.Size = new System.Drawing.Size(112, 17);
             this.lbFiltrar.TabIndex = 1;
             this.lbFiltrar.Text = "Tipo Documento";
             // 
             // cbTipoDocumento
             // 
             this.cbTipoDocumento.FormattingEnabled = true;
-            this.cbTipoDocumento.Location = new System.Drawing.Point(127, 61);
+            this.cbTipoDocumento.Location = new System.Drawing.Point(169, 75);
+            this.cbTipoDocumento.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cbTipoDocumento.Name = "cbTipoDocumento";
-            this.cbTipoDocumento.Size = new System.Drawing.Size(121, 21);
+            this.cbTipoDocumento.Size = new System.Drawing.Size(160, 24);
             this.cbTipoDocumento.TabIndex = 2;
             // 
             // lbDocumento
             // 
             this.lbDocumento.AutoSize = true;
-            this.lbDocumento.Location = new System.Drawing.Point(15, 101);
+            this.lbDocumento.Location = new System.Drawing.Point(20, 124);
+            this.lbDocumento.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbDocumento.Name = "lbDocumento";
-            this.lbDocumento.Size = new System.Drawing.Size(65, 13);
+            this.lbDocumento.Size = new System.Drawing.Size(84, 17);
             this.lbDocumento.TabIndex = 3;
             this.lbDocumento.Text = "Documento:";
             // 
             // txbDocumento
             // 
-            this.txbDocumento.Location = new System.Drawing.Point(127, 101);
+            this.txbDocumento.Location = new System.Drawing.Point(169, 124);
+            this.txbDocumento.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txbDocumento.Name = "txbDocumento";
-            this.txbDocumento.Size = new System.Drawing.Size(121, 20);
+            this.txbDocumento.Size = new System.Drawing.Size(160, 22);
             this.txbDocumento.TabIndex = 4;
             // 
             // btBuscar
             // 
-            this.btBuscar.Location = new System.Drawing.Point(173, 143);
+            this.btBuscar.Location = new System.Drawing.Point(231, 176);
+            this.btBuscar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btBuscar.Name = "btBuscar";
-            this.btBuscar.Size = new System.Drawing.Size(75, 23);
+            this.btBuscar.Size = new System.Drawing.Size(100, 28);
             this.btBuscar.TabIndex = 5;
             this.btBuscar.Text = "Buscar";
             this.btBuscar.UseVisualStyleBackColor = true;
             // 
             // btNuevo
             // 
-            this.btNuevo.Location = new System.Drawing.Point(18, 172);
+            this.btNuevo.Location = new System.Drawing.Point(24, 212);
+            this.btNuevo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btNuevo.Name = "btNuevo";
-            this.btNuevo.Size = new System.Drawing.Size(75, 37);
+            this.btNuevo.Size = new System.Drawing.Size(100, 46);
             this.btNuevo.TabIndex = 10;
             this.btNuevo.Text = "NUEVO";
             this.btNuevo.UseVisualStyleBackColor = true;
@@ -168,17 +113,18 @@
             // 
             this.lbTituloMenu.AutoSize = true;
             this.lbTituloMenu.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbTituloMenu.Location = new System.Drawing.Point(59, 9);
+            this.lbTituloMenu.Location = new System.Drawing.Point(79, 11);
+            this.lbTituloMenu.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbTituloMenu.Name = "lbTituloMenu";
-            this.lbTituloMenu.Size = new System.Drawing.Size(107, 24);
+            this.lbTituloMenu.Size = new System.Drawing.Size(137, 29);
             this.lbTituloMenu.TabIndex = 29;
             this.lbTituloMenu.Text = "Prestamos";
             // 
             // GrillaPrestamos
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(837, 497);
+            this.ClientSize = new System.Drawing.Size(1116, 612);
             this.Controls.Add(this.lbTituloMenu);
             this.Controls.Add(this.btNuevo);
             this.Controls.Add(this.btBuscar);
@@ -187,6 +133,7 @@
             this.Controls.Add(this.cbTipoDocumento);
             this.Controls.Add(this.lbFiltrar);
             this.Controls.Add(this.dgvPrestamos);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "GrillaPrestamos";
             this.Text = "ListarPrestamos";
             this.Load += new System.EventHandler(this.GrillaPrestamos_Load);
@@ -206,14 +153,5 @@
         private System.Windows.Forms.Button btBuscar;
         private System.Windows.Forms.Button btNuevo;
         private System.Windows.Forms.Label lbTituloMenu;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Cliente;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NumCredito;
-        private System.Windows.Forms.DataGridViewTextBoxColumn FechaCredito;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ComAdherido;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Sucursal;
-        private System.Windows.Forms.DataGridViewTextBoxColumn MontoCredito;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Tasa;
-        private System.Windows.Forms.DataGridViewTextBoxColumn MontoCuota;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CantidadCuotas;
     }
 }

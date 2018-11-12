@@ -25,5 +25,13 @@ namespace Logica
             this.Direccion = direccion;
             this.CodPostal = codP;
         }
+
+        public string Ubicacion
+        {
+            get
+            {
+                return $"{this.Ciudad} - {this.Direccion}";
+            }
+        }
     }
 }

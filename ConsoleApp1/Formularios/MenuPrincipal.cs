@@ -41,11 +41,6 @@ namespace Formularios
 
         }
 
-        private void MenuPrincipal_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void listadoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Form ListaCliente = new GrillaClientes();
@@ -55,7 +50,7 @@ namespace Formularios
 
         private void nuevoPrestamoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Form NuevoPrestamo = new AltaPrestamo();
+            Form NuevoPrestamo = new AltaPrestamo(null);
             NuevoPrestamo.Owner = this;
             NuevoPrestamo.ShowDialog();
 
@@ -91,9 +86,13 @@ namespace Formularios
         }
 
         //Cliente
-        public List<Cliente> ObtenerCliente(int? dni)
+        public List<Cliente> ObtenerCliente(int? dni, TipoDocumento? tipo)
         {
-            return NuevaEmpresa.getClientes();
+            if(dni.HasValue && tipo.HasValue)
+            {
+                return NuevaEmpresa.getClientes(dni,tipo);
+            }
+            return NuevaEmpresa.getClientes(null,null);
            
         }
 

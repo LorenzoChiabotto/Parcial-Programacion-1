@@ -25,9 +25,8 @@ namespace Logica
         {
 
         }
-        public Prestamo(Cliente cl, int numC, Comercio comercio, Sucursal sucursal, float montoCr, float tasa, int cantCu)
+        public Prestamo(Cliente cl, Comercio comercio, Sucursal sucursal, float montoCr, float tasa, int cantCu)
         {
-            this.NumCredito = numC;
             this.FechaCredito = DateTime.Today;
             this.ComercioAdherido = comercio;
             this.Sucursal = sucursal;
@@ -36,7 +35,7 @@ namespace Logica
             this.CantidadCuotas = cantCu;
 
             this.MontoCuota = (float)this.MontoCredito / cantCu;
-
+            ListaPagos = new List<Pago>();
             this.ListaPagos.Add(new Pago(this.FechaCredito.AddDays(60)));
             for (int i = 0; i < this.CantidadCuotas; i++)
             {

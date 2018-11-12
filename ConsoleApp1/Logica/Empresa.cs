@@ -232,7 +232,7 @@ namespace Logica
         public Resultado altaCliente(Cliente pcliente)
         {
             //TODO: Validar Cliente
-            listaCliente = getClientes();
+            listaCliente = getClientes(null,null);
             Resultado resultado = new Resultado();
             resultado.FueCorrecto = true;
 
@@ -249,7 +249,7 @@ namespace Logica
         //ModificarEliminarCliente
         public Resultado modificarEliminarCliente(Cliente pCliente, bool pSeModifica)
         {
-            listaCliente = getClientes();
+            listaCliente = getClientes(null,null);
 
             Resultado resultado = new Resultado();
             //TODO: modificarCliente
@@ -298,9 +298,13 @@ namespace Logica
                 listaPrestamo = new List<Prestamo>();
                 id = 1;
             }
+            else
+            {
+                id = this.listaPrestamo.Max(x => x.NumCredito) + 1;
+            }
             //TODO: validar Prestamo
 
-            pPrestamo.NumCredito = this.listaPrestamo.Max(x => x.NumCredito) + 1;
+            pPrestamo.NumCredito = id;
 
             listaPrestamo.Add(pPrestamo);
             guardarPrestamos();
@@ -345,7 +349,7 @@ namespace Logica
             }
         }
 
-        public List<Cliente> getClientes()
+        public List<Cliente> getClientes(int? dni, TipoDocumento? tipo)
         {
             try
             {
@@ -355,7 +359,11 @@ namespace Logica
                     conte = reader.ReadToEnd();
                 }
 
-                return JsonConvert.DeserializeObject<List<Cliente>>(conte).Where(x => x.Baja != true).ToList();
+                return JsonConvert.DeserializeObject<List<Cliente>>(conte)
+                    .Where(x => x.Baja != true)
+                    .Where(x => dni.HasValue ? x.Documento == dni : true)
+                    .Where(y => tipo.HasValue ? y.TipoDoc == tipo : true)
+                    .ToList();
             }
             catch (Exception)
             {
@@ -431,13 +439,7 @@ namespace Logica
                 return new List<Prestamo>();
             }
         }
-
-        public List<Cliente> ObtenerCliente(int? dni)
-        {
-           
-            return listaCliente.Where(x => dni.HasValue ? x.Documento == dni : true).ToList();
-
-        }
+        
 
         public void guardarClientes()
         {
