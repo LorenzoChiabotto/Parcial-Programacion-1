@@ -47,9 +47,8 @@ namespace Logica
             int id;
 
             listaSucursal = getSucursales();
-            if (listaSucursal == null)
+            if (listaSucursal.Count == 0)
             {
-                listaSucursal = new List<Sucursal>();
                 id = 1;
             }
             else
@@ -73,10 +72,6 @@ namespace Logica
         public Resultado modificarEliminarSucursal(Sucursal pSucursal, bool pSeModifica)
         {
             listaSucursal = getSucursales();
-            if (listaSucursal == null)
-            {
-                listaSucursal = new List<Sucursal>();
-            }
             Resultado result = validarSucursal(pSucursal, true);
             result.FueCorrecto = true;
 
@@ -117,9 +112,8 @@ namespace Logica
             int id;
             Resultado resultado = new Resultado();
             listaComercio = getComercios();
-            if (listaComercio == null)
+            if (listaComercio.Count == 0)
             {
-                listaComercio = new List<Comercio>();
                 id = 1;
             }
             else
@@ -140,10 +134,6 @@ namespace Logica
         public Resultado modificarEliminarComercio(Comercio pComercio, bool pSeModifica)
         {
             listaComercio = getComercios();
-            if (listaComercio == null)
-            {
-                listaComercio = new List<Comercio>();
-            }
 
             Resultado result = new Resultado();
             foreach (var item in listaComercio)
@@ -179,11 +169,15 @@ namespace Logica
         public Resultado altaLugarPago(LugarDePago pLugarPago)
         {
             Resultado resultado = new Resultado();
-
+            int id;
             listaLugarPago = getLugaresPago();
-            if (listaLugarPago == null)
+            if (listaLugarPago.Count ==0)
             {
-                listaLugarPago = new List<LugarDePago>();
+                id = 1;
+            }
+            else
+            {
+                id = this.listaLugarPago.Max(x => x.ID) + 1; ;
             }
 
             //TODO: Validar LugarPago
@@ -191,8 +185,7 @@ namespace Logica
             resultado.FueCorrecto = true;
 
             if (resultado.FueCorrecto) { 
-                pLugarPago.ID = this.listaLugarPago.Max(x => x.ID) + 1;
-            
+                pLugarPago.ID = id;
                 listaLugarPago.Add(pLugarPago);
                 guardarLugaresPago();
             }
@@ -203,10 +196,6 @@ namespace Logica
         public Resultado modificarEliminarLugarPago(LugarDePago pLugarDePago, bool pSeModifica)
         {
             listaLugarPago = getLugaresPago();
-            if (listaLugarPago == null)
-            {
-                listaLugarPago = new List<LugarDePago>();
-            }
             Resultado result = new Resultado();
 
             foreach (var item in listaLugarPago)
@@ -244,10 +233,6 @@ namespace Logica
         {
             //TODO: Validar Cliente
             listaCliente = getClientes();
-            if (listaCliente == null)
-            {
-                listaCliente = new List<Cliente>();
-            }
             Resultado resultado = new Resultado();
             resultado.FueCorrecto = true;
 
@@ -265,10 +250,6 @@ namespace Logica
         public Resultado modificarEliminarCliente(Cliente pCliente, bool pSeModifica)
         {
             listaCliente = getClientes();
-            if (listaCliente == null)
-            {
-                listaCliente = new List<Cliente>();
-            }
 
             Resultado resultado = new Resultado();
             //TODO: modificarCliente
@@ -310,10 +291,12 @@ namespace Logica
         public Resultado altaPrestamo(Prestamo pPrestamo)
         {
             Resultado resultado = new Resultado();
+            int id;
             listaPrestamo = getPrestamo();
-            if (listaPrestamo == null)
+            if (listaPrestamo.Count == 0)
             {
                 listaPrestamo = new List<Prestamo>();
+                id = 1;
             }
             //TODO: validar Prestamo
 
@@ -376,7 +359,7 @@ namespace Logica
             }
             catch (Exception)
             {
-                return null;
+                return new List<Cliente>();
             }
             
         }
@@ -394,7 +377,7 @@ namespace Logica
             }
             catch (Exception)
             {
-                return null;
+                return new List<Sucursal>();
             }
         }
         public List<Comercio> getComercios()
@@ -411,7 +394,7 @@ namespace Logica
             }
             catch (Exception)
             {
-                return null;
+                return new List<Comercio>();
             }
         }
         public List<LugarDePago> getLugaresPago()
@@ -428,7 +411,7 @@ namespace Logica
             }
             catch (Exception)
             {
-                return null;
+                return new List<LugarDePago>();
             }
         }
         public List<Prestamo> getPrestamo()
@@ -445,7 +428,7 @@ namespace Logica
             }
             catch (Exception)
             {
-                return null;
+                return new List<Prestamo>();
             }
         }
 

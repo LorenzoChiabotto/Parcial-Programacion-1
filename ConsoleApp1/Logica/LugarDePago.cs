@@ -21,7 +21,6 @@ namespace Logica
             this.Ciudad = ciudad;
             this.Direccion = direccion;
             this.CodPostal = codP;
-
             this.RazonSocial = razonSocial;
 
             this.EsSucursal = esSucur;
