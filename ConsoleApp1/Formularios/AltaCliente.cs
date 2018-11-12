@@ -14,7 +14,7 @@ namespace Formularios
     public partial class AltaCliente : Form
     {
         Cliente cliente;
-        IGrilla ownerGrilla;
+        IGrillaCliente ownerGrilla;
         IMenuPrincipal ownerMenu;
         public bool Modifica { get; set; }
 
@@ -43,7 +43,7 @@ namespace Formularios
             {
                 cbTipoDocumento.Items.Add(item);
             }
-            ownerGrilla = this.Owner as IGrilla;
+            ownerGrilla = this.Owner as IGrillaCliente;
             ownerMenu = this.Owner as IMenuPrincipal;
 
             if (Modifica)

@@ -12,7 +12,7 @@ using Logica;
 
 namespace Formularios
 {
-    public partial class GrillaClientes : Form,IGrilla
+    public partial class GrillaClientes : Form,IGrillaCliente
     {
         IMenuPrincipal owner;
         private void ActualizardgvClientes()

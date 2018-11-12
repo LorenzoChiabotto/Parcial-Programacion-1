@@ -46,6 +46,12 @@ namespace Formularios
                     cbTipoDocumento.Items.Add(item);
                 }
             }
+
+            if (cliente != null)
+            {
+                cbTipoDocumento.SelectedItem = cliente.TipoDoc;
+                txtDocumento.Text = cliente.Documento.ToString();
+            }
         }
 
         private void btGuardar_Click(object sender, EventArgs e)
@@ -77,7 +83,7 @@ namespace Formularios
             monto = float.Parse(txtMontoCredito.Text);
             if(sucursal != null)
             {
-                lblValorTasa.Text = $"{sucursal.TasaInteres.ToString()}% - ({monto * (sucursal.TasaInteres / 100)})";
+                lblValorTasa.Text = $"{sucursal.TasaInteres.ToString()}% - (${monto * (sucursal.TasaInteres / 100)})";
             }
         }
 

@@ -287,7 +287,7 @@ namespace Logica
             return resultado;
         }
 
-
+        //Alta prestamo
         public Resultado altaPrestamo(Prestamo pPrestamo)
         {
             Resultado resultado = new Resultado();
@@ -311,7 +311,26 @@ namespace Logica
             resultado.FueCorrecto = true;
             return resultado;
         }
+        //ActualizarPago
+        public Resultado actualizarPago(Prestamo prestamo)
+        {
+            listaPrestamo = getPrestamo();
 
+            Resultado resultado = new Resultado();
+            //TODO: modificarCliente
+            foreach (var item in listaPrestamo)
+            {
+                if (item.NumCredito == prestamo.NumCredito)
+                {
+                    item.ListaPagos = prestamo.ListaPagos;
+                    resultado.FueCorrecto = true;
+                    guardarPrestamos();
+                    return resultado;
+                }
+            }
+            resultado.FueCorrecto = false;
+            return resultado;
+        }
 
         // ARCHIVOS
 

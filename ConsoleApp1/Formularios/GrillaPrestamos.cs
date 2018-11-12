@@ -12,18 +12,29 @@ using Logica;
 
 namespace Formularios
 {
-    public partial class GrillaPrestamos : Form
-
+    public partial class GrillaPrestamos : Form,IGrillaPrestamos
     {
-        
+        IMenuPrincipal owner;
+        Prestamo prestamo;
+        private void ActualizardgvPrestamos()
+        {
+            if (owner != null)
+            {
+                this.dgvPrestamos.DataSource = owner.ObtenerPrestamo(null);
+            }
+        }
+
         public GrillaPrestamos()
         {
             InitializeComponent();
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void GrillaPrestamos_Load(object sender, EventArgs e)
         {
-
+            owner = this.Owner as IMenuPrincipal;
+            prestamo = null;
+            this.dgvPrestamos.AutoGenerateColumns = true;
+            ActualizardgvPrestamos();
         }
 
         private void btNuevo_Click(object sender, EventArgs e)
@@ -33,10 +44,25 @@ namespace Formularios
             formNuevoPrestamo.ShowDialog();
         }
 
-        private void GrillaPrestamos_Load(object sender, EventArgs e)
+        private void btDetalle_Click(object sender, EventArgs e)
         {
-
+            if(dgvPrestamos.SelectedRows.Count == 1)
+            {
+                prestamo = dgvPrestamos.SelectedRows[0].DataBoundItem as Prestamo;
+                Form detalle = new DetallePrestamo(prestamo);
+                detalle.Owner = this;
+                detalle.ShowDialog();
+            }
         }
 
+        public Resultado ActualizarPagos(Prestamo prestamo)
+        {
+            return owner.ActualizarPagos(prestamo);
+        }
+
+        public List<LugarDePago> ObtenerLugaresDePago()
+        {
+            return owner.ObtenerLugarDePago(null);
+        }
     }
 }

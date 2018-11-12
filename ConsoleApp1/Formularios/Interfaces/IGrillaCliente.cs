@@ -7,7 +7,7 @@ using Logica;
 
 namespace Formularios.Interfaces
 {
-    interface IGrilla
+    interface IGrillaCliente
     {
         Resultado NuevoCliente(Cliente cliente);
 

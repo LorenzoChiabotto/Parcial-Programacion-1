@@ -27,6 +27,7 @@ namespace Logica
         }
         public Prestamo(Cliente cl, Comercio comercio, Sucursal sucursal, float montoCr, float tasa, int cantCu)
         {
+            this.Cliente = cl;
             this.FechaCredito = DateTime.Today;
             this.ComercioAdherido = comercio;
             this.Sucursal = sucursal;
@@ -37,7 +38,8 @@ namespace Logica
             this.MontoCuota = (float)this.MontoCredito / cantCu;
             ListaPagos = new List<Pago>();
             this.ListaPagos.Add(new Pago(this.FechaCredito.AddDays(60)));
-            for (int i = 0; i < this.CantidadCuotas; i++)
+
+            for (int i = 1; i < this.CantidadCuotas; i++)
             {
                 this.ListaPagos.Add(new Pago(this.ListaPagos
                                                 .First()
@@ -47,12 +49,26 @@ namespace Logica
 
         public void RealizarPago(LugarDePago lugar)
         {
-            Pago pago = this.ListaPagos.Where(x => !x.Pagado).OrderBy(z => z.FechaCobro).ToList().First();
+            Pago pago = this.ListaPagos.Where(x => !x.Pagado).OrderBy(z => z.FechaCobro).ToList().FirstOrDefault();
             if(pago != null)
             {
                 pago.Pagado = true;
                 pago.LugarPago = lugar;
             }
+        }
+
+        public bool Completado()
+        {
+            if (CuotasPagas() == this.ListaPagos.Count)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public int CuotasPagas()
+        {
+            return this.ListaPagos.Where(x => x.Pagado == true).ToList().Count;
         }
     }
 }

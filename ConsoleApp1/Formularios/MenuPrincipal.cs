@@ -165,5 +165,10 @@ namespace Formularios
         {
             return NuevaEmpresa.modificarEliminarLugarPago(lugar, pSeModifica);
         }
+
+        public Resultado ActualizarPagos(Prestamo prestamo)
+        {
+            return NuevaEmpresa.actualizarPago(prestamo);
+        }
     }
 }

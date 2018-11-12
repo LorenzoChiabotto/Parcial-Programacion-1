@@ -39,5 +39,6 @@ namespace Formularios.Interfaces
 
         Resultado ModificacionEliminacionLugarPago(LugarDePago lugar, bool pSeModifica);
 
+        Resultado ActualizarPagos(Prestamo prestamo);
     }
 }
