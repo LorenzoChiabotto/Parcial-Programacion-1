@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Formularios.Interfaces;
+using Logica;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,35 +14,17 @@ namespace Formularios
 {
     public partial class ABMComercioAdherido : Form
     {
-        public ABMComercioAdherido()
-        {
-            InitializeComponent();
-            HabilitarDeshabilitar(false);
-        }
+        IMenuPrincipal owner;
+        bool modificacion = false;
+        Comercio comercio;
 
-        private void btAgregarNuevo_Click(object sender, EventArgs e)
-        {
-            dgvComercio.Enabled = false;
-            HabilitarDeshabilitar(true);
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void ABMComercioAdherido_Load(object sender, EventArgs e)
-        {
-            
-            
-            
-        }
         public void HabilitarDeshabilitar(bool EstaActivo)
         {
+
             txtCiudad.Enabled = EstaActivo;
             txtCodigoPostal.Enabled = EstaActivo;
             txtDireccion.Enabled = EstaActivo;
-            txtLocalidad.Enabled = EstaActivo;
+            txtRazonSocial.Enabled = EstaActivo;
             lbCiudad.Enabled = EstaActivo;
             lbCodPostal.Enabled = EstaActivo;
             lbDireccion.Enabled = EstaActivo;
@@ -48,15 +32,106 @@ namespace Formularios
             btGuardar.Enabled = EstaActivo;
             btCancelar.Enabled = EstaActivo;
         }
+        private void ActualizardgvComercios()
+        {
+            if (owner != null)
+            {
+                this.dgvComercio.DataSource = owner.ObtenerComercio(null);
+            }
+        }
+
+        public ABMComercioAdherido()
+        {
+            InitializeComponent();
+        }
+
+        private void ABMComercioAdherido_Load(object sender, EventArgs e)
+        {
+            dgvComercio.AutoGenerateColumns = true;
+            owner = this.Owner as IMenuPrincipal;
+            ActualizardgvComercios();
+            HabilitarDeshabilitar(false);
+        }
+
+
+        private void btAgregarNuevo_Click(object sender, EventArgs e)
+        {
+            modificacion = false;
+            comercio = new Comercio();
+
+            dgvComercio.Enabled = false;
+            HabilitarDeshabilitar(true);
+        }
+        private void btModificar_Click(object sender, EventArgs e)
+        {
+            if (dgvComercio.SelectedRows.Count == 1)
+            {
+                modificacion = true;
+                HabilitarDeshabilitar(true);
+                dgvComercio.Enabled = false;
+                comercio = dgvComercio.SelectedRows[0].DataBoundItem as Comercio;
+
+                txtCiudad.Text = comercio.Ciudad;
+                txtCodigoPostal.Text = comercio.CodPostal.ToString();
+                txtDireccion.Text = comercio.Direccion;
+                txtRazonSocial.Text = comercio.RazonSocial;
+
+            }
+        }
+        private void btEliminar_Click(object sender, EventArgs e)
+        {
+            var result = MessageBox.Show("Seguro que desea eliminar este Comercio?", "CUIDADO", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                if (owner != null)
+                {
+                    owner.ModificacionEliminacionComercio(dgvComercio.SelectedRows[0].DataBoundItem as Comercio, false);
+                    ActualizardgvComercios();
+                }
+            }
+        }
 
         private void btGuardar_Click(object sender, EventArgs e)
         {
-            HabilitarDeshabilitar(false);
+            if (true)
+            {
+                comercio.Ciudad = txtCiudad.Text;
+                comercio.CodPostal = int.Parse(txtCodigoPostal.Text);
+                comercio.Direccion = txtDireccion.Text;
+                comercio.RazonSocial = txtRazonSocial.Text;
+
+                if (modificacion)
+                {
+                    owner.ModificacionEliminacionComercio(comercio, true);
+                }
+                else
+                {
+                    owner.NuevoComercio(comercio);
+                }
+
+                ActualizardgvComercios();
+                HabilitarDeshabilitar(false);
+                dgvComercio.Enabled = true;
+
+                txtCiudad.Text = "";
+                txtCodigoPostal.Text = "";
+                txtDireccion.Text = "";
+                txtRazonSocial.Text = "";
+            }
         }
 
         private void btCancelar_Click(object sender, EventArgs e)
         {
+            comercio = null;
+            modificacion = false;
             HabilitarDeshabilitar(false);
+            dgvComercio.Enabled = true;
+
+            txtCiudad.Text = "";
+            txtCodigoPostal.Text = "";
+            txtDireccion.Text = "";
+            txtRazonSocial.Text = "";
         }
+
     }
 }

@@ -114,18 +114,23 @@ namespace Logica
         // Carga Comercio
         public Resultado altaComercioAdherido(Comercio pComercio)
         {
+            int id;
             Resultado resultado = new Resultado();
             listaComercio = getComercios();
             if (listaComercio == null)
             {
                 listaComercio = new List<Comercio>();
+                id = 1;
             }
-            resultado.FueCorrecto = true;
+            else
+            {
+                id = this.listaComercio.Max(x => x.ID) + 1;
+            }
 
-            //TODO: Validar Comercio
-            if (resultado.FueCorrecto) { 
-                pComercio.ID = this.listaComercio.Max(x => x.ID) + 1;
-
+            
+            resultado.FueCorrecto = true;//TODO: Validar Comercio
+            if (resultado.FueCorrecto) {
+                pComercio.ID = id;
                 listaComercio.Add(pComercio);
                 guardarComercios();
             }
@@ -139,8 +144,9 @@ namespace Logica
             {
                 listaComercio = new List<Comercio>();
             }
+
             Resultado result = new Resultado();
-            foreach (var item in getComercios())
+            foreach (var item in listaComercio)
             {
                 if (item.ID == pComercio.ID)
                 {

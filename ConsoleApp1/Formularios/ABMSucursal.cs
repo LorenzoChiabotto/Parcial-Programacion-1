@@ -79,7 +79,7 @@ namespace Formularios
         {
             if (dgvSucursal.SelectedRows.Count == 1)
             {
-                var result = MessageBox.Show("Seguro que desea eliminar este Cliente?", "CUIDADO", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                var result = MessageBox.Show("Seguro que desea eliminar esta Sucursal?", "CUIDADO", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (result == DialogResult.Yes)
                 {
                     if (owner != null)
