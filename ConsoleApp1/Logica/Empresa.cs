@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace Logica
@@ -12,7 +13,7 @@ namespace Logica
     public enum Sexo { MASCULINO, FEMENINO }
     public class Empresa
     {
-        private string path = @"C:\Users\USER\Desktop\TPNETMUSSOCHIABO\";
+        private string path = @"C:\Users\loren\Desktop\";
         public List<Cliente> listaCliente;
         public List<Prestamo> listaPrestamo = new List<Prestamo>();
         public List<Sucursal> listaSucursal = new List<Sucursal>();
@@ -27,40 +28,186 @@ namespace Logica
         public Resultado validarSucursal(Sucursal pSucursal, bool pSeModifica)
         {
             Resultado result = new Resultado();
-            
-            if (pSeModifica && ! this.listaSucursal.Exists(x => x.ID == pSucursal.ID))
+            result.FueCorrecto = true;
+
+            if (pSeModifica && !this.listaSucursal.Exists(x => x.ID == pSucursal.ID))
             {
                 result.listaMsjs.Add("Esta sucursal no existe");
+                result.FueCorrecto = false;
             }
-            else
+            if (pSucursal.TasaInteres > 100 && pSucursal.TasaInteres < 0)
             {
-
+                result.listaMsjs.Add("La tasa de interes no es valida, debe contener un valor entre 0 y 100");
+                result.FueCorrecto = false;
             }
-
 
             return result;
         }
 
+        public Resultado validarComercio(Comercio pComercio, bool pSeModifica)
+        {
+            Resultado result = new Resultado();
+            result.FueCorrecto = true;
+
+            if (pSeModifica && !this.listaComercio.Exists(x => x.ID == pComercio.ID))
+            {
+                result.listaMsjs.Add("Este comercio no existe");
+                result.FueCorrecto = false;
+            }
+
+            return result;
+        }
+
+        public Resultado validarCliente(Cliente pCliente, bool pSeModifica)
+        {
+            Regex regex;
+
+            Resultado result = new Resultado();
+            result.FueCorrecto = true;
+
+            if (pSeModifica && !this.listaCliente.Exists(x => x.TipoDoc == pCliente.TipoDoc && x.Documento == pCliente.Documento))
+            {
+                result.listaMsjs.Add("Esta sucursal no existe");
+                result.FueCorrecto = false;
+            }
+            else
+            {
+                if (!pSeModifica && this.listaCliente.Exists(x => x.TipoDoc == pCliente.TipoDoc && x.Documento == pCliente.Documento))
+                {
+                    result.listaMsjs.Add("Este Cliente ya existe");
+                    result.FueCorrecto = false;
+                }
+            }
+            regex = new Regex("([aA-z]+([\\s\\?][aA-z]+)*)");
+            if (! regex.IsMatch(pCliente.NombreCompleto))
+            {
+                result.listaMsjs.Add("El nombre no es valido");
+                result.FueCorrecto = false;
+            }
+            if (false)
+            {
+                result.listaMsjs.Add("El email no es valido");
+                result.FueCorrecto = false;
+            }
+            if (false)
+            {
+                result.listaMsjs.Add("El celular no es valido");
+                result.FueCorrecto = false;
+            }
+            if (false)
+            {
+                result.listaMsjs.Add("La fecha nacimiento no es valida");
+                result.FueCorrecto = false;
+            }
+            if (false)
+            {
+                result.listaMsjs.Add("El sexo no es valido");
+                result.FueCorrecto = false;
+            }
+            if (false)
+            {
+                result.listaMsjs.Add("El domicilio no es valido");
+                result.FueCorrecto = false;
+            }
+            if (false)
+            {
+                result.listaMsjs.Add("El CodigoPostal no es valido");
+                result.FueCorrecto = false;
+            }
+            if (false)
+            {
+                result.listaMsjs.Add("La localidad no es valida");
+                result.FueCorrecto = false;
+            }
+            if (false)
+            {
+                result.listaMsjs.Add("El monto a autorizar no es valido");
+                result.FueCorrecto = false;
+            }
+
+            return result;
+        }
+
+        public Resultado validarPrestamo(Prestamo prestamo)
+        {
+            Resultado result = new Resultado();
+            result.FueCorrecto = true;
+
+            if (prestamo.FechaCredito != DateTime.Today)
+            {
+                result.listaMsjs.Add("La fecha de prestamo no es valida, solo se pueden brindar prestamos del dia actual");
+                result.FueCorrecto = false;
+            }
+            if (prestamo.Cliente == null)
+            {
+                result.listaMsjs.Add("Este cliente no existe");
+                result.FueCorrecto = false;
+            }
+            if (prestamo.ComercioAdherido == null)
+            {
+                result.listaMsjs.Add("Este comercio no existe");
+                result.FueCorrecto = false;
+            }
+            if (prestamo.Sucursal == null)
+            {
+                result.listaMsjs.Add("Esta sucursal no existe");
+                result.FueCorrecto = false;
+            }
+
+            if (prestamo.MontoCredito <= 0)
+            {
+                result.listaMsjs.Add("El monto de credito no puede ser menor a 0");
+                result.FueCorrecto = false;
+            }
+            if (prestamo.MontoCredito + (prestamo.MontoCredito*prestamo.Tasa)/100 > prestamo.Cliente.MontoMaximoAutorizar)
+            {
+                result.listaMsjs.Add($"El monto de credito no puede ser mayor al autorizado para el cliente (${prestamo.Cliente.MontoMaximoAutorizar})");
+                result.FueCorrecto = false;
+            }
+            if (prestamo.CantidadCuotas <= 0)
+            {
+                result.listaMsjs.Add("La cantidad de cuotas debe ser superior a 0");
+                result.FueCorrecto = false;
+            }
+
+            return result;
+        }
+
+        public Resultado validarPago(Prestamo prestamo,LugarDePago lugar)
+        {
+            Resultado result = new Resultado();
+            result.FueCorrecto = true;
+
+            if (prestamo.Completado())
+            {
+                result.listaMsjs.Add("Este prestamo no tiene cuotas pendientes");
+                result.FueCorrecto = false;
+            }
+            if (lugar == null)
+            {
+                result.listaMsjs.Add("Este lugar de pago no existe");
+                result.FueCorrecto = false;
+            }
+
+            return result;
+        }
         //Cargar Sucursal
         public Resultado altaSucursal(Sucursal pSucursal)
         {
-            int id;
+            Resultado result = validarSucursal(pSucursal,false);
 
             listaSucursal = getSucursales();
             if (listaSucursal.Count == 0)
             {
-                id = 1;
+                pSucursal.ID = 1;
             }
             else
             {
-                id = this.listaSucursal.Max(x => x.ID) + 1;
+                pSucursal.ID = this.listaSucursal.Max(x => x.ID) + 1;
             }
 
-            Resultado result = validarSucursal(pSucursal,false);
-            result.FueCorrecto = true;
             if (result.FueCorrecto)
             {
-                pSucursal.ID = id;
                 listaSucursal.Add(pSucursal);
                 guardarSucursales();
             }
@@ -72,35 +219,29 @@ namespace Logica
         public Resultado modificarEliminarSucursal(Sucursal pSucursal, bool pSeModifica)
         {
             listaSucursal = getSucursales();
-            Resultado result = validarSucursal(pSucursal, true);
-            result.FueCorrecto = true;
+            Resultado result = validarSucursal(pSucursal, true);;
 
-            foreach (var item in listaSucursal)
-            {
-                if (item.ID == pSucursal.ID)
+            if (result.FueCorrecto) { 
+                foreach (var item in listaSucursal)
                 {
-                    if (pSeModifica)
+                    if (item.ID == pSucursal.ID)
                     {
-                        item.ID = pSucursal.ID;
-                        item.Ciudad = pSucursal.Ciudad;
-                        item.Direccion = pSucursal.Direccion;
-                        item.CodPostal = pSucursal.CodPostal;
-                        item.TasaInteres = pSucursal.TasaInteres;
-
-                        result.FueCorrecto = true;
-                        break;
-                    }
-                    else
-                    {
-                        item.Baja = true;
-                        result.FueCorrecto = true;
-                        break;
+                        if (pSeModifica)
+                        {
+                            item.ID = pSucursal.ID;
+                            item.Ciudad = pSucursal.Ciudad;
+                            item.Direccion = pSucursal.Direccion;
+                            item.CodPostal = pSucursal.CodPostal;
+                            item.TasaInteres = pSucursal.TasaInteres;
+                            break;
+                        }
+                        else
+                        {
+                            item.Baja = true;
+                            break;
+                        }
                     }
                 }
-            }
-
-            if (result.FueCorrecto)
-            {
                 guardarSucursales();
             }
             return result;
@@ -109,56 +250,51 @@ namespace Logica
         // Carga Comercio
         public Resultado altaComercioAdherido(Comercio pComercio)
         {
-            int id;
-            Resultado resultado = new Resultado();
+            Resultado resultado = validarComercio(pComercio, false);
             listaComercio = getComercios();
             if (listaComercio.Count == 0)
             {
-                id = 1;
+                pComercio.ID = 1;
             }
             else
             {
-                id = this.listaComercio.Max(x => x.ID) + 1;
+                pComercio.ID = this.listaComercio.Max(x => x.ID) + 1;
             }
 
-            
-            resultado.FueCorrecto = true;//TODO: Validar Comercio
             if (resultado.FueCorrecto) {
-                pComercio.ID = id;
                 listaComercio.Add(pComercio);
                 guardarComercios();
             }
             return resultado;
         }
+
         //ModificarEliminarComercioAdherido
         public Resultado modificarEliminarComercio(Comercio pComercio, bool pSeModifica)
         {
             listaComercio = getComercios();
 
-            Resultado result = new Resultado();
-            foreach (var item in listaComercio)
-            {
-                if (item.ID == pComercio.ID)
-                {
-                    if (pSeModifica)
-                    {
-                        item.ID = pComercio.ID;
-                        item.Ciudad = pComercio.Ciudad;
-                        item.Direccion = pComercio.Direccion;
-                        item.CodPostal = pComercio.CodPostal;
-                        item.RazonSocial = pComercio.RazonSocial;
-                        result.FueCorrecto = true;
-                    }
-                    else
-                    {
-                        item.Baja = true;
-                        result.FueCorrecto = true;
-                    }
-                }
-            }
+            Resultado result = validarComercio(pComercio,true);
 
             if (result.FueCorrecto)
             {
+                foreach (var item in listaComercio)
+                {
+                    if (item.ID == pComercio.ID)
+                    {
+                        if (pSeModifica)
+                        {
+                            item.ID = pComercio.ID;
+                            item.Ciudad = pComercio.Ciudad;
+                            item.Direccion = pComercio.Direccion;
+                            item.CodPostal = pComercio.CodPostal;
+                            item.RazonSocial = pComercio.RazonSocial;
+                        }
+                        else
+                        {
+                            item.Baja = true;
+                        }
+                    }
+                }
                 guardarComercios();
             }
             return result;
@@ -168,24 +304,18 @@ namespace Logica
         // Cargar LugarPago
         public Resultado altaLugarPago(LugarDePago pLugarPago)
         {
-            Resultado resultado = new Resultado();
-            int id;
+            Resultado resultado = validarComercio(pLugarPago, false);
             listaLugarPago = getLugaresPago();
             if (listaLugarPago.Count ==0)
             {
-                id = 1;
+                pLugarPago.ID = 1;
             }
             else
             {
-                id = this.listaLugarPago.Max(x => x.ID) + 1; ;
+                pLugarPago.ID = this.listaLugarPago.Max(x => x.ID) + 1; ;
             }
-
-            //TODO: Validar LugarPago
-
-            resultado.FueCorrecto = true;
-
+            
             if (resultado.FueCorrecto) { 
-                pLugarPago.ID = id;
                 listaLugarPago.Add(pLugarPago);
                 guardarLugaresPago();
             }
@@ -196,31 +326,31 @@ namespace Logica
         public Resultado modificarEliminarLugarPago(LugarDePago pLugarDePago, bool pSeModifica)
         {
             listaLugarPago = getLugaresPago();
-            Resultado result = new Resultado();
+            Resultado result = validarComercio(pLugarDePago,true);
 
-            foreach (var item in listaLugarPago)
+            if (result.FueCorrecto)
             {
-                if (item.ID == pLugarDePago.ID)
+                foreach (var item in listaLugarPago)
                 {
-                    if (pSeModifica)
+                    if (item.ID == pLugarDePago.ID)
                     {
-                        item.ID = pLugarDePago.ID;
-                        item.Ciudad = pLugarDePago.Ciudad;
-                        item.Direccion = pLugarDePago.Direccion;
-                        item.CodPostal = pLugarDePago.CodPostal;
-                        item.RazonSocial = pLugarDePago.RazonSocial;
-                        item.EsSucursal = pLugarDePago.EsSucursal;
-                        result.FueCorrecto = true;
-                    }
-                    else
-                    {
-                        item.Baja = true;
-                        result.FueCorrecto = true;
+                        if (pSeModifica)
+                        {
+                            item.ID = pLugarDePago.ID;
+                            item.Ciudad = pLugarDePago.Ciudad;
+                            item.Direccion = pLugarDePago.Direccion;
+                            item.CodPostal = pLugarDePago.CodPostal;
+                            item.RazonSocial = pLugarDePago.RazonSocial;
+                            item.EsSucursal = pLugarDePago.EsSucursal;
+                            result.FueCorrecto = true;
+                        }
+                        else
+                        {
+                            item.Baja = true;
+                            result.FueCorrecto = true;
+                        }
                     }
                 }
-            }
-
-            if(result.FueCorrecto){
                 guardarLugaresPago();
             }
 
@@ -231,10 +361,8 @@ namespace Logica
         //Cargar Cliente
         public Resultado altaCliente(Cliente pcliente)
         {
-            //TODO: Validar Cliente
             listaCliente = getClientes(null,null);
-            Resultado resultado = new Resultado();
-            resultado.FueCorrecto = true;
+            Resultado resultado = validarCliente(pcliente,false);
 
             if (resultado.FueCorrecto)
             {
@@ -291,44 +419,43 @@ namespace Logica
         public Resultado altaPrestamo(Prestamo pPrestamo)
         {
             Resultado resultado = new Resultado();
-            int id;
             listaPrestamo = getPrestamo();
+
             if (listaPrestamo.Count == 0)
             {
                 listaPrestamo = new List<Prestamo>();
-                id = 1;
+                pPrestamo.NumCredito = 1;
             }
             else
             {
-                id = this.listaPrestamo.Max(x => x.NumCredito) + 1;
+                pPrestamo.NumCredito = this.listaPrestamo.Max(x => x.NumCredito) + 1;
             }
-            //TODO: validar Prestamo
-
-            pPrestamo.NumCredito = id;
-
-            listaPrestamo.Add(pPrestamo);
-            guardarPrestamos();
-            resultado.FueCorrecto = true;
+            if (resultado.FueCorrecto)
+            {
+                listaPrestamo.Add(pPrestamo);
+                guardarPrestamos();
+            }
             return resultado;
         }
         //ActualizarPago
-        public Resultado actualizarPago(Prestamo prestamo)
+        public Resultado actualizarPago(Prestamo prestamo, LugarDePago lugar)
         {
             listaPrestamo = getPrestamo();
 
-            Resultado resultado = new Resultado();
-            //TODO: modificarCliente
-            foreach (var item in listaPrestamo)
-            {
-                if (item.NumCredito == prestamo.NumCredito)
+            Resultado resultado = validarPago(prestamo,lugar);
+            if (resultado.FueCorrecto) {
+                prestamo.RealizarPago(lugar);
+                foreach (var item in listaPrestamo)
                 {
-                    item.ListaPagos = prestamo.ListaPagos;
-                    resultado.FueCorrecto = true;
-                    guardarPrestamos();
-                    return resultado;
+                    if (item.NumCredito == prestamo.NumCredito)
+                    {
+                        item.ListaPagos = prestamo.ListaPagos;
+                        resultado.FueCorrecto = true;
+                        guardarPrestamos();
+                        return resultado;
+                    }
                 }
             }
-            resultado.FueCorrecto = false;
             return resultado;
         }
 
@@ -500,5 +627,21 @@ namespace Logica
                 file.Write(output);
             }
         }
+
+
+
+        public float obtenerMontoTotalPrestado()
+        {
+            return getPrestamo().Sum(x => x.MontoCredito);
+        }
+        public float obtenerPromedioTasas()
+        {
+            return getPrestamo().Average(x => x.Tasa);
+        }
+        public float obtenerMontoTotalRecaudado()
+        {
+            return getPrestamo().Sum(x => x.ListaPagos.Where(y=>y.Pagado).Sum(z=>x.MontoCuota));
+        }
+
     }
 }

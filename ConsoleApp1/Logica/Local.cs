@@ -21,8 +21,8 @@ namespace Logica
         public Local(int id, string ciudad, string direccion, int codP)
         {
             this.ID = id;
-            this.Ciudad = ciudad;
-            this.Direccion = direccion;
+            this.Ciudad = ciudad.ToUpper();
+            this.Direccion = direccion.ToUpper();
             this.CodPostal = codP;
         }
 

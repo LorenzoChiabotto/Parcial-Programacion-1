@@ -9,7 +9,7 @@ namespace Formularios.Interfaces
 {
     interface IGrillaPrestamos
     {
-        Resultado ActualizarPagos(Prestamo prestamo);
+        Resultado ActualizarPagos(Prestamo prestamo,LugarDePago lugar);
 
         List<LugarDePago> ObtenerLugaresDePago();
     }

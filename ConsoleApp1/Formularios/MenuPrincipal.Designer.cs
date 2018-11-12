@@ -142,6 +142,7 @@
             this.verBienestarFinancieroToolStripMenuItem.Name = "verBienestarFinancieroToolStripMenuItem";
             this.verBienestarFinancieroToolStripMenuItem.Size = new System.Drawing.Size(179, 24);
             this.verBienestarFinancieroToolStripMenuItem.Text = "Ver bienestar Financiero";
+            this.verBienestarFinancieroToolStripMenuItem.Click += new System.EventHandler(this.verBienestarFinancieroToolStripMenuItem_Click);
             // 
             // MenuPrincipal
             // 

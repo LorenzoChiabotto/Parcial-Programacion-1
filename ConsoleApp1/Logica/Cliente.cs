@@ -36,8 +36,8 @@ namespace Logica
 
             this.TipoDoc = tipo;
             this.Documento = documento;
-            this.NombreCompleto = nombre;
-            this.Email = email;
+            this.NombreCompleto = nombre.ToUpper();
+            this.Email = email.ToUpper();
 
             this.EsVip = esVip;
             this.MontoMaximoAutorizar = montoMax;
@@ -45,9 +45,9 @@ namespace Logica
             this.Celular = celular;
             this.FechaNacimiento = nacimiento;
             this.Sexo = sexo;
-            this.Domicilio = domicilio;
+            this.Domicilio = domicilio.ToUpper();
             this.CodPostal = codPostal;
-            this.Localidad = localidad;
+            this.Localidad = localidad.ToUpper();
         }
     }
 }

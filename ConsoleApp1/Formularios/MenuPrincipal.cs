@@ -85,6 +85,12 @@ namespace Formularios
             ListaPrestamo.ShowDialog();
         }
 
+        private void verBienestarFinancieroToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form Bienestar = new BienestarFinanciero();
+            Bienestar.Owner = this;
+            Bienestar.ShowDialog();
+        }
         //Cliente
         public List<Cliente> ObtenerCliente(int? dni, TipoDocumento? tipo)
         {
@@ -166,9 +172,24 @@ namespace Formularios
             return NuevaEmpresa.modificarEliminarLugarPago(lugar, pSeModifica);
         }
 
-        public Resultado ActualizarPagos(Prestamo prestamo)
+        public Resultado ActualizarPagos(Prestamo prestamo,LugarDePago lugar)
         {
-            return NuevaEmpresa.actualizarPago(prestamo);
+            return NuevaEmpresa.actualizarPago(prestamo,lugar);
+        }
+
+        public float ObtenerMontoTotalPrestado()
+        {
+            return NuevaEmpresa.obtenerMontoTotalPrestado();
+        }
+
+        public float ObtenerPromedioTasas()
+        {
+            return NuevaEmpresa.obtenerPromedioTasas();
+        }
+
+        public float ObtenerMontoTotalRecaudado()
+        {
+            return NuevaEmpresa.obtenerMontoTotalRecaudado();
         }
     }
 }

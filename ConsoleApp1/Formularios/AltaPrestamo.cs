@@ -31,7 +31,6 @@ namespace Formularios
         private void AltaPrestamo_Load(object sender, EventArgs e)
         {
             monto = 0;
-
             owner = this.Owner as IMenuPrincipal;
 
             txtFechaCredito.Text = DateTime.Now.ToString("dd/MM/yyyy");
@@ -58,35 +57,28 @@ namespace Formularios
 
         private void btGuardar_Click(object sender, EventArgs e)
         {
-            switch (VerificarCampos())
-            {
-                case 0: 
-                Prestamo prestamo = new Prestamo(cliente, comercio, sucursal, float.Parse(txtMontoCredito.Text), sucursal.TasaInteres, int.Parse(txtCuotas.Text));
+            Resultado resultado;
+            Prestamo prestamo = new Prestamo(cliente, comercio, sucursal, float.Parse(txtMontoCredito.Text), sucursal.TasaInteres, int.Parse(txtCuotas.Text));
 
-                if (owner != null)
-                {
-                    owner.NuevoPrestamo(prestamo);
-                    this.Close();
-                }
-                    break;
-                case 1:
-                    MessageBox.Show("Ingrese Tipo Documento");
-                    break;
-                case 2:
-                    MessageBox.Show("Ingrese N° Documento");
-                    break;
-                case 3:
-                    MessageBox.Show("Ingrese Comercio Adherido");
-                    break;
-                case 4:
-                    MessageBox.Show("Ingrese Sucursal");
-                    break;
-                case 5:
-                    MessageBox.Show("Ingrese Monto Credito ");
-                    break;
-                case 6:
-                    MessageBox.Show("Ingrese cantidad de cuotas");
-                    break;
+            if (owner != null)
+            {
+                resultado = owner.NuevoPrestamo(prestamo);
+            }
+            else
+            {
+                resultado = new Resultado();
+                resultado.FueCorrecto = false;
+                resultado.listaMsjs.Add("Error inesperado");
+            }
+
+            if (resultado.FueCorrecto)
+            {
+                MessageBox.Show("La Operacion se realizo con exito");
+                this.Close();
+            }
+            else
+            {
+
             }
         }
         private int VerificarCampos()
@@ -140,6 +132,7 @@ namespace Formularios
             }
             return Codigo;
         }
+
         private void cbSucursal_SelectedIndexChanged(object sender, EventArgs e)
         {
             sucursal = cbSucursal.SelectedItem as Sucursal;
@@ -216,11 +209,6 @@ namespace Formularios
 
                 e.Handled = true;
             }
-
-        }
-
-        private void lblValorTasa_Click(object sender, EventArgs e)
-        {
 
         }
     }

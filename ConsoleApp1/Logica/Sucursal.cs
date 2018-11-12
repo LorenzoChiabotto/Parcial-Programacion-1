@@ -17,8 +17,8 @@ namespace Logica
         public Sucursal(int id, string ciudad, string direccion, int codP, float tasa)
         {
             this.ID = id;
-            this.Ciudad = ciudad;
-            this.Direccion = direccion;
+            this.Ciudad = ciudad.ToUpper();
+            this.Direccion = direccion.ToUpper();
             this.CodPostal = codP;
 
             this.TasaInteres = tasa;

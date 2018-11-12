@@ -55,9 +55,9 @@ namespace Formularios
             }
         }
 
-        public Resultado ActualizarPagos(Prestamo prestamo)
+        public Resultado ActualizarPagos(Prestamo prestamo,LugarDePago lugar)
         {
-            return owner.ActualizarPagos(prestamo);
+            return owner.ActualizarPagos(prestamo,lugar);
         }
 
         public List<LugarDePago> ObtenerLugaresDePago()

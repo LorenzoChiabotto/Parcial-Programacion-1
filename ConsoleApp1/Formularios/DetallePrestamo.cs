@@ -70,8 +70,8 @@ namespace Formularios
         {
             if(owner != null)
             {
-                prestamo.RealizarPago(cbLugarPago.SelectedItem as LugarDePago);
-                Resultado resultado = owner.ActualizarPagos(prestamo);
+                Resultado resultado = owner.ActualizarPagos(prestamo,cbLugarPago.SelectedItem as LugarDePago);
+
                 if (resultado.FueCorrecto)
                 {
                     CargarDetallePrestamo();

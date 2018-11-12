@@ -17,11 +17,11 @@ namespace Logica
         public Comercio(int id, string ciudad, string direccion, int codP, string razonSocial)
         {
             this.ID = id;
-            this.Ciudad = ciudad;
-            this.Direccion = direccion;
+            this.Ciudad = ciudad.ToUpper();
+            this.Direccion = direccion.ToUpper();
             this.CodPostal = codP;
 
-            this.RazonSocial = razonSocial;
+            this.RazonSocial = razonSocial.ToUpper();
         }
     }
 }

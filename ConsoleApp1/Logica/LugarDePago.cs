@@ -18,10 +18,10 @@ namespace Logica
         {
 
             this.ID = id;
-            this.Ciudad = ciudad;
-            this.Direccion = direccion;
+            this.Ciudad = ciudad.ToUpper();
+            this.Direccion = direccion.ToUpper();
             this.CodPostal = codP;
-            this.RazonSocial = razonSocial;
+            this.RazonSocial = razonSocial.ToUpper();
 
             this.EsSucursal = esSucur;
         }

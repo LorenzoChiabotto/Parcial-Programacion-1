@@ -39,6 +39,12 @@ namespace Formularios.Interfaces
 
         Resultado ModificacionEliminacionLugarPago(LugarDePago lugar, bool pSeModifica);
 
-        Resultado ActualizarPagos(Prestamo prestamo);
+        Resultado ActualizarPagos(Prestamo prestamo,LugarDePago lugar);
+
+
+
+        float ObtenerMontoTotalPrestado();
+        float ObtenerPromedioTasas();
+        float ObtenerMontoTotalRecaudado();
     }
 }

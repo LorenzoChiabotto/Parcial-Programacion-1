@@ -97,23 +97,34 @@ namespace Formularios
 
         private void btGuardar_Click(object sender, EventArgs e)
         {
-            if (true)
-            {
-                lugar.Ciudad = txtCiudad.Text;
-                lugar.CodPostal = int.Parse(txtCodigoPostal.Text);
-                lugar.Direccion = txtDireccion.Text;
-                lugar.RazonSocial = txtRazonSocial.Text;
-                lugar.EsSucursal = cbSucursal.Checked;
+            Resultado resultado;
 
+            lugar.Ciudad = txtCiudad.Text;
+            lugar.CodPostal = int.Parse(txtCodigoPostal.Text);
+            lugar.Direccion = txtDireccion.Text;
+            lugar.RazonSocial = txtRazonSocial.Text;
+            lugar.EsSucursal = cbSucursal.Checked;
+
+            if(owner != null)
+            {
                 if (modificacion)
                 {
-                    owner.ModificacionEliminacionLugarPago(lugar, true);
+                    resultado = owner.ModificacionEliminacionLugarPago(lugar, true);
                 }
                 else
                 {
-                    owner.NuevoLugarPago(lugar);
+                    resultado = owner.NuevoLugarPago(lugar);
                 }
+            }
+            else
+            {
+                resultado = new Resultado();
+                resultado.FueCorrecto = false;
+                resultado.listaMsjs.Add("error inesperado");
+            }
 
+            if (resultado.FueCorrecto)
+            {
                 ActualizardgvLugares();
                 HabilitarDeshabilitar(false);
                 dgvLugares.Enabled = true;
@@ -123,6 +134,12 @@ namespace Formularios
                 txtDireccion.Text = "";
                 txtRazonSocial.Text = "";
                 cbSucursal.Checked = false;
+
+                MessageBox.Show("La Operacion se realizo con exito");
+            }
+            else
+            {
+
             }
         }
 

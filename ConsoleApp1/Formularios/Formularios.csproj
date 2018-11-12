@@ -78,6 +78,12 @@
     <Compile Include="AltaPrestamo.Designer.cs">
       <DependentUpon>AltaPrestamo.cs</DependentUpon>
     </Compile>
+    <Compile Include="BienestarFinanciero.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BienestarFinanciero.Designer.cs">
+      <DependentUpon>BienestarFinanciero.cs</DependentUpon>
+    </Compile>
     <Compile Include="DetallePrestamo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -121,6 +127,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AltaPrestamo.resx">
       <DependentUpon>AltaPrestamo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BienestarFinanciero.resx">
+      <DependentUpon>BienestarFinanciero.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DetallePrestamo.resx">
       <DependentUpon>DetallePrestamo.cs</DependentUpon>

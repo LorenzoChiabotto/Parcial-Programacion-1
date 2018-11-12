@@ -41,12 +41,15 @@ namespace Formularios
 
         private void AltaCliente_Load(object sender, EventArgs e)
         {
+            ownerGrilla = this.Owner as IGrillaCliente;
+            ownerMenu = this.Owner as IMenuPrincipal;
+
             foreach (var item in Enum.GetValues(typeof(TipoDocumento)))
             {
                 cbTipoDocumento.Items.Add(item);
             }
-            ownerGrilla = this.Owner as IGrillaCliente;
-            ownerMenu = this.Owner as IMenuPrincipal;
+            cbTipoDocumento.SelectedIndex = 0;
+            cbTipodeCliente.DataSource = new List<string> {"Regular", "VIP"};
 
             if (Modifica)
             {
@@ -57,7 +60,6 @@ namespace Formularios
                 txtNombreCompleto.Text = cliente.NombreCompleto;
                 txtCorreo.Text = cliente.Email;
                 txtCelular.Text = cliente.Celular;
-                // rbHombre = nuevoCliente.Sexo  ;
                 txtDomicilio.Text = cliente.Domicilio;
                 txtCodigoPostal.Text = cliente.CodPostal.ToString();
                 txtLocalidad.Text = cliente.Localidad;
@@ -74,87 +76,81 @@ namespace Formularios
                     rbHombre.Checked = false;
                     rbMujer.Checked = true;
                 }
-
-                //Falta el alta del tipo de cliente nuevoCliente.
-
             }
 
         }
 
         private void bGuardar_Click(object sender, EventArgs e)
         {
-            
-            switch (VerificarCampos())
+            Resultado resultado;
+
+            if (String.IsNullOrWhiteSpace(cbTipoDocumento.Text) ||
+                string.IsNullOrWhiteSpace(txtDNI.Text) ||
+                string.IsNullOrWhiteSpace(txtCorreo.Text) ||
+                string.IsNullOrWhiteSpace(cbTipodeCliente.Text) ||
+                string.IsNullOrWhiteSpace(txtMontoMaximoaAutorizar.Text))
             {
-                case 0:
-                    Resultado resultado = new Resultado();
+                MessageBox.Show("Complete todos los campos obligatorios");
+            }
+            else
+            {
+                cliente.Documento = Convert.ToInt32(txtDNI.Text);
+                cliente.NombreCompleto = txtNombreCompleto.Text;
+                cliente.Email = txtCorreo.Text;
+                cliente.MontoMaximoAutorizar = string.IsNullOrWhiteSpace(txtMontoMaximoaAutorizar.Text) ? 0 : float.Parse(txtMontoMaximoaAutorizar.Text);
+                cliente.EsVip = cbTipodeCliente.SelectedItem.ToString() == "VIP" ? true : false;
 
-                    cliente.TipoDoc = (TipoDocumento)cbTipoDocumento.SelectedItem;
-                    cliente.Documento = Convert.ToInt32(txtDNI.Text);
+                cliente.Celular = txtCelular.Text;
+                cliente.Sexo = rbHombre.Checked ? Sexo.MASCULINO : Sexo.FEMENINO;
+                cliente.Domicilio = txtDomicilio.Text;
+                cliente.CodPostal = string.IsNullOrWhiteSpace(txtCodigoPostal.Text) ? 0 : int.Parse(txtCodigoPostal.Text);
+                cliente.Localidad = txtLocalidad.Text;
 
-                    cliente.NombreCompleto = txtNombreCompleto.Text;
-                    cliente.Email = txtCorreo.Text;
-                    cliente.Celular = txtCelular.Text;
-                    cliente.Sexo = rbHombre.Checked ? Sexo.MASCULINO : Sexo.FEMENINO;
-                    cliente.Domicilio = txtDomicilio.Text;
-                    cliente.CodPostal = int.Parse(txtCodigoPostal.Text);
-                    cliente.Localidad = txtLocalidad.Text;
-                    cliente.FechaNacimiento = DateTime.Parse(this.mkTxtFechaNacimiento.Text);
-                    cliente.MontoMaximoAutorizar = float.Parse(txtMontoMaximoaAutorizar.Text);
-                    cliente.EsVip = cbTipodeCliente.SelectedItem.ToString() == "VIP" ? true : false;
-                    //Falta el alta del tipo de cliente nuevoCliente.
+                DateTime nacimiento;
+                DateTime.TryParse(this.mkTxtFechaNacimiento.Text, out nacimiento);
+                cliente.FechaNacimiento = nacimiento != null ? nacimiento : new DateTime();
+            
 
-                    if (ownerGrilla != null)
+                if (ownerGrilla != null)
+                {
+                    if(Modifica)
                     {
-                        if(Modifica)
-                        {
-                            resultado = ownerGrilla.ModificacionCliente(cliente, true);
-                            
-                        }
-                        else
-                        {
-                            resultado = ownerGrilla.NuevoCliente(cliente);
-                        }
+                        resultado = ownerGrilla.ModificacionCliente(cliente, true);
                     }
                     else
                     {
-                        if (ownerMenu != null)
-                        {
-
-                            resultado = ownerMenu.NuevoCliente(cliente);
-                        }
-
+                        resultado = ownerGrilla.NuevoCliente(cliente);
                     }
-                    if (resultado.FueCorrecto )
+                }
+                else
+                {
+                    if (ownerMenu != null)
                     {
-                        MessageBox.Show("La Operacion se realizo con exito");
-                        this.Close();
+                        resultado = ownerMenu.NuevoCliente(cliente);
                     }
-                    
-                    break;
+                    else
+                    {
+                        resultado = new Resultado();
+                        resultado.FueCorrecto = false;
+                        resultado.listaMsjs.Add("error inesperado");
+                    }
 
-                case 1:
-                    MessageBox.Show("Ingrese Tipo Documento");
-                    break;
-                case 2:
-                    MessageBox.Show("Ingrese Número de Documento");
-                    break;
-                case 3:
-                    MessageBox.Show("Ingrese Correo electrónico");
-                    break;
-                case 4:
-                    MessageBox.Show("Ingrese Tipo de Cliente");
-                    break;
-                case 5:
-                    MessageBox.Show("Ingrese Monto Máximo");
-                    break;
-                case 6:
-                    MessageBox.Show("Formato incorrecto de Correo Electrónico");
-                    break;
+                }
+
+                if (resultado.FueCorrecto )
+                {
+                    MessageBox.Show("La Operacion se realizo con exito");
+                    this.Close();
+                }
+                else
+                {
+
+                }
             }
+
         }
 
-        private int VerificarCampos()
+        private int VerificarCamposObligatorios()
         {
             //0 No hay Campos vacios
             //1 Tipo Documento vacio
@@ -169,7 +165,8 @@ namespace Formularios
                 if (String.IsNullOrWhiteSpace(cbTipoDocumento.Text) || 
                 string.IsNullOrWhiteSpace(txtDNI.Text) || 
                 string.IsNullOrWhiteSpace(txtCorreo.Text) || 
-                string.IsNullOrWhiteSpace(cbTipodeCliente.Text) || string.IsNullOrWhiteSpace(txtMontoMaximoaAutorizar.Text))
+                string.IsNullOrWhiteSpace(cbTipodeCliente.Text) ||
+                string.IsNullOrWhiteSpace(txtMontoMaximoaAutorizar.Text))
                 {
                     if (String.IsNullOrWhiteSpace(cbTipoDocumento.Text))
                     {
@@ -219,22 +216,15 @@ namespace Formularios
         {
             if (!(char.IsLetter(e.KeyChar)) && (e.KeyChar != (char)Keys.Back) && (e.KeyChar != (char)Keys.Space))
             {
-                
                 e.Handled = true;
                 return;
             }
-        }
-
-        private void txtNombreCompleto_TextChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void txtLocalidad_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!(char.IsLetter(e.KeyChar)) && (e.KeyChar != (char)Keys.Back) && (e.KeyChar != (char)Keys.Space))
             {
-
                 e.Handled = true;
                 return;
             }
@@ -274,24 +264,18 @@ namespace Formularios
             }
         }
 
-        private void txtMontoMaximoaAutorizar_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void txtMonto_Maximo(object sender, KeyPressEventArgs e)
         {
-        
              CultureInfo cc = System.Threading.Thread.CurrentThread.CurrentCulture;
 
-             if (char.IsNumber(e.KeyChar) ||
-
-                 (e.KeyChar.ToString() == cc.NumberFormat.NumberDecimalSeparator) || (Char.IsControl(e.KeyChar)))
-                 e.Handled = false;
-
+             if (char.IsNumber(e.KeyChar)
+                    || (e.KeyChar.ToString() == cc.NumberFormat.NumberDecimalSeparator)
+                    || (Char.IsControl(e.KeyChar)))
+             {
+                e.Handled = false;
+             }
              else
              {
-
                  e.Handled = true;
              }
 
@@ -312,11 +296,6 @@ namespace Formularios
             {
                 e.Handled = true;
             }
-        }
-
-        private void cbTipodeCliente_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }
