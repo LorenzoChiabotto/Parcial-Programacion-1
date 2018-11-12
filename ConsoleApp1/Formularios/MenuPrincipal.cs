@@ -90,7 +90,7 @@ namespace Formularios
             ListaPrestamo.ShowDialog();
         }
 
-
+        //Cliente
         public List<Cliente> ObtenerCliente(int? dni)
         {
             return NuevaEmpresa.getClientes();
@@ -106,16 +106,65 @@ namespace Formularios
         {
             return NuevaEmpresa.modificarEliminarCliente(cliente, pSeModifica);
         }
+
         //Prestamo
         public List<Prestamo> ObtenerPrestamo(int? Num)
         {
             return NuevaEmpresa.getPrestamo();
 
         }
+
         public Resultado NuevoPrestamo(Prestamo prestamo)
         {
             return NuevaEmpresa.altaPrestamo(prestamo);
         }
 
+        //Sucursales
+        public List<Sucursal> ObtenerSucursal(int? Id)
+        {
+            return NuevaEmpresa.getSucursales();
+        }
+
+        public Resultado NuevaSucursal(Sucursal sucursal)
+        {
+            return NuevaEmpresa.altaSucursal(sucursal);
+        }
+
+        public Resultado ModificacionEliminacionSucursal(Sucursal sucursal, bool pSeModifica)
+        {
+            return NuevaEmpresa.modificarEliminarSucursal(sucursal, pSeModifica);
+        }
+
+        //Comercios
+        public List<Comercio> ObtenerComercio(int? Id)
+        {
+            return NuevaEmpresa.getComercios();
+        }
+
+        public Resultado NuevoComercio(Comercio comercio)
+        {
+            return NuevaEmpresa.altaComercioAdherido(comercio);
+        }
+
+        public Resultado ModificacionEliminacionComercio(Comercio comercio, bool pSeModifica)
+        {
+            return NuevaEmpresa.modificarEliminarComercio(comercio, pSeModifica);
+        }
+
+        //Lugar de Pago
+        public List<LugarDePago> ObtenerLugarDePago(int? Id)
+        {
+            return NuevaEmpresa.getLugaresPago();
+        }
+        
+        public Resultado NuevoLugarPago(LugarDePago lugar)
+        {
+            return NuevaEmpresa.altaLugarPago(lugar);
+        }
+
+        public Resultado ModificacionEliminacionLugarPago(LugarDePago lugar, bool pSeModifica)
+        {
+            return NuevaEmpresa.modificarEliminarLugarPago(lugar, pSeModifica);
+        }
     }
 }

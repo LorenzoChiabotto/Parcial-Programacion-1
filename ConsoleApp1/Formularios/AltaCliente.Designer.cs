@@ -71,12 +71,8 @@
             // 
             this.cbTipoDocumento.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbTipoDocumento.FormattingEnabled = true;
-            this.cbTipoDocumento.Items.AddRange(new object[] {
-            "DNI",
-            "LE",
-            "LC"});
             this.cbTipoDocumento.Location = new System.Drawing.Point(193, 76);
-            this.cbTipoDocumento.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbTipoDocumento.Margin = new System.Windows.Forms.Padding(4);
             this.cbTipoDocumento.Name = "cbTipoDocumento";
             this.cbTipoDocumento.Size = new System.Drawing.Size(207, 24);
             this.cbTipoDocumento.TabIndex = 1;
@@ -94,7 +90,7 @@
             // txtDNI
             // 
             this.txtDNI.Location = new System.Drawing.Point(631, 78);
-            this.txtDNI.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtDNI.Margin = new System.Windows.Forms.Padding(4);
             this.txtDNI.Name = "txtDNI";
             this.txtDNI.Size = new System.Drawing.Size(207, 22);
             this.txtDNI.TabIndex = 3;
@@ -112,7 +108,7 @@
             // txtNombreCompleto
             // 
             this.txtNombreCompleto.Location = new System.Drawing.Point(193, 121);
-            this.txtNombreCompleto.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtNombreCompleto.Margin = new System.Windows.Forms.Padding(4);
             this.txtNombreCompleto.Name = "txtNombreCompleto";
             this.txtNombreCompleto.Size = new System.Drawing.Size(207, 22);
             this.txtNombreCompleto.TabIndex = 5;
@@ -130,7 +126,7 @@
             // txtCorreo
             // 
             this.txtCorreo.Location = new System.Drawing.Point(631, 124);
-            this.txtCorreo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtCorreo.Margin = new System.Windows.Forms.Padding(4);
             this.txtCorreo.Name = "txtCorreo";
             this.txtCorreo.Size = new System.Drawing.Size(207, 22);
             this.txtCorreo.TabIndex = 7;
@@ -148,7 +144,7 @@
             // txtCelular
             // 
             this.txtCelular.Location = new System.Drawing.Point(193, 156);
-            this.txtCelular.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtCelular.Margin = new System.Windows.Forms.Padding(4);
             this.txtCelular.Name = "txtCelular";
             this.txtCelular.Size = new System.Drawing.Size(207, 22);
             this.txtCelular.TabIndex = 9;
@@ -167,7 +163,7 @@
             // 
             this.rbMujer.AutoSize = true;
             this.rbMujer.Location = new System.Drawing.Point(631, 165);
-            this.rbMujer.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rbMujer.Margin = new System.Windows.Forms.Padding(4);
             this.rbMujer.Name = "rbMujer";
             this.rbMujer.Size = new System.Drawing.Size(76, 21);
             this.rbMujer.TabIndex = 12;
@@ -179,7 +175,7 @@
             // 
             this.rbHombre.AutoSize = true;
             this.rbHombre.Location = new System.Drawing.Point(721, 165);
-            this.rbHombre.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rbHombre.Margin = new System.Windows.Forms.Padding(4);
             this.rbHombre.Name = "rbHombre";
             this.rbHombre.Size = new System.Drawing.Size(89, 21);
             this.rbHombre.TabIndex = 13;
@@ -200,7 +196,7 @@
             // txtDomicilio
             // 
             this.txtDomicilio.Location = new System.Drawing.Point(193, 188);
-            this.txtDomicilio.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtDomicilio.Margin = new System.Windows.Forms.Padding(4);
             this.txtDomicilio.Name = "txtDomicilio";
             this.txtDomicilio.Size = new System.Drawing.Size(207, 22);
             this.txtDomicilio.TabIndex = 15;
@@ -218,7 +214,7 @@
             // txtCodigoPostal
             // 
             this.txtCodigoPostal.Location = new System.Drawing.Point(631, 199);
-            this.txtCodigoPostal.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtCodigoPostal.Margin = new System.Windows.Forms.Padding(4);
             this.txtCodigoPostal.Name = "txtCodigoPostal";
             this.txtCodigoPostal.Size = new System.Drawing.Size(207, 22);
             this.txtCodigoPostal.TabIndex = 17;
@@ -236,7 +232,7 @@
             // txtLocalidad
             // 
             this.txtLocalidad.Location = new System.Drawing.Point(193, 223);
-            this.txtLocalidad.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtLocalidad.Margin = new System.Windows.Forms.Padding(4);
             this.txtLocalidad.Name = "txtLocalidad";
             this.txtLocalidad.Size = new System.Drawing.Size(207, 22);
             this.txtLocalidad.TabIndex = 19;
@@ -274,7 +270,7 @@
             // txtMontoMaximoaAutorizar
             // 
             this.txtMontoMaximoaAutorizar.Location = new System.Drawing.Point(631, 234);
-            this.txtMontoMaximoaAutorizar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtMontoMaximoaAutorizar.Margin = new System.Windows.Forms.Padding(4);
             this.txtMontoMaximoaAutorizar.Name = "txtMontoMaximoaAutorizar";
             this.txtMontoMaximoaAutorizar.Size = new System.Drawing.Size(207, 22);
             this.txtMontoMaximoaAutorizar.TabIndex = 25;
@@ -293,7 +289,7 @@
             // mkTxtFechaNacimiento
             // 
             this.mkTxtFechaNacimiento.Location = new System.Drawing.Point(193, 261);
-            this.mkTxtFechaNacimiento.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.mkTxtFechaNacimiento.Margin = new System.Windows.Forms.Padding(4);
             this.mkTxtFechaNacimiento.Mask = "00/00/0000";
             this.mkTxtFechaNacimiento.Name = "mkTxtFechaNacimiento";
             this.mkTxtFechaNacimiento.Size = new System.Drawing.Size(207, 22);
@@ -308,7 +304,7 @@
             "Regular",
             "VIP"});
             this.cbTipodeCliente.Location = new System.Drawing.Point(631, 270);
-            this.cbTipodeCliente.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbTipodeCliente.Margin = new System.Windows.Forms.Padding(4);
             this.cbTipodeCliente.Name = "cbTipodeCliente";
             this.cbTipodeCliente.Size = new System.Drawing.Size(207, 24);
             this.cbTipodeCliente.TabIndex = 28;
@@ -316,7 +312,7 @@
             // bGuardar
             // 
             this.bGuardar.Location = new System.Drawing.Point(668, 327);
-            this.bGuardar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.bGuardar.Margin = new System.Windows.Forms.Padding(4);
             this.bGuardar.Name = "bGuardar";
             this.bGuardar.Size = new System.Drawing.Size(171, 60);
             this.bGuardar.TabIndex = 29;
@@ -356,7 +352,7 @@
             this.Controls.Add(this.lbDNI);
             this.Controls.Add(this.cbTipoDocumento);
             this.Controls.Add(this.lbTipoDocumento);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "AltaCliente";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AltaCliente";

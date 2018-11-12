@@ -11,15 +11,33 @@ namespace Formularios.Interfaces
     {
 
         List<Cliente> ObtenerCliente(int? dni);
-        List<Prestamo> ObtenerPrestamo(int? Id); 
+        List<Prestamo> ObtenerPrestamo(int? Id);
+        List<Sucursal> ObtenerSucursal(int? Id);
+        List<Comercio> ObtenerComercio(int? Id);
+        List<LugarDePago> ObtenerLugarDePago(int? Id);
 
         Resultado NuevoCliente(Cliente cliente);
 
         Resultado ModificacionEliminacionCliente(Cliente cliente, bool pSeModifica);
 
         Resultado NuevoPrestamo(Prestamo prestamo);
-   
 
+
+        Resultado NuevaSucursal(Sucursal sucursal);
+
+        Resultado ModificacionEliminacionSucursal(Sucursal sucursal, bool pSeModifica);
+
+
+
+        Resultado NuevoComercio(Comercio comercio);
+
+        Resultado ModificacionEliminacionComercio(Comercio comercio, bool pSeModifica);
+
+
+
+        Resultado NuevoLugarPago(LugarDePago lugar);
+
+        Resultado ModificacionEliminacionLugarPago(LugarDePago lugar, bool pSeModifica);
 
     }
 }

@@ -12,7 +12,6 @@ namespace Formularios.Interfaces
         Resultado NuevoCliente(Cliente cliente);
 
         Resultado ModificacionCliente(Cliente cliente, bool pSeModifica);
-
      
     }
 }

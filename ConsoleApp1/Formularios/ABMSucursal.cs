@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Formularios.Interfaces;
+using Logica;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,34 +14,16 @@ namespace Formularios
 {
     public partial class ABMSucursal : Form
     {
-        public ABMSucursal()
-        {
-            InitializeComponent();
-        }
+        IMenuPrincipal owner;
+        bool modificacion = false;
+        Sucursal sucursal;
 
-        private void ABMSucursal_Load(object sender, EventArgs e)
-        {
-            HabilitarDeshabilitar(false);
-        }
-
-        private void btAgregarNuevo_Click(object sender, EventArgs e)
-        {
-            HabilitarDeshabilitar(true);
-            dgvSucursal.Enabled = false;
-           
-        }
-
-        private void btCancelar_Click(object sender, EventArgs e)
-        {
-            HabilitarDeshabilitar(false);
-            dgvSucursal.Enabled = true;
-        }
         public void HabilitarDeshabilitar(bool EstaActivo)
         {
             txtCiudad.Enabled = EstaActivo;
             txtCodigoPostal.Enabled = EstaActivo;
             txtDireccion.Enabled = EstaActivo;
-            txtLocalidad.Enabled = EstaActivo;
+            txtTasa.Enabled = EstaActivo;
             lbCiudad.Enabled = EstaActivo;
             lbCodPostal.Enabled = EstaActivo;
             lbDireccion.Enabled = EstaActivo;
@@ -47,16 +31,105 @@ namespace Formularios
             btGuardar.Enabled = EstaActivo;
             btCancelar.Enabled = EstaActivo;
         }
-
-        private void btGuardar_Click(object sender, EventArgs e)
+        private void ActualizardgvSucursales()
         {
-            HabilitarDeshabilitar(false);
-            dgvSucursal.Enabled = true;
+            if (owner != null)
+            {
+                this.dgvSucursal.DataSource = owner.ObtenerSucursal(null);
+            }
         }
 
+        public ABMSucursal()
+        {
+            InitializeComponent();
+        }
+
+        private void ABMSucursal_Load(object sender, EventArgs e)
+        {
+            dgvSucursal.AutoGenerateColumns = true;
+            owner = this.Owner as IMenuPrincipal;
+            ActualizardgvSucursales();
+            HabilitarDeshabilitar(false);
+        }
+
+        private void btAgregarNuevo_Click(object sender, EventArgs e)
+        {
+            modificacion = false;
+            HabilitarDeshabilitar(true);
+            dgvSucursal.Enabled = false;
+            sucursal = new Sucursal();           
+        }
         private void btModificar_Click(object sender, EventArgs e)
         {
+            if(dgvSucursal.SelectedRows.Count == 1)
+            {
+                modificacion = true;
+                HabilitarDeshabilitar(true);
+                dgvSucursal.Enabled = false;
+                sucursal = dgvSucursal.SelectedRows[0].DataBoundItem as Sucursal;
 
+                txtCiudad.Text = sucursal.Ciudad;
+                txtCodigoPostal.Text = sucursal.CodPostal.ToString();
+                txtDireccion.Text = sucursal.Direccion;
+                txtTasa.Text = sucursal.TasaInteres.ToString();
+
+            }
+        }
+        private void btEliminar_Click(object sender, EventArgs e)
+        {
+            if (dgvSucursal.SelectedRows.Count == 1)
+            {
+                var result = MessageBox.Show("Seguro que desea eliminar este Cliente?", "CUIDADO", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.Yes)
+                {
+                    if (owner != null)
+                    {
+                        owner.ModificacionEliminacionSucursal(dgvSucursal.SelectedRows[0].DataBoundItem as Sucursal, false);
+                        ActualizardgvSucursales();
+                    }
+                }
+            }
+        }
+
+        private void btCancelar_Click(object sender, EventArgs e)
+        {
+            sucursal = null;
+            modificacion = false;
+            HabilitarDeshabilitar(false);
+            dgvSucursal.Enabled = true;
+
+            txtCiudad.Text = "";
+            txtCodigoPostal.Text = "";
+            txtDireccion.Text = "";
+            txtTasa.Text = "";
+        }
+        private void btGuardar_Click(object sender, EventArgs e)
+        {
+            if (true)
+            {
+                sucursal.Ciudad = txtCiudad.Text;
+                sucursal.CodPostal = int.Parse(txtCodigoPostal.Text);
+                sucursal.Direccion = txtDireccion.Text;
+                sucursal.TasaInteres = float.Parse(txtTasa.Text);
+
+                if (modificacion)
+                {
+                    owner.ModificacionEliminacionSucursal(sucursal,true);
+                }
+                else
+                {
+                    owner.NuevaSucursal(sucursal);
+                }
+
+                ActualizardgvSucursales();
+                HabilitarDeshabilitar(false);
+                dgvSucursal.Enabled = true;
+
+                txtCiudad.Text = "";
+                txtCodigoPostal.Text = "";
+                txtDireccion.Text = "";
+                txtTasa.Text = "";
+            }
         }
     }
 }

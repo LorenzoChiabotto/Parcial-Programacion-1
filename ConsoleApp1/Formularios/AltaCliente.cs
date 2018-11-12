@@ -26,38 +26,57 @@ namespace Formularios
         {
             cliente = cl;
             Modifica = false;
+
             InitializeComponent();
         }
         public AltaCliente(Cliente pcliente, bool pModificacion)
         {
-            // cbTipoDocumento = nuevoCliente.TipoDoc  ;           
             cliente = pcliente;
             InitializeComponent();
-            txtDNI.Text = cliente.Documento.ToString();
 
-            txtNombreCompleto.Text = cliente.NombreCompleto;
-            txtCorreo.Text = cliente.Email;
-            txtCelular.Text = cliente.Celular;
-            // rbHombre = nuevoCliente.Sexo  ;
-            txtDomicilio.Text = pcliente.Domicilio;
-            txtCodigoPostal.Text = pcliente.CodPostal.ToString();
-            txtLocalidad.Text = pcliente.Localidad;
-            //mkTxtFechaNacimiento.text = nuevoCliente.FechaNacimiento 
-            txtMontoMaximoaAutorizar.Text = pcliente.MontoMaximoAutorizar.ToString();
-            //Falta el alta del tipo de cliente nuevoCliente.
             Modifica = true;
         }
 
         private void AltaCliente_Load(object sender, EventArgs e)
         {
-            
+            foreach (var item in Enum.GetValues(typeof(TipoDocumento)))
+            {
+                cbTipoDocumento.Items.Add(item);
+            }
             ownerGrilla = this.Owner as IGrilla;
             ownerMenu = this.Owner as IMenuPrincipal;
-           /* if (cliente.Documento == 0)
-            {
 
-            }*/
-            
+            if (Modifica)
+            {
+                cbTipoDocumento.SelectedItem = cliente.TipoDoc;
+
+                txtDNI.Text = cliente.Documento.ToString();
+
+                txtNombreCompleto.Text = cliente.NombreCompleto;
+                txtCorreo.Text = cliente.Email;
+                txtCelular.Text = cliente.Celular;
+                // rbHombre = nuevoCliente.Sexo  ;
+                txtDomicilio.Text = cliente.Domicilio;
+                txtCodigoPostal.Text = cliente.CodPostal.ToString();
+                txtLocalidad.Text = cliente.Localidad;
+                mkTxtFechaNacimiento.Text = cliente.FechaNacimiento.ToShortDateString();
+                txtMontoMaximoaAutorizar.Text = cliente.MontoMaximoAutorizar.ToString();
+
+                cbTipodeCliente.SelectedItem = cliente.EsVip ? "VIP" : "Regular";
+                if(cliente.Sexo == Sexo.MASCULINO)
+                {
+                    rbHombre.Checked = true;
+                    rbMujer.Checked = false;
+                }
+                else {
+                    rbHombre.Checked = false;
+                    rbMujer.Checked = true;
+                }
+
+                //Falta el alta del tipo de cliente nuevoCliente.
+
+            }
+
         }
 
         private void bGuardar_Click(object sender, EventArgs e)
@@ -65,21 +84,21 @@ namespace Formularios
             switch (ComprobarCampos())
             {
                 case 0:
-
                     Resultado resultado = new Resultado();
 
-                    // nuevoCliente.TipoDoc = cbTipoDocumento;
+                    cliente.TipoDoc = (TipoDocumento)cbTipoDocumento.SelectedItem;
                     cliente.Documento = Convert.ToInt32(txtDNI.Text);
 
                     cliente.NombreCompleto = txtNombreCompleto.Text;
                     cliente.Email = txtCorreo.Text;
                     cliente.Celular = txtCelular.Text;
-                    // nuevoCliente.Sexo = rbHombre;
+                    cliente.Sexo = rbHombre.Checked ? Sexo.MASCULINO : Sexo.FEMENINO;
                     cliente.Domicilio = txtDomicilio.Text;
                     cliente.CodPostal = int.Parse(txtCodigoPostal.Text);
                     cliente.Localidad = txtLocalidad.Text;
-                    //nuevoCliente.FechaNacimiento = mkTxtFechaNacimiento.text
+                    cliente.FechaNacimiento = DateTime.Parse(this.mkTxtFechaNacimiento.Text);
                     cliente.MontoMaximoAutorizar = int.Parse(txtMontoMaximoaAutorizar.Text);
+                    cliente.EsVip = cbTipodeCliente.SelectedItem.ToString() == "VIP" ? true : false;
                     //Falta el alta del tipo de cliente nuevoCliente.
 
                     if (ownerGrilla != null)
@@ -98,14 +117,8 @@ namespace Formularios
                     {
                         if (ownerMenu != null)
                         {
-                            if (Modifica)
-                            {
-                                resultado = ownerMenu.ModificacionEliminacionCliente(cliente,true);
-                            }
-                            else
-                            {
-                                resultado = ownerMenu.NuevoCliente(cliente);
-                            }
+
+                            resultado = ownerMenu.NuevoCliente(cliente);
                         }
 
                     }

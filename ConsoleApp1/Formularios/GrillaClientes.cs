@@ -15,13 +15,17 @@ namespace Formularios
     public partial class GrillaClientes : Form,IGrilla
     {
         IMenuPrincipal owner;
+        private void ActualizardgvClientes()
+        {
+            if (owner != null)
+            {
+                this.dgvClientes.DataSource = owner.ObtenerCliente(null);
+            }
+        }
 
         public GrillaClientes()
         {
             InitializeComponent();
-  
-
-           
         }
 
         private void GrillaClientes_Load(object sender, EventArgs e)
@@ -29,17 +33,7 @@ namespace Formularios
             owner = this.Owner as IMenuPrincipal;
             
             this.dgvClientes.AutoGenerateColumns = true;
-            dgvClientes.Columns["id_dts"].Visible = false;
-
             ActualizardgvClientes();
-
-        }
-        private void ActualizardgvClientes()
-        {
-            if (owner != null)
-            {
-                this.dgvClientes.DataSource = owner.ObtenerCliente(null).Where(x=> x.Baja != true).ToList();
-            }
         }
         
         public Resultado NuevoCliente(Cliente cliente)
@@ -63,7 +57,7 @@ namespace Formularios
             Resultado resultado = new Resultado();
             if (owner != null)
             {
-                resultado = owner.NuevoCliente(cliente);
+                resultado = owner.ModificacionEliminacionCliente(cliente,pSeModifica);
 
                 if (resultado.FueCorrecto)
                 {
@@ -82,7 +76,6 @@ namespace Formularios
 
         private void btEliminar_Click(object sender, EventArgs e)
         {
-           
             if (dgvClientes.SelectedRows.Count == 1) { 
                 var result = MessageBox.Show("Seguro que desea eliminar este Cliente?", "CUIDADO", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (result == DialogResult.Yes)
@@ -108,11 +101,6 @@ namespace Formularios
            
                 }
             }      
-
-        }
-
-        private void dgvClientes_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
 
         }
     }
