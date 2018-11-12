@@ -43,46 +43,42 @@
             this.dgvPrestamos.AllowUserToAddRows = false;
             this.dgvPrestamos.AllowUserToDeleteRows = false;
             this.dgvPrestamos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvPrestamos.Location = new System.Drawing.Point(45, 102);
-            this.dgvPrestamos.Margin = new System.Windows.Forms.Padding(4);
+            this.dgvPrestamos.Location = new System.Drawing.Point(34, 83);
             this.dgvPrestamos.Name = "dgvPrestamos";
             this.dgvPrestamos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvPrestamos.Size = new System.Drawing.Size(931, 337);
+            this.dgvPrestamos.Size = new System.Drawing.Size(698, 274);
             this.dgvPrestamos.TabIndex = 0;
             // 
             // lbFiltrar
             // 
             this.lbFiltrar.AutoSize = true;
-            this.lbFiltrar.Location = new System.Drawing.Point(42, 75);
-            this.lbFiltrar.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbFiltrar.Location = new System.Drawing.Point(32, 61);
             this.lbFiltrar.Name = "lbFiltrar";
-            this.lbFiltrar.Size = new System.Drawing.Size(112, 17);
+            this.lbFiltrar.Size = new System.Drawing.Size(86, 13);
             this.lbFiltrar.TabIndex = 1;
             this.lbFiltrar.Text = "Tipo Documento";
             // 
             // cbTipoDocumento
             // 
             this.cbTipoDocumento.FormattingEnabled = true;
-            this.cbTipoDocumento.Location = new System.Drawing.Point(162, 72);
-            this.cbTipoDocumento.Margin = new System.Windows.Forms.Padding(4);
+            this.cbTipoDocumento.Location = new System.Drawing.Point(122, 58);
             this.cbTipoDocumento.Name = "cbTipoDocumento";
-            this.cbTipoDocumento.Size = new System.Drawing.Size(160, 24);
+            this.cbTipoDocumento.Size = new System.Drawing.Size(121, 21);
             this.cbTipoDocumento.TabIndex = 2;
             // 
             // txbDocumento
             // 
-            this.txbDocumento.Location = new System.Drawing.Point(339, 72);
-            this.txbDocumento.Margin = new System.Windows.Forms.Padding(4);
+            this.txbDocumento.Location = new System.Drawing.Point(254, 58);
             this.txbDocumento.Name = "txbDocumento";
-            this.txbDocumento.Size = new System.Drawing.Size(160, 22);
+            this.txbDocumento.Size = new System.Drawing.Size(121, 20);
             this.txbDocumento.TabIndex = 4;
+            this.txbDocumento.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_Documento_KeyPress);
             // 
             // btNuevo
             // 
-            this.btNuevo.Location = new System.Drawing.Point(45, 447);
-            this.btNuevo.Margin = new System.Windows.Forms.Padding(4);
+            this.btNuevo.Location = new System.Drawing.Point(34, 363);
             this.btNuevo.Name = "btNuevo";
-            this.btNuevo.Size = new System.Drawing.Size(173, 33);
+            this.btNuevo.Size = new System.Drawing.Size(130, 27);
             this.btNuevo.TabIndex = 10;
             this.btNuevo.Text = "NUEVO";
             this.btNuevo.UseVisualStyleBackColor = true;
@@ -92,19 +88,17 @@
             // 
             this.lbTituloMenu.AutoSize = true;
             this.lbTituloMenu.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbTituloMenu.Location = new System.Drawing.Point(79, 11);
-            this.lbTituloMenu.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbTituloMenu.Location = new System.Drawing.Point(59, 9);
             this.lbTituloMenu.Name = "lbTituloMenu";
-            this.lbTituloMenu.Size = new System.Drawing.Size(137, 29);
+            this.lbTituloMenu.Size = new System.Drawing.Size(107, 24);
             this.lbTituloMenu.TabIndex = 29;
             this.lbTituloMenu.Text = "Prestamos";
             // 
             // btDetalle
             // 
-            this.btDetalle.Location = new System.Drawing.Point(729, 447);
-            this.btDetalle.Margin = new System.Windows.Forms.Padding(4);
+            this.btDetalle.Location = new System.Drawing.Point(547, 363);
             this.btDetalle.Name = "btDetalle";
-            this.btDetalle.Size = new System.Drawing.Size(247, 33);
+            this.btDetalle.Size = new System.Drawing.Size(185, 27);
             this.btDetalle.TabIndex = 30;
             this.btDetalle.Text = "VER DETALLE";
             this.btDetalle.UseVisualStyleBackColor = true;
@@ -112,9 +106,9 @@
             // 
             // GrillaPrestamos
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1007, 519);
+            this.ClientSize = new System.Drawing.Size(755, 422);
             this.Controls.Add(this.btDetalle);
             this.Controls.Add(this.lbTituloMenu);
             this.Controls.Add(this.btNuevo);
@@ -122,7 +116,6 @@
             this.Controls.Add(this.cbTipoDocumento);
             this.Controls.Add(this.lbFiltrar);
             this.Controls.Add(this.dgvPrestamos);
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "GrillaPrestamos";
             this.Text = "ListarPrestamos";
             this.Load += new System.EventHandler(this.GrillaPrestamos_Load);

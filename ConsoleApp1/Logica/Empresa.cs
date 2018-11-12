@@ -12,7 +12,7 @@ namespace Logica
     public enum Sexo { MASCULINO, FEMENINO }
     public class Empresa
     {
-        private string path = @"C:\Users\loren\Desktop\";
+        private string path = @"C:\Users\USER\Desktop\TPNETMUSSOCHIABO\";
         public List<Cliente> listaCliente;
         public List<Prestamo> listaPrestamo = new List<Prestamo>();
         public List<Sucursal> listaSucursal = new List<Sucursal>();

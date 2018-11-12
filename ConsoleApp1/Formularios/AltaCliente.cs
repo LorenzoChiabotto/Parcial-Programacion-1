@@ -8,7 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Logica;
+using System.Text.RegularExpressions;
 using Formularios.Interfaces;
+using System.Globalization;
 namespace Formularios
 {
     public partial class AltaCliente : Form
@@ -81,7 +83,8 @@ namespace Formularios
 
         private void bGuardar_Click(object sender, EventArgs e)
         {
-            switch (ComprobarCampos())
+            
+            switch (VerificarCampos())
             {
                 case 0:
                     Resultado resultado = new Resultado();
@@ -97,7 +100,7 @@ namespace Formularios
                     cliente.CodPostal = int.Parse(txtCodigoPostal.Text);
                     cliente.Localidad = txtLocalidad.Text;
                     cliente.FechaNacimiento = DateTime.Parse(this.mkTxtFechaNacimiento.Text);
-                    cliente.MontoMaximoAutorizar = int.Parse(txtMontoMaximoaAutorizar.Text);
+                    cliente.MontoMaximoAutorizar = float.Parse(txtMontoMaximoaAutorizar.Text);
                     cliente.EsVip = cbTipodeCliente.SelectedItem.ToString() == "VIP" ? true : false;
                     //Falta el alta del tipo de cliente nuevoCliente.
 
@@ -145,10 +148,13 @@ namespace Formularios
                 case 5:
                     MessageBox.Show("Ingrese Monto Máximo");
                     break;
+                case 6:
+                    MessageBox.Show("Formato incorrecto de Correo Electrónico");
+                    break;
             }
         }
 
-        private int ComprobarCampos()
+        private int VerificarCampos()
         {
             //0 No hay Campos vacios
             //1 Tipo Documento vacio
@@ -156,8 +162,10 @@ namespace Formularios
             //3 Email Vacio
             //4 Tipo de cliente vacio
             //5 Monto Maximo Vacio
-            int Comprobar;
-            Comprobar = 0;
+            //6 Controlar formato Correo
+            //7 Controlar Tipo y Nro DNI ya cargado
+            int Codigo;
+            Codigo = 0;
                 if (String.IsNullOrWhiteSpace(cbTipoDocumento.Text) || 
                 string.IsNullOrWhiteSpace(txtDNI.Text) || 
                 string.IsNullOrWhiteSpace(txtCorreo.Text) || 
@@ -165,36 +173,150 @@ namespace Formularios
                 {
                     if (String.IsNullOrWhiteSpace(cbTipoDocumento.Text))
                     {
-                        Comprobar = 1;
+                        Codigo = 1;
                     }
                     else
                     {
                         if (string.IsNullOrWhiteSpace(txtDNI.Text))
                         {
-                            Comprobar = 2;
+                            Codigo = 2;
                         }
                         else
                         {
                             if (string.IsNullOrWhiteSpace(txtCorreo.Text))
                             {
-                                Comprobar = 3;
+                                Codigo = 3;
                             }
                             else
                             {
                                 if (string.IsNullOrWhiteSpace(cbTipodeCliente.Text))
                                 {
-                                    Comprobar = 4;
+                                    Codigo = 4;
                                 }
                                 else
                                 {
-                                    Comprobar = 5;
+                                    Codigo = 5;
 
                                 }
                             }
                         }
                     }
+
+                }
+                String Caracteres;
+                Caracteres = "\\w+([-+.']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*";
+                if (!Regex.IsMatch(txtCorreo.Text, Caracteres))
+                {
+                    if (!(Regex.Replace(txtCorreo.Text, Caracteres, String.Empty).Length == 0))
+                    {
+                        Codigo = 6;
+                    }               
                 }         
-            return Comprobar;
+            return Codigo;
+        }
+
+        private void txt_NombreC_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!(char.IsLetter(e.KeyChar)) && (e.KeyChar != (char)Keys.Back) && (e.KeyChar != (char)Keys.Space))
+            {
+                
+                e.Handled = true;
+                return;
+            }
+        }
+
+        private void txtNombreCompleto_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtLocalidad_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!(char.IsLetter(e.KeyChar)) && (e.KeyChar != (char)Keys.Back) && (e.KeyChar != (char)Keys.Space))
+            {
+
+                e.Handled = true;
+                return;
+            }
+        }
+
+        private void txt_Celular_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (Char.IsDigit(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else
+           if (Char.IsControl(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else
+            {                
+                e.Handled = true;
+            }
+        }
+
+        private void txt_CodPostalKeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (Char.IsDigit(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else
+            if (Char.IsControl(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtMontoMaximoaAutorizar_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtMonto_Maximo(object sender, KeyPressEventArgs e)
+        {
+        
+             CultureInfo cc = System.Threading.Thread.CurrentThread.CurrentCulture;
+
+             if (char.IsNumber(e.KeyChar) ||
+
+                 (e.KeyChar.ToString() == cc.NumberFormat.NumberDecimalSeparator) || (Char.IsControl(e.KeyChar)))
+                 e.Handled = false;
+
+             else
+             {
+
+                 e.Handled = true;
+             }
+
+        }
+
+        private void txtDNI_Keypressed(object sender, KeyPressEventArgs e)
+        {
+            if (Char.IsDigit(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else
+            if (Char.IsControl(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void cbTipodeCliente_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
