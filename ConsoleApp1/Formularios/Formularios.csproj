@@ -78,6 +78,12 @@
     <Compile Include="AltaPrestamo.Designer.cs">
       <DependentUpon>AltaPrestamo.cs</DependentUpon>
     </Compile>
+    <Compile Include="DetallePrestamo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DetallePrestamo.Designer.cs">
+      <DependentUpon>DetallePrestamo.cs</DependentUpon>
+    </Compile>
     <Compile Include="GrillaClientes.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -90,7 +96,8 @@
     <Compile Include="GrillaPrestamos.Designer.cs">
       <DependentUpon>GrillaPrestamos.cs</DependentUpon>
     </Compile>
-    <Compile Include="Interfaces\IGrilla.cs" />
+    <Compile Include="Interfaces\IGrillaCliente.cs" />
+    <Compile Include="Interfaces\IGrillaPrestamos.cs" />
     <Compile Include="Interfaces\IMenuPrincipal.cs" />
     <Compile Include="MenuPrincipal.cs">
       <SubType>Form</SubType>
@@ -114,6 +121,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AltaPrestamo.resx">
       <DependentUpon>AltaPrestamo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DetallePrestamo.resx">
+      <DependentUpon>DetallePrestamo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GrillaClientes.resx">
       <DependentUpon>GrillaClientes.cs</DependentUpon>
