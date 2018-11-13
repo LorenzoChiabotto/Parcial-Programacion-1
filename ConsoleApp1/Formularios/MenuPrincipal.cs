@@ -119,6 +119,11 @@ namespace Formularios
 
         }
 
+        public List<Prestamo> ObtenerPrestamo(DateTime desde, DateTime hasta, string nombre, bool? vip)
+        {
+            return NuevaEmpresa.getPrestamo(desde, hasta, nombre, vip);
+        }
+
         public Resultado NuevoPrestamo(Prestamo prestamo)
         {
             return NuevaEmpresa.altaPrestamo(prestamo);
@@ -191,5 +196,6 @@ namespace Formularios
         {
             return NuevaEmpresa.obtenerMontoTotalRecaudado();
         }
+
     }
 }

@@ -16,6 +16,41 @@ namespace Formularios
     {
         IMenuPrincipal owner;
         Prestamo prestamo;
+        private void armarGrilla()
+        {
+            this.dgvPrestamos.AutoGenerateColumns = false;
+            this.dgvPrestamos.ColumnCount = 10;
+
+            this.dgvPrestamos.Columns[0].HeaderText = "N° Credito";
+            this.dgvPrestamos.Columns[0].DataPropertyName = "NumCredito";
+
+            this.dgvPrestamos.Columns[1].HeaderText = "Fecha";
+            this.dgvPrestamos.Columns[1].DataPropertyName = "FechaCredito";
+
+            this.dgvPrestamos.Columns[2].HeaderText = "Cliente";
+            this.dgvPrestamos.Columns[2].DataPropertyName = "NombCliente";
+
+            this.dgvPrestamos.Columns[3].HeaderText = "ComercioAdherido";
+            this.dgvPrestamos.Columns[3].DataPropertyName = "UbicComercio";
+
+            this.dgvPrestamos.Columns[4].HeaderText = "Sucursal";
+            this.dgvPrestamos.Columns[4].DataPropertyName = "UbicSucursal";
+
+            this.dgvPrestamos.Columns[5].HeaderText = "Monto";
+            this.dgvPrestamos.Columns[5].DataPropertyName = "MontoCredito";
+
+            this.dgvPrestamos.Columns[6].HeaderText = "Tasa (%)";
+            this.dgvPrestamos.Columns[6].DataPropertyName = "Tasa";
+
+            this.dgvPrestamos.Columns[7].HeaderText = "Tasa ($)";
+            this.dgvPrestamos.Columns[7].DataPropertyName = "MontoInteres";
+
+            this.dgvPrestamos.Columns[8].HeaderText = "CantCuotas";
+            this.dgvPrestamos.Columns[8].DataPropertyName = "CantidadCuotas";
+
+            this.dgvPrestamos.Columns[9].HeaderText = "Monto Cuotas";
+            this.dgvPrestamos.Columns[9].DataPropertyName = "MontoCuota";
+        }
         private void ActualizardgvPrestamos()
         {
             if (owner != null)
@@ -33,15 +68,8 @@ namespace Formularios
         {
             owner = this.Owner as IMenuPrincipal;
             prestamo = null;
-            this.dgvPrestamos.AutoGenerateColumns = true;
+            armarGrilla();
             ActualizardgvPrestamos();
-        }
-
-        private void btNuevo_Click(object sender, EventArgs e)
-        {
-            AltaPrestamo formNuevoPrestamo = new AltaPrestamo(null);
-            formNuevoPrestamo.Owner = this;
-            formNuevoPrestamo.ShowDialog();
         }
 
         private void btDetalle_Click(object sender, EventArgs e)
@@ -54,6 +82,34 @@ namespace Formularios
                 detalle.ShowDialog();
             }
         }
+
+        private void btFiltrar_Click(object sender, EventArgs e)
+        {
+            DateTime desde, hasta;
+
+            if (owner != null)
+            {
+                DateTime.TryParse(this.mskDesde.Text, out desde);
+                if (desde == null)
+                {
+                    desde = new DateTime(0001, 01, 01);
+                }
+                DateTime.TryParse(this.mskHasta.Text, out hasta);
+                if (hasta == DateTime.MinValue)
+                {
+                    hasta = new DateTime(9999, 12, 31);
+                }
+                if (rbTodos.Checked)
+                {
+                    this.dgvPrestamos.DataSource = owner.ObtenerPrestamo(desde,hasta,txtNombre.Text,null);
+                }
+                else
+                {
+                    this.dgvPrestamos.DataSource = owner.ObtenerPrestamo(desde, hasta, txtNombre.Text, rbVip.Checked?true:false);
+                }
+            }
+        }
+        
 
         public Resultado ActualizarPagos(Prestamo prestamo,LugarDePago lugar)
         {
@@ -81,5 +137,6 @@ namespace Formularios
                 e.Handled = true;
             }
         }
+
     }
 }

@@ -14,7 +14,6 @@ namespace Logica
         public Comercio ComercioAdherido { get; set; }
         public Sucursal Sucursal { get; set; }
         public float MontoCredito { get; set; }
-        //Ver propiedad Tasa.
         public float Tasa { get; set; }
         public float MontoCuota { get; set; }
         public int CantidadCuotas { get; set; }
@@ -35,7 +34,7 @@ namespace Logica
             this.Tasa = this.Sucursal.TasaInteres;
             this.CantidadCuotas = cantCu;
 
-            this.MontoCuota = (float)this.MontoCredito / cantCu;
+            this.MontoCuota = ((float)this.MontoCredito+(this.MontoCredito*this.Tasa/100)) / cantCu;
             ListaPagos = new List<Pago>();
             this.ListaPagos.Add(new Pago(this.FechaCredito.AddDays(60)));
 
@@ -69,6 +68,23 @@ namespace Logica
         public int CuotasPagas()
         {
             return this.ListaPagos.Where(x => x.Pagado == true).ToList().Count;
+        }
+
+        public string NombCliente
+        {
+            get { return this.Cliente.NombreCompleto; }
+        }
+        public string UbicComercio
+        {
+            get { return this.ComercioAdherido.Ubicacion; }
+        }
+        public string UbicSucursal
+        {
+            get { return this.Sucursal.Ubicacion; }
+        }
+        public float MontoInteres
+        {
+            get { return this.MontoCredito * this.Tasa / 100; }
         }
     }
 }

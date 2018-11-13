@@ -418,7 +418,7 @@ namespace Logica
         //Alta prestamo
         public Resultado altaPrestamo(Prestamo pPrestamo)
         {
-            Resultado resultado = new Resultado();
+            Resultado resultado = validarPrestamo(pPrestamo);
             listaPrestamo = getPrestamo();
 
             if (listaPrestamo.Count == 0)
@@ -585,7 +585,20 @@ namespace Logica
                 return new List<Prestamo>();
             }
         }
-        
+        public List<Prestamo> getPrestamo(DateTime desde, DateTime hasta, string nombre, bool? vip)
+        {
+            List<Prestamo> lista = getPrestamo();
+
+            lista = lista.Where(x => x.FechaCredito >= desde && x.FechaCredito <= hasta).ToList();
+
+            lista = lista.Where(x => x.Cliente.NombreCompleto.ToUpper().Contains(nombre.ToUpper())).ToList();
+            if (vip.HasValue)
+            {
+                lista = lista.Where(x => x.Cliente.EsVip == vip).ToList();
+            }
+            return lista;
+        }
+
 
         public void guardarClientes()
         {

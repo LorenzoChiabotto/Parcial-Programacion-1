@@ -18,6 +18,25 @@ namespace Formularios
         bool modificacion = false;
         Sucursal sucursal;
 
+        private void armarGrilla()
+        {
+            this.dgvSucursal.AutoGenerateColumns = false;
+            this.dgvSucursal.ColumnCount = 4;
+
+            this.dgvSucursal.Columns[0].HeaderText = "Codigo Postal";
+            this.dgvSucursal.Columns[0].DataPropertyName = "CodPostal";
+
+            this.dgvSucursal.Columns[1].HeaderText = "Direccion";
+            this.dgvSucursal.Columns[1].DataPropertyName = "Direccion";
+
+            this.dgvSucursal.Columns[2].HeaderText = "Ciudad";
+            this.dgvSucursal.Columns[2].DataPropertyName = "Ciudad";
+
+            this.dgvSucursal.Columns[3].HeaderText = "Tasa";
+            this.dgvSucursal.Columns[3].DataPropertyName = "TasaInteres";
+
+        }
+
         public void HabilitarDeshabilitar(bool EstaActivo)
         {
             txtCiudad.Enabled = EstaActivo;
@@ -46,7 +65,7 @@ namespace Formularios
 
         private void ABMSucursal_Load(object sender, EventArgs e)
         {
-            dgvSucursal.AutoGenerateColumns = true;
+            armarGrilla();
             owner = this.Owner as IMenuPrincipal;
             ActualizardgvSucursales();
             HabilitarDeshabilitar(false);
@@ -106,46 +125,56 @@ namespace Formularios
         private void btGuardar_Click(object sender, EventArgs e)
         {
             Resultado resultado;
-
-            sucursal.Ciudad = txtCiudad.Text;
-            sucursal.CodPostal = int.Parse(txtCodigoPostal.Text);
-            sucursal.Direccion = txtDireccion.Text;
-            sucursal.TasaInteres = float.Parse(txtTasa.Text);
-            if(owner != null)
+            if (string.IsNullOrWhiteSpace(txtCiudad.Text) ||
+                string.IsNullOrWhiteSpace(txtCodigoPostal.Text) ||
+                string.IsNullOrWhiteSpace(txtDireccion.Text) ||
+                string.IsNullOrWhiteSpace(txtTasa.Text))
             {
-                if (modificacion)
+                MessageBox.Show("Complete todos los campos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+
+                sucursal.Ciudad = txtCiudad.Text;
+                sucursal.CodPostal = int.Parse(txtCodigoPostal.Text);
+                sucursal.Direccion = txtDireccion.Text;
+                sucursal.TasaInteres = float.Parse(txtTasa.Text);
+                if(owner != null)
                 {
-                    resultado = owner.ModificacionEliminacionSucursal(sucursal,true);
+                    if (modificacion)
+                    {
+                        resultado = owner.ModificacionEliminacionSucursal(sucursal,true);
+                    }
+                    else
+                    {
+                        resultado = owner.NuevaSucursal(sucursal);
+                    }
                 }
                 else
                 {
-                    resultado = owner.NuevaSucursal(sucursal);
+                    resultado = new Resultado();
+                    resultado.FueCorrecto = false;
+                    resultado.listaMsjs.Add("error inesperado");
                 }
-            }
-            else
-            {
-                resultado = new Resultado();
-                resultado.FueCorrecto = false;
-                resultado.listaMsjs.Add("error inesperado");
-            }
             
 
-            if (resultado.FueCorrecto)
-            {
-                ActualizardgvSucursales();
-                HabilitarDeshabilitar(false);
-                dgvSucursal.Enabled = true;
+                if (resultado.FueCorrecto)
+                {
+                    ActualizardgvSucursales();
+                    HabilitarDeshabilitar(false);
+                    dgvSucursal.Enabled = true;
 
-                txtCiudad.Text = "";
-                txtCodigoPostal.Text = "";
-                txtDireccion.Text = "";
-                txtTasa.Text = "";
+                    txtCiudad.Text = "";
+                    txtCodigoPostal.Text = "";
+                    txtDireccion.Text = "";
+                    txtTasa.Text = "";
 
-                MessageBox.Show("La Operacion se realizo con exito");
-            }
-            else
-            {
+                    MessageBox.Show("La Operacion se realizo con exito");
+                }
+                else
+                {
 
+                }
             }
         }
 

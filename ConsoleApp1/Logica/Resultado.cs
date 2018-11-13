@@ -13,7 +13,7 @@ namespace Logica
 
         public Resultado()
         {
-
+            this.listaMsjs = new List<string>();
         }
     }
 }

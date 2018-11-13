@@ -49,5 +49,27 @@ namespace Logica
             this.CodPostal = codPostal;
             this.Localidad = localidad.ToUpper();
         }
+
+        public string tipoDoc
+        {
+            get { return this.TipoDoc.ToString(); }
+        }
+        public string tipoSexo
+        {
+            get { return this.Sexo.ToString(); }
+        }
+
+        public string vivienda
+        {
+            get { return $"{this.Localidad} ({this.CodPostal}) - {this.Domicilio}"; }
+        }
+
+        public string tipoCliente
+        {
+            get
+            {
+                return this.EsVip ? "VIP" : "Regular";
+            }
+        }
     }
 }

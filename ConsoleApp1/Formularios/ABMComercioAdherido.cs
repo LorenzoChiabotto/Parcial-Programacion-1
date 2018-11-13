@@ -18,6 +18,23 @@ namespace Formularios
         bool modificacion = false;
         Comercio comercio;
 
+        private void armarGrilla()
+        {
+            this.dgvComercio.AutoGenerateColumns = false;
+            this.dgvComercio.ColumnCount = 4;
+
+            this.dgvComercio.Columns[0].HeaderText = "Razon Social";
+            this.dgvComercio.Columns[0].DataPropertyName = "RazonSocial";
+
+            this.dgvComercio.Columns[1].HeaderText = "Codigo Postal";
+            this.dgvComercio.Columns[1].DataPropertyName = "CodPostal";
+
+            this.dgvComercio.Columns[2].HeaderText = "Direccion";
+            this.dgvComercio.Columns[2].DataPropertyName = "Direccion";
+
+            this.dgvComercio.Columns[3].HeaderText = "Ciudad";
+            this.dgvComercio.Columns[3].DataPropertyName = "Ciudad";
+        }
         public void HabilitarDeshabilitar(bool EstaActivo)
         {
 
@@ -47,7 +64,7 @@ namespace Formularios
 
         private void ABMComercioAdherido_Load(object sender, EventArgs e)
         {
-            dgvComercio.AutoGenerateColumns = true;
+            armarGrilla();
             owner = this.Owner as IMenuPrincipal;
             ActualizardgvComercios();
             HabilitarDeshabilitar(false);
@@ -94,46 +111,55 @@ namespace Formularios
         private void btGuardar_Click(object sender, EventArgs e)
         {
             Resultado resultado = new Resultado();
-
-            comercio.Ciudad = txtCiudad.Text;
-            comercio.CodPostal = int.Parse(txtCodigoPostal.Text);
-            comercio.Direccion = txtDireccion.Text;
-            comercio.RazonSocial = txtRazonSocial.Text;
-
-            if(owner != null)
+            if (string.IsNullOrWhiteSpace(txtCiudad.Text) ||
+                string.IsNullOrWhiteSpace(txtCodigoPostal.Text) ||
+                string.IsNullOrWhiteSpace(txtDireccion.Text) ||
+                string.IsNullOrWhiteSpace(txtRazonSocial.Text))
             {
-                if (modificacion)
+                MessageBox.Show("Complete todos los campos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                comercio.Ciudad = txtCiudad.Text;
+                comercio.CodPostal = int.Parse(txtCodigoPostal.Text);
+                comercio.Direccion = txtDireccion.Text;
+                comercio.RazonSocial = txtRazonSocial.Text;
+
+                if (owner != null)
                 {
-                   resultado = owner.ModificacionEliminacionComercio(comercio, true);
+                    if (modificacion)
+                    {
+                        resultado = owner.ModificacionEliminacionComercio(comercio, true);
+                    }
+                    else
+                    {
+                        resultado = owner.NuevoComercio(comercio);
+                    }
                 }
                 else
                 {
-                    resultado = owner.NuevoComercio(comercio);
+                    resultado = new Resultado();
+                    resultado.FueCorrecto = false;
+                    resultado.listaMsjs.Add("error inesperado");
                 }
-            }
-            else
-            {
-                resultado = new Resultado();
-                resultado.FueCorrecto = false;
-                resultado.listaMsjs.Add("error inesperado");
-            }
 
-            if (resultado.FueCorrecto)
-            {
-                ActualizardgvComercios();
-                HabilitarDeshabilitar(false);
-                dgvComercio.Enabled = true;
+                if (resultado.FueCorrecto)
+                {
+                    ActualizardgvComercios();
+                    HabilitarDeshabilitar(false);
+                    dgvComercio.Enabled = true;
 
-                txtCiudad.Text = "";
-                txtCodigoPostal.Text = "";
-                txtDireccion.Text = "";
-                txtRazonSocial.Text = "";
+                    txtCiudad.Text = "";
+                    txtCodigoPostal.Text = "";
+                    txtDireccion.Text = "";
+                    txtRazonSocial.Text = "";
 
-                MessageBox.Show("La Operacion se realizo con exito");
-            }
-            else
-            {
+                    MessageBox.Show("La Operacion se realizo con exito");
+                }
+                else
+                {
 
+                }
             }
 
         }

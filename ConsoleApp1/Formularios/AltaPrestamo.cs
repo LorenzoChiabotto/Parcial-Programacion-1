@@ -58,27 +58,42 @@ namespace Formularios
         private void btGuardar_Click(object sender, EventArgs e)
         {
             Resultado resultado;
-            Prestamo prestamo = new Prestamo(cliente, comercio, sucursal, float.Parse(txtMontoCredito.Text), sucursal.TasaInteres, int.Parse(txtCuotas.Text));
 
-            if (owner != null)
+            if (string.IsNullOrWhiteSpace(txtCuotas.Text) ||
+                string.IsNullOrWhiteSpace(txtDocumento.Text) ||
+                string.IsNullOrWhiteSpace(txtFechaCredito.Text) ||
+                string.IsNullOrWhiteSpace(txtMontoCredito.Text) ||
+                string.IsNullOrWhiteSpace(cbComercio.Text) ||
+                string.IsNullOrWhiteSpace(cbSucursal.Text) ||
+                string.IsNullOrWhiteSpace(txtCuotas.Text) ||
+                string.IsNullOrWhiteSpace(cbTipoDocumento.Text))
             {
-                resultado = owner.NuevoPrestamo(prestamo);
+                MessageBox.Show("Complete todos los campos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else
             {
-                resultado = new Resultado();
-                resultado.FueCorrecto = false;
-                resultado.listaMsjs.Add("Error inesperado");
-            }
+                Prestamo prestamo = new Prestamo(cliente, comercio, sucursal, float.Parse(txtMontoCredito.Text), sucursal.TasaInteres, int.Parse(txtCuotas.Text));
 
-            if (resultado.FueCorrecto)
-            {
-                MessageBox.Show("La Operacion se realizo con exito");
-                this.Close();
-            }
-            else
-            {
+                if (owner != null)
+                {
+                    resultado = owner.NuevoPrestamo(prestamo);
+                }
+                else
+                {
+                    resultado = new Resultado();
+                    resultado.FueCorrecto = false;
+                    resultado.listaMsjs.Add("Error inesperado");
+                }
 
+                if (resultado.FueCorrecto)
+                {
+                    MessageBox.Show("La Operacion se realizo con exito");
+                    this.Close();
+                }
+                else
+                {
+
+                }
             }
         }
         private int VerificarCampos()
@@ -156,7 +171,10 @@ namespace Formularios
 
         private void txtDocumento_TextChanged(object sender, EventArgs e)
         {
-            cliente = owner.ObtenerCliente(int.Parse(txtDocumento.Text), (TipoDocumento)cbTipoDocumento.SelectedItem).FirstOrDefault();
+            if (!string.IsNullOrWhiteSpace(cbTipoDocumento.Text))
+            {
+                cliente = owner.ObtenerCliente(int.Parse(txtDocumento.Text), (TipoDocumento)cbTipoDocumento.SelectedItem).FirstOrDefault();
+            }
         }
 
         private void txtDNI_keypress(object sender, KeyPressEventArgs e)

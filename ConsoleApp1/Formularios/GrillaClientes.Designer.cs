@@ -37,6 +37,7 @@
             this.btModificar = new System.Windows.Forms.Button();
             this.btEliminar = new System.Windows.Forms.Button();
             this.lbTituloMenu = new System.Windows.Forms.Label();
+            this.btNuevoPrestamo = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvClientes)).BeginInit();
             this.SuspendLayout();
             // 
@@ -45,7 +46,6 @@
             this.dgvClientes.AllowUserToAddRows = false;
             this.dgvClientes.AllowUserToDeleteRows = false;
             this.dgvClientes.AllowUserToOrderColumns = true;
-            this.dgvClientes.AllowUserToResizeColumns = false;
             this.dgvClientes.AllowUserToResizeRows = false;
             this.dgvClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvClientes.Location = new System.Drawing.Point(124, 82);
@@ -138,11 +138,23 @@
             this.lbTituloMenu.TabIndex = 29;
             this.lbTituloMenu.Text = "Clientes";
             // 
+            // btNuevoPrestamo
+            // 
+            this.btNuevoPrestamo.Location = new System.Drawing.Point(13, 401);
+            this.btNuevoPrestamo.Margin = new System.Windows.Forms.Padding(4);
+            this.btNuevoPrestamo.Name = "btNuevoPrestamo";
+            this.btNuevoPrestamo.Size = new System.Drawing.Size(100, 43);
+            this.btNuevoPrestamo.TabIndex = 30;
+            this.btNuevoPrestamo.Text = "NUEVO PRESTAMO";
+            this.btNuevoPrestamo.UseVisualStyleBackColor = true;
+            this.btNuevoPrestamo.Click += new System.EventHandler(this.btNuevoPrestamo_Click);
+            // 
             // GrillaClientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1046, 492);
+            this.Controls.Add(this.btNuevoPrestamo);
             this.Controls.Add(this.lbTituloMenu);
             this.Controls.Add(this.btEliminar);
             this.Controls.Add(this.btModificar);
@@ -173,5 +185,6 @@
         private System.Windows.Forms.Button btModificar;
         private System.Windows.Forms.Button btEliminar;
         private System.Windows.Forms.Label lbTituloMenu;
+        private System.Windows.Forms.Button btNuevoPrestamo;
     }
 }

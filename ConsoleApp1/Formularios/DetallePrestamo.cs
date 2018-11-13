@@ -68,13 +68,15 @@ namespace Formularios
 
         private void btRealizarPago_Click(object sender, EventArgs e)
         {
-            if(owner != null)
-            {
-                Resultado resultado = owner.ActualizarPagos(prestamo,cbLugarPago.SelectedItem as LugarDePago);
-
-                if (resultado.FueCorrecto)
+            if (string.IsNullOrWhiteSpace(cbLugarPago.Text)) { 
+                if(owner != null)
                 {
-                    CargarDetallePrestamo();
+                    Resultado resultado = owner.ActualizarPagos(prestamo,cbLugarPago.SelectedItem as LugarDePago);
+
+                    if (resultado.FueCorrecto)
+                    {
+                        CargarDetallePrestamo();
+                    }
                 }
             }
         }

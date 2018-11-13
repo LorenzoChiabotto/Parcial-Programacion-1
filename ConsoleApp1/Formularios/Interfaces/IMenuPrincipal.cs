@@ -12,6 +12,7 @@ namespace Formularios.Interfaces
 
         List<Cliente> ObtenerCliente(int? dni, TipoDocumento? tipo);
         List<Prestamo> ObtenerPrestamo(int? Id);
+        List<Prestamo> ObtenerPrestamo(DateTime desde, DateTime hasta, string nombre, bool? vip);
         List<Sucursal> ObtenerSucursal(int? Id);
         List<Comercio> ObtenerComercio(int? Id);
         List<LugarDePago> ObtenerLugarDePago(int? Id);

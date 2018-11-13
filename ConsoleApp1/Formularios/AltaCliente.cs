@@ -48,7 +48,6 @@ namespace Formularios
             {
                 cbTipoDocumento.Items.Add(item);
             }
-            cbTipoDocumento.SelectedIndex = 0;
             cbTipodeCliente.DataSource = new List<string> {"Regular", "VIP"};
 
             if (Modifica)
@@ -84,13 +83,13 @@ namespace Formularios
         {
             Resultado resultado;
 
-            if (String.IsNullOrWhiteSpace(cbTipoDocumento.Text) ||
+            if (string.IsNullOrWhiteSpace(cbTipoDocumento.Text) ||
                 string.IsNullOrWhiteSpace(txtDNI.Text) ||
                 string.IsNullOrWhiteSpace(txtCorreo.Text) ||
                 string.IsNullOrWhiteSpace(cbTipodeCliente.Text) ||
                 string.IsNullOrWhiteSpace(txtMontoMaximoaAutorizar.Text))
             {
-                MessageBox.Show("Complete todos los campos obligatorios");
+                MessageBox.Show("Complete todos los campos obligatorios", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else
             {
@@ -108,7 +107,7 @@ namespace Formularios
 
                 DateTime nacimiento;
                 DateTime.TryParse(this.mkTxtFechaNacimiento.Text, out nacimiento);
-                cliente.FechaNacimiento = nacimiento != null ? nacimiento : new DateTime();
+                cliente.FechaNacimiento = nacimiento;
             
 
                 if (ownerGrilla != null)
@@ -150,68 +149,7 @@ namespace Formularios
 
         }
 
-        private int VerificarCamposObligatorios()
-        {
-            //0 No hay Campos vacios
-            //1 Tipo Documento vacio
-            //2 Número DNI Vacio
-            //3 Email Vacio
-            //4 Tipo de cliente vacio
-            //5 Monto Maximo Vacio
-            //6 Controlar formato Correo
-            //7 Controlar Tipo y Nro DNI ya cargado
-            int Codigo;
-            Codigo = 0;
-                if (String.IsNullOrWhiteSpace(cbTipoDocumento.Text) || 
-                string.IsNullOrWhiteSpace(txtDNI.Text) || 
-                string.IsNullOrWhiteSpace(txtCorreo.Text) || 
-                string.IsNullOrWhiteSpace(cbTipodeCliente.Text) ||
-                string.IsNullOrWhiteSpace(txtMontoMaximoaAutorizar.Text))
-                {
-                    if (String.IsNullOrWhiteSpace(cbTipoDocumento.Text))
-                    {
-                        Codigo = 1;
-                    }
-                    else
-                    {
-                        if (string.IsNullOrWhiteSpace(txtDNI.Text))
-                        {
-                            Codigo = 2;
-                        }
-                        else
-                        {
-                            if (string.IsNullOrWhiteSpace(txtCorreo.Text))
-                            {
-                                Codigo = 3;
-                            }
-                            else
-                            {
-                                if (string.IsNullOrWhiteSpace(cbTipodeCliente.Text))
-                                {
-                                    Codigo = 4;
-                                }
-                                else
-                                {
-                                    Codigo = 5;
-
-                                }
-                            }
-                        }
-                    }
-
-                }
-                String Caracteres;
-                Caracteres = "\\w+([-+.']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*";
-                if (!Regex.IsMatch(txtCorreo.Text, Caracteres))
-                {
-                    if (!(Regex.Replace(txtCorreo.Text, Caracteres, String.Empty).Length == 0))
-                    {
-                        Codigo = 6;
-                    }               
-                }         
-            return Codigo;
-        }
-
+        
         private void txt_NombreC_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!(char.IsLetter(e.KeyChar)) && (e.KeyChar != (char)Keys.Back) && (e.KeyChar != (char)Keys.Space))

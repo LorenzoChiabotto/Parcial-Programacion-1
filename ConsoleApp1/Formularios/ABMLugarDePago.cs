@@ -17,6 +17,23 @@ namespace Formularios
         IMenuPrincipal owner;
         bool modificacion = false;
         LugarDePago lugar;
+        private void armarGrilla()
+        {
+            this.dgvLugares.AutoGenerateColumns = false;
+            this.dgvLugares.ColumnCount = 4;
+
+            this.dgvLugares.Columns[0].HeaderText = "Razon Social";
+            this.dgvLugares.Columns[0].DataPropertyName = "RazonSocial";
+
+            this.dgvLugares.Columns[1].HeaderText = "Codigo Postal";
+            this.dgvLugares.Columns[1].DataPropertyName = "CodPostal";
+
+            this.dgvLugares.Columns[2].HeaderText = "Direccion";
+            this.dgvLugares.Columns[2].DataPropertyName = "Direccion";
+
+            this.dgvLugares.Columns[3].HeaderText = "Ciudad";
+            this.dgvLugares.Columns[3].DataPropertyName = "Ciudad";
+        }
 
         public void HabilitarDeshabilitar(bool EstaActivo)
         {
@@ -48,7 +65,7 @@ namespace Formularios
 
         private void ABMLugarDePago_Load(object sender, EventArgs e)
         {
-            dgvLugares.AutoGenerateColumns = true;
+            armarGrilla();
             owner = this.Owner as IMenuPrincipal;
             ActualizardgvLugares();
             HabilitarDeshabilitar(false);
@@ -98,48 +115,57 @@ namespace Formularios
         private void btGuardar_Click(object sender, EventArgs e)
         {
             Resultado resultado;
-
-            lugar.Ciudad = txtCiudad.Text;
-            lugar.CodPostal = int.Parse(txtCodigoPostal.Text);
-            lugar.Direccion = txtDireccion.Text;
-            lugar.RazonSocial = txtRazonSocial.Text;
-            lugar.EsSucursal = cbSucursal.Checked;
-
-            if(owner != null)
+            if (string.IsNullOrWhiteSpace(txtCiudad.Text) ||
+                string.IsNullOrWhiteSpace(txtCodigoPostal.Text) ||
+                string.IsNullOrWhiteSpace(txtDireccion.Text) ||
+                string.IsNullOrWhiteSpace(txtRazonSocial.Text))
             {
-                if (modificacion)
+                MessageBox.Show("Complete todos los campos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                lugar.Ciudad = txtCiudad.Text;
+                lugar.CodPostal = int.Parse(txtCodigoPostal.Text);
+                lugar.Direccion = txtDireccion.Text;
+                lugar.RazonSocial = txtRazonSocial.Text;
+                lugar.EsSucursal = cbSucursal.Checked;
+
+                if (owner != null)
                 {
-                    resultado = owner.ModificacionEliminacionLugarPago(lugar, true);
+                    if (modificacion)
+                    {
+                        resultado = owner.ModificacionEliminacionLugarPago(lugar, true);
+                    }
+                    else
+                    {
+                        resultado = owner.NuevoLugarPago(lugar);
+                    }
                 }
                 else
                 {
-                    resultado = owner.NuevoLugarPago(lugar);
+                    resultado = new Resultado();
+                    resultado.FueCorrecto = false;
+                    resultado.listaMsjs.Add("error inesperado");
                 }
-            }
-            else
-            {
-                resultado = new Resultado();
-                resultado.FueCorrecto = false;
-                resultado.listaMsjs.Add("error inesperado");
-            }
 
-            if (resultado.FueCorrecto)
-            {
-                ActualizardgvLugares();
-                HabilitarDeshabilitar(false);
-                dgvLugares.Enabled = true;
+                if (resultado.FueCorrecto)
+                {
+                    ActualizardgvLugares();
+                    HabilitarDeshabilitar(false);
+                    dgvLugares.Enabled = true;
 
-                txtCiudad.Text = "";
-                txtCodigoPostal.Text = "";
-                txtDireccion.Text = "";
-                txtRazonSocial.Text = "";
-                cbSucursal.Checked = false;
+                    txtCiudad.Text = "";
+                    txtCodigoPostal.Text = "";
+                    txtDireccion.Text = "";
+                    txtRazonSocial.Text = "";
+                    cbSucursal.Checked = false;
 
-                MessageBox.Show("La Operacion se realizo con exito");
-            }
-            else
-            {
+                    MessageBox.Show("La Operacion se realizo con exito");
+                }
+                else
+                {
 
+                }
             }
         }
 
