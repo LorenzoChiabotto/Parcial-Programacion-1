@@ -1,0 +1,1 @@
+[{"EsSucursal":false,"RazonSocial":"Jariscopolis","ID":1,"Ciudad":"Rafaela","Direccion":"Jarisco 21","CodPostal":2300,"Baja":false,"Ubicacion":"Rafaela - Jarisco 21"},{"EsSucursal":true,"RazonSocial":"Interesanting","ID":2,"Ciudad":"Sunchales","Direccion":"Jualemba 21","CodPostal":2301,"Baja":false,"Ubicacion":"Sunchales - Jualemba 21"}]

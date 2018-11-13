@@ -13,8 +13,7 @@ namespace Logica
     public enum Sexo { MASCULINO, FEMENINO }
     public class Empresa
     {
-        private string path2 = @"C:\Users\USER\Desktop\NuevoCommit";
-        private string path = @"C:\Users\loren\Desktop\";
+        private string path = @"C:\Users\loren\Documents\prog1-tp-net-2018\Archivos\";
         
         public List<Cliente> listaCliente;
         public List<Prestamo> listaPrestamo = new List<Prestamo>();
@@ -44,7 +43,7 @@ namespace Logica
                 result.FueCorrecto = false;
             }
             regexLetras = "[a-zA-ZñÑ\\s ]";
-            regexDomicilio = "^.(?=.[0-9])(?=.[a-zA-ZñÑ\\s]).$";
+            regexDomicilio = "^.*(?=.*[0-9])(?=.*[a-zA-ZñÑ\\s]).*$";
 
             if (!Regex.IsMatch(pSucursal.Ciudad, regexLetras))
             {

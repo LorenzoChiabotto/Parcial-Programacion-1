@@ -1,0 +1,1 @@
+[{"TasaInteres":25.0,"ID":1,"Ciudad":"Rafaela","Direccion":"Sucursales 1","CodPostal":2300,"Baja":false,"Ubicacion":"Rafaela - Sucursales 1"},{"TasaInteres":50.0,"ID":2,"Ciudad":"Sunchales","Direccion":"Sucursales 23","CodPostal":2301,"Baja":false,"Ubicacion":"Sunchales - Sucursales 23"}]
