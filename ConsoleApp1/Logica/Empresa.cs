@@ -13,7 +13,7 @@ namespace Logica
     public enum Sexo { MASCULINO, FEMENINO }
     public class Empresa
     {
-        private string path = @"C:\Users\loren\Desktop\";
+        private string path = @"C:\Users\USER\Desktop\NuevoCommit";
         public List<Cliente> listaCliente;
         public List<Prestamo> listaPrestamo = new List<Prestamo>();
         public List<Sucursal> listaSucursal = new List<Sucursal>();
@@ -60,7 +60,7 @@ namespace Logica
 
         public Resultado validarCliente(Cliente pCliente, bool pSeModifica)
         {
-            Regex regex;
+            string regexLetras, regexDomicilio, regexCorreo, regexTelefonos, regexFechas, regexNumerosa;
 
             Resultado result = new Resultado();
             result.FueCorrecto = true;
@@ -78,50 +78,58 @@ namespace Logica
                     result.FueCorrecto = false;
                 }
             }
-            regex = new Regex("([aA-z]+([\\s\\?][aA-z]+)*)");
-            if (! regex.IsMatch(pCliente.NombreCompleto))
+            regexLetras = "[a-zA-ZñÑ\\s ]";
+            regexNumerosa = "^[. 0-9]+$";
+            regexCorreo = "^(([\\w-]+\\.)+[\\w-]+|([a-zA-Z]{1}|[\\w-]{2,}))@(([a-zA-Z]+[\\w-]+\\.){1,2}[a-zA-Z]{2,4})$";
+            regexTelefonos = "^[+-]?\\d+(\\.\\d+)?$";
+            regexDomicilio = "^.*(?=.*[0-9])(?=.*[a-zA-ZñÑ\\s]).*$";
+            regexFechas = "(0[1-9]|[12][0-9]|3[01])[/](0[1-9]|1[012])[/]((175[7-9])|(17[6-9][0-9])|(1[8-9][0-9][0-9])|([2-9][0-9][0-9][0-9]))";
+
+
+
+            if (!Regex.IsMatch(pCliente.NombreCompleto, regexLetras))
             {
                 result.listaMsjs.Add("El nombre no es valido");
                 result.FueCorrecto = false;
             }
-            if (false)
+            if (!Regex.IsMatch(pCliente.Email, regexCorreo))
             {
-                result.listaMsjs.Add("El email no es valido");
+                result.listaMsjs.Add("Formato de Mail Incorrecto");
                 result.FueCorrecto = false;
             }
-            if (false)
+
+            if (!Regex.IsMatch(pCliente.Celular, regexTelefonos))
             {
                 result.listaMsjs.Add("El celular no es valido");
                 result.FueCorrecto = false;
             }
-            if (false)
+            if ((pCliente.FechaNacimiento < DateTime.Now))
             {
-                result.listaMsjs.Add("La fecha nacimiento no es valida");
+                if (!Regex.IsMatch(pCliente.FechaNacimiento.ToString(), regexFechas))
+                {
+                    result.listaMsjs.Add("La fecha nacimiento no es valida");
+                    result.FueCorrecto = false;
+                }
+            }
+            else
+            {
+                result.listaMsjs.Add("La fecha nacimiento debe ser menor al día de hoy");
                 result.FueCorrecto = false;
             }
-            if (false)
-            {
-                result.listaMsjs.Add("El sexo no es valido");
-                result.FueCorrecto = false;
-            }
-            if (false)
+
+            if (!Regex.IsMatch(pCliente.Domicilio, regexDomicilio))
             {
                 result.listaMsjs.Add("El domicilio no es valido");
                 result.FueCorrecto = false;
             }
-            if (false)
+            if (!Regex.IsMatch(pCliente.CodPostal.ToString(), regexNumerosa))
             {
                 result.listaMsjs.Add("El CodigoPostal no es valido");
                 result.FueCorrecto = false;
             }
-            if (false)
+            if (!Regex.IsMatch(pCliente.Localidad, regexLetras))
             {
                 result.listaMsjs.Add("La localidad no es valida");
-                result.FueCorrecto = false;
-            }
-            if (false)
-            {
-                result.listaMsjs.Add("El monto a autorizar no es valido");
                 result.FueCorrecto = false;
             }
 
@@ -132,6 +140,8 @@ namespace Logica
         {
             Resultado result = new Resultado();
             result.FueCorrecto = true;
+            string regexNumerosa;
+
 
             if (prestamo.FechaCredito != DateTime.Today)
             {
@@ -159,7 +169,7 @@ namespace Logica
                 result.listaMsjs.Add("El monto de credito no puede ser menor a 0");
                 result.FueCorrecto = false;
             }
-            if (prestamo.MontoCredito + (prestamo.MontoCredito*prestamo.Tasa)/100 > prestamo.Cliente.MontoMaximoAutorizar)
+            if (prestamo.MontoCredito + (prestamo.MontoCredito * prestamo.Tasa) / 100 > prestamo.Cliente.MontoMaximoAutorizar)
             {
                 result.listaMsjs.Add($"El monto de credito no puede ser mayor al autorizado para el cliente (${prestamo.Cliente.MontoMaximoAutorizar})");
                 result.FueCorrecto = false;
@@ -167,6 +177,18 @@ namespace Logica
             if (prestamo.CantidadCuotas <= 0)
             {
                 result.listaMsjs.Add("La cantidad de cuotas debe ser superior a 0");
+                result.FueCorrecto = false;
+            }
+            regexNumerosa = "^[0-9]+$";
+
+            if (!Regex.IsMatch(prestamo.Cliente.Documento.ToString(), regexNumerosa))
+            {
+                result.listaMsjs.Add("El Documento no es valido");
+                result.FueCorrecto = false;
+            }
+            if (!Regex.IsMatch(prestamo.CantidadCuotas.ToString(), regexNumerosa))
+            {
+                result.listaMsjs.Add("La cantidad de cuotas no son validas");
                 result.FueCorrecto = false;
             }
 
