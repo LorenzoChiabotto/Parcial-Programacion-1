@@ -13,7 +13,9 @@ namespace Logica
     public enum Sexo { MASCULINO, FEMENINO }
     public class Empresa
     {
-        private string path = @"C:\Users\USER\Desktop\NuevoCommit";
+        private string path2 = @"C:\Users\USER\Desktop\NuevoCommit";
+        private string path = @"C:\Users\loren\Desktop\";
+        
         public List<Cliente> listaCliente;
         public List<Prestamo> listaPrestamo = new List<Prestamo>();
         public List<Sucursal> listaSucursal = new List<Sucursal>();
@@ -29,6 +31,7 @@ namespace Logica
         {
             Resultado result = new Resultado();
             result.FueCorrecto = true;
+            string regexLetras, regexDomicilio;
 
             if (pSeModifica && !this.listaSucursal.Exists(x => x.ID == pSucursal.ID))
             {
@@ -40,7 +43,19 @@ namespace Logica
                 result.listaMsjs.Add("La tasa de interes no es valida, debe contener un valor entre 0 y 100");
                 result.FueCorrecto = false;
             }
+            regexLetras = "[a-zA-ZñÑ\\s ]";
+            regexDomicilio = "^.(?=.[0-9])(?=.[a-zA-ZñÑ\\s]).$";
 
+            if (!Regex.IsMatch(pSucursal.Ciudad, regexLetras))
+            {
+                result.listaMsjs.Add("La Ciudad no es valida");
+                result.FueCorrecto = false;
+            }
+            if (!Regex.IsMatch(pSucursal.Direccion, regexDomicilio))
+            {
+                result.listaMsjs.Add("La dirección es invalida");
+                result.FueCorrecto = false;
+            }
             return result;
         }
 
@@ -84,7 +99,6 @@ namespace Logica
             regexTelefonos = "^[+-]?\\d+(\\.\\d+)?$";
             regexDomicilio = "^.*(?=.*[0-9])(?=.*[a-zA-ZñÑ\\s]).*$";
             regexFechas = "(0[1-9]|[12][0-9]|3[01])[/](0[1-9]|1[012])[/]((175[7-9])|(17[6-9][0-9])|(1[8-9][0-9][0-9])|([2-9][0-9][0-9][0-9]))";
-
 
 
             if (!Regex.IsMatch(pCliente.NombreCompleto, regexLetras))
@@ -169,10 +183,12 @@ namespace Logica
                 result.listaMsjs.Add("El monto de credito no puede ser menor a 0");
                 result.FueCorrecto = false;
             }
-            if (prestamo.MontoCredito + (prestamo.MontoCredito * prestamo.Tasa) / 100 > prestamo.Cliente.MontoMaximoAutorizar)
-            {
-                result.listaMsjs.Add($"El monto de credito no puede ser mayor al autorizado para el cliente (${prestamo.Cliente.MontoMaximoAutorizar})");
-                result.FueCorrecto = false;
+            if (prestamo.Cliente != null) { 
+                if (prestamo.MontoCredito + (prestamo.MontoCredito * prestamo.Tasa) / 100 > prestamo.Cliente.MontoMaximoAutorizar)
+                {
+                    result.listaMsjs.Add($"El monto de credito no puede ser mayor al autorizado para el cliente (${prestamo.Cliente.MontoMaximoAutorizar})");
+                    result.FueCorrecto = false;
+                }
             }
             if (prestamo.CantidadCuotas <= 0)
             {
@@ -180,11 +196,13 @@ namespace Logica
                 result.FueCorrecto = false;
             }
             regexNumerosa = "^[0-9]+$";
-
-            if (!Regex.IsMatch(prestamo.Cliente.Documento.ToString(), regexNumerosa))
+            if (prestamo.Cliente != null)
             {
-                result.listaMsjs.Add("El Documento no es valido");
-                result.FueCorrecto = false;
+                if (!Regex.IsMatch(prestamo.Cliente.Documento.ToString(), regexNumerosa))
+                {
+                    result.listaMsjs.Add("El Documento no es valido");
+                    result.FueCorrecto = false;
+                }
             }
             if (!Regex.IsMatch(prestamo.CantidadCuotas.ToString(), regexNumerosa))
             {

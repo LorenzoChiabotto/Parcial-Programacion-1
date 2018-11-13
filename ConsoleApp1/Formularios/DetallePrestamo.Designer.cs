@@ -51,9 +51,11 @@
             this.lblCuotas = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label13 = new System.Windows.Forms.Label();
-            this.cbLugarPago = new System.Windows.Forms.ComboBox();
+            this.lblFechaPago = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
             this.btRealizarPago = new System.Windows.Forms.Button();
+            this.cbLugarPago = new System.Windows.Forms.ComboBox();
+            this.label13 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -259,24 +261,45 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.lblFechaPago);
+            this.groupBox1.Controls.Add(this.label12);
             this.groupBox1.Controls.Add(this.btRealizarPago);
             this.groupBox1.Controls.Add(this.cbLugarPago);
             this.groupBox1.Controls.Add(this.label13);
-            this.groupBox1.Location = new System.Drawing.Point(333, 194);
+            this.groupBox1.Location = new System.Drawing.Point(333, 171);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(299, 108);
+            this.groupBox1.Size = new System.Drawing.Size(299, 147);
             this.groupBox1.TabIndex = 29;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Realizar Pago";
             // 
-            // label13
+            // lblFechaPago
             // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(13, 33);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(102, 17);
-            this.label13.TabIndex = 1;
-            this.label13.Text = "Lugar de Pago";
+            this.lblFechaPago.AutoSize = true;
+            this.lblFechaPago.Location = new System.Drawing.Point(204, 64);
+            this.lblFechaPago.Name = "lblFechaPago";
+            this.lblFechaPago.Size = new System.Drawing.Size(48, 17);
+            this.lblFechaPago.TabIndex = 6;
+            this.lblFechaPago.Text = "  /  /    ";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(151, 64);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(47, 17);
+            this.label12.TabIndex = 5;
+            this.label12.Text = "Fecha";
+            // 
+            // btRealizarPago
+            // 
+            this.btRealizarPago.Location = new System.Drawing.Point(16, 95);
+            this.btRealizarPago.Name = "btRealizarPago";
+            this.btRealizarPago.Size = new System.Drawing.Size(265, 39);
+            this.btRealizarPago.TabIndex = 4;
+            this.btRealizarPago.Text = "Realizar Pago";
+            this.btRealizarPago.UseVisualStyleBackColor = true;
+            this.btRealizarPago.Click += new System.EventHandler(this.btRealizarPago_Click);
             // 
             // cbLugarPago
             // 
@@ -286,15 +309,14 @@
             this.cbLugarPago.Size = new System.Drawing.Size(160, 24);
             this.cbLugarPago.TabIndex = 3;
             // 
-            // btRealizarPago
+            // label13
             // 
-            this.btRealizarPago.Location = new System.Drawing.Point(16, 60);
-            this.btRealizarPago.Name = "btRealizarPago";
-            this.btRealizarPago.Size = new System.Drawing.Size(265, 39);
-            this.btRealizarPago.TabIndex = 4;
-            this.btRealizarPago.Text = "Realizar Pago";
-            this.btRealizarPago.UseVisualStyleBackColor = true;
-            this.btRealizarPago.Click += new System.EventHandler(this.btRealizarPago_Click);
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(13, 33);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(102, 17);
+            this.label13.TabIndex = 1;
+            this.label13.Text = "Lugar de Pago";
             // 
             // DetallePrestamo
             // 
@@ -362,5 +384,7 @@
         private System.Windows.Forms.Button btRealizarPago;
         private System.Windows.Forms.ComboBox cbLugarPago;
         private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label lblFechaPago;
+        private System.Windows.Forms.Label label12;
     }
 }

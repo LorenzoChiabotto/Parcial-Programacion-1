@@ -35,14 +35,13 @@ namespace Logica
             this.CantidadCuotas = cantCu;
 
             this.MontoCuota = ((float)this.MontoCredito+(this.MontoCredito*this.Tasa/100)) / cantCu;
+
             ListaPagos = new List<Pago>();
             this.ListaPagos.Add(new Pago(this.FechaCredito.AddDays(60)));
 
             for (int i = 1; i < this.CantidadCuotas; i++)
             {
-                this.ListaPagos.Add(new Pago(this.ListaPagos
-                                                .First()
-                                                .FechaCobro.AddMonths(1)));
+                this.ListaPagos.Add(new Pago(this.FechaCredito.AddDays(60).AddMonths(i)));
             }
         }
 

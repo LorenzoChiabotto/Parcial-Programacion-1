@@ -40,6 +40,11 @@ namespace Formularios
             lblNroPrestamo.Text = $"{prestamo.NumCredito}";
             lblSucursal.Text = $"{prestamo.Sucursal.Ubicacion}";
             lblTasa.Text = $"{prestamo.Tasa}%";
+
+            if (!prestamo.Completado())
+            {
+                lblFechaPago.Text = prestamo.ListaPagos.Where(x => !x.Pagado).OrderBy(x => x.FechaCobro).FirstOrDefault().FechaCobro.ToShortDateString();
+            }
         }
 
         public DetallePrestamo(Prestamo pr)
@@ -63,12 +68,13 @@ namespace Formularios
                 lblNombre.Text = $"{prestamo.Cliente.NombreCompleto}";
                 lblNroDoc.Text = $"{prestamo.Cliente.Documento}";
                 lblTipoDoc.Text = $"{prestamo.Cliente.TipoDoc.ToString()}";
+
             }
         }
 
         private void btRealizarPago_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(cbLugarPago.Text)) { 
+            if (!string.IsNullOrWhiteSpace(cbLugarPago.Text)) { 
                 if(owner != null)
                 {
                     Resultado resultado = owner.ActualizarPagos(prestamo,cbLugarPago.SelectedItem as LugarDePago);

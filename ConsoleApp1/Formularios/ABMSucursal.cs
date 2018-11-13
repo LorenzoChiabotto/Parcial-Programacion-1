@@ -173,6 +173,12 @@ namespace Formularios
                 }
                 else
                 {
+                    string msg = "No se a podido guardar la Sucursal: \n";
+                    foreach (string item in resultado.listaMsjs)
+                    {
+                        msg += $"      -{item}\n";
+                    }
+                    MessageBox.Show(msg, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 }
             }

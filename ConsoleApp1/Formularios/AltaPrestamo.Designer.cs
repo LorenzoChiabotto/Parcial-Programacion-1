@@ -91,7 +91,7 @@
             // txtFechaCredito
             // 
             this.txtFechaCredito.Location = new System.Drawing.Point(145, 124);
-            this.txtFechaCredito.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtFechaCredito.Margin = new System.Windows.Forms.Padding(4);
             this.txtFechaCredito.Name = "txtFechaCredito";
             this.txtFechaCredito.Size = new System.Drawing.Size(188, 22);
             this.txtFechaCredito.TabIndex = 4;
@@ -101,7 +101,7 @@
             this.cbSucursal.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbSucursal.FormattingEnabled = true;
             this.cbSucursal.Location = new System.Drawing.Point(469, 84);
-            this.cbSucursal.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbSucursal.Margin = new System.Windows.Forms.Padding(4);
             this.cbSucursal.Name = "cbSucursal";
             this.cbSucursal.Size = new System.Drawing.Size(259, 24);
             this.cbSucursal.TabIndex = 5;
@@ -110,7 +110,7 @@
             // txtMontoCredito
             // 
             this.txtMontoCredito.Location = new System.Drawing.Point(469, 50);
-            this.txtMontoCredito.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtMontoCredito.Margin = new System.Windows.Forms.Padding(4);
             this.txtMontoCredito.Name = "txtMontoCredito";
             this.txtMontoCredito.Size = new System.Drawing.Size(113, 22);
             this.txtMontoCredito.TabIndex = 7;
@@ -120,7 +120,7 @@
             // btGuardar
             // 
             this.btGuardar.Location = new System.Drawing.Point(539, 160);
-            this.btGuardar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btGuardar.Margin = new System.Windows.Forms.Padding(4);
             this.btGuardar.Name = "btGuardar";
             this.btGuardar.Size = new System.Drawing.Size(189, 66);
             this.btGuardar.TabIndex = 9;
@@ -143,10 +143,11 @@
             this.cbTipoDocumento.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbTipoDocumento.FormattingEnabled = true;
             this.cbTipoDocumento.Location = new System.Drawing.Point(145, 48);
-            this.cbTipoDocumento.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbTipoDocumento.Margin = new System.Windows.Forms.Padding(4);
             this.cbTipoDocumento.Name = "cbTipoDocumento";
             this.cbTipoDocumento.Size = new System.Drawing.Size(188, 24);
             this.cbTipoDocumento.TabIndex = 2;
+            this.cbTipoDocumento.SelectedIndexChanged += new System.EventHandler(this.cbTipoDocumento_SelectedIndexChanged);
             // 
             // lbTipoDocumento
             // 
@@ -161,7 +162,7 @@
             // txtDocumento
             // 
             this.txtDocumento.Location = new System.Drawing.Point(145, 86);
-            this.txtDocumento.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtDocumento.Margin = new System.Windows.Forms.Padding(4);
             this.txtDocumento.Name = "txtDocumento";
             this.txtDocumento.Size = new System.Drawing.Size(188, 22);
             this.txtDocumento.TabIndex = 3;
@@ -211,7 +212,7 @@
             // txtCuotas
             // 
             this.txtCuotas.Location = new System.Drawing.Point(673, 50);
-            this.txtCuotas.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtCuotas.Margin = new System.Windows.Forms.Padding(4);
             this.txtCuotas.Name = "txtCuotas";
             this.txtCuotas.Size = new System.Drawing.Size(55, 22);
             this.txtCuotas.TabIndex = 33;
@@ -251,7 +252,7 @@
             this.Controls.Add(this.lbSucursal);
             this.Controls.Add(this.lbComercioAdherido);
             this.Controls.Add(this.lbFechaCredito);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "AltaPrestamo";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AltaPrestamo";

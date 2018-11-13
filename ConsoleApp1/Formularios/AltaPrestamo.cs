@@ -92,6 +92,12 @@ namespace Formularios
                 }
                 else
                 {
+                    string msg = "No se a podido guardar el Prestamo: \n";
+                    foreach (string item in resultado.listaMsjs)
+                    {
+                        msg += $"      -{item}\n";
+                    }
+                    MessageBox.Show(msg, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 }
             }
@@ -228,6 +234,14 @@ namespace Formularios
                 e.Handled = true;
             }
 
+        }
+
+        private void cbTipoDocumento_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace(txtDocumento.Text))
+            {
+                cliente = owner.ObtenerCliente(int.Parse(txtDocumento.Text), (TipoDocumento)cbTipoDocumento.SelectedItem).FirstOrDefault();
+            }
         }
     }
 }
