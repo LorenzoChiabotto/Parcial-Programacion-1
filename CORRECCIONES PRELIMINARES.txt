@@ -1,0 +1,18 @@
+﻿CLIENTES
+	- El filtro de clientes no funciona, buscar por no trae nada. Si no aplica debería sacarse este filtro.
+	- Si solo completo los campos obligatorios, igual me pide cargar otros que no están marcados como tal.
+
+
+LUGARES DE PAGO
+	- En la edición si cambio algún valor y le doy guardar me dice que el comercio no existe.
+	- Me dejo cargar un registro diciendo que es sucursal sin que esta exista.
+
+PRESTAMOS
+	- Si tengo un cliente que tiene un máximo de 10000 no me deja cargar un prestamo de 10000. Esto es porque se valida el total con la tasa de interés incluida, pero deberia evaluarse la cantidad que le presto al cliente
+	- No tengo ningún lugar en donde ver el detalle de als cuotas armadas para el préstamo.
+
+REGISTRO DE PAGOS
+	- Funciona, se ve que cambian las cuotas pagadas pero sería necesario un mensaje de confirmación para el usuario de si se realizó o no el pago.
+
+REPORTE DE CREDITOS
+	- No veo un reporte de créditos detallando los campos que se solicitan en el enunciado. Detallando cada cuota, si está pagada o no, lugar de pago, etc.
