@@ -5,7 +5,6 @@
 
 LUGARES DE PAGO
 	- En la edición si cambio algún valor y le doy guardar me dice que el comercio no existe.
-	- Me dejo cargar un registro diciendo que es sucursal sin que esta exista.
 
 PRESTAMOS
 	- Si tengo un cliente que tiene un máximo de 10000 no me deja cargar un prestamo de 10000. Esto es porque se valida el total con la tasa de interés incluida, pero deberia evaluarse la cantidad que le presto al cliente
