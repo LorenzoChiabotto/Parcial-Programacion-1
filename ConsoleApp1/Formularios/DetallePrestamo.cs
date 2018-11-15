@@ -82,6 +82,7 @@ namespace Formularios
                     if (resultado.FueCorrecto)
                     {
                         CargarDetallePrestamo();
+                        MessageBox.Show("Pago Realizado con éxito");
                     }
                 }
             }

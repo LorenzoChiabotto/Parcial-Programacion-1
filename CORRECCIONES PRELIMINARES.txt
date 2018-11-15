@@ -1,6 +1,6 @@
 ﻿CLIENTES
-	- El filtro de clientes no funciona, buscar por no trae nada. Si no aplica debería sacarse este filtro.
-	- Si solo completo los campos obligatorios, igual me pide cargar otros que no están marcados como tal.
+	Se sacó (Fix)- El filtro de clientes no funciona, buscar por no trae nada. Si no aplica debería sacarse este filtro. 
+	Fix - Si solo completo los campos obligatorios, igual me pide cargar otros que no están marcados como tal. 
 
 
 LUGARES DE PAGO
@@ -11,7 +11,7 @@ PRESTAMOS
 	- No tengo ningún lugar en donde ver el detalle de als cuotas armadas para el préstamo.
 
 REGISTRO DE PAGOS
-	- Funciona, se ve que cambian las cuotas pagadas pero sería necesario un mensaje de confirmación para el usuario de si se realizó o no el pago.
+	Fix - Funciona, se ve que cambian las cuotas pagadas pero sería necesario un mensaje de confirmación para el usuario de si se realizó o no el pago. Fix
 
 REPORTE DE CREDITOS
 	- No veo un reporte de créditos detallando los campos que se solicitan en el enunciado. Detallando cada cuota, si está pagada o no, lugar de pago, etc.

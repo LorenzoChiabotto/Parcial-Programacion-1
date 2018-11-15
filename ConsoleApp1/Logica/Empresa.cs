@@ -13,8 +13,8 @@ namespace Logica
     public enum Sexo { MASCULINO, FEMENINO }
     public class Empresa
     {
-        private string path = @"C:\Users\loren\Documents\prog1-tp-net-2018\Archivos\";
-        
+        private string path = @"C:\Users\USER\Desktop\CommitCorreciones\Archivos";
+
         public List<Cliente> listaCliente;
         public List<Prestamo> listaPrestamo = new List<Prestamo>();
         public List<Sucursal> listaSucursal = new List<Sucursal>();
@@ -105,20 +105,20 @@ namespace Logica
                 result.listaMsjs.Add("El nombre no es valido");
                 result.FueCorrecto = false;
             }
-            if (!Regex.IsMatch(pCliente.Email, regexCorreo))
+            if (!(Regex.IsMatch(pCliente.Email, regexCorreo)))
             {
                 result.listaMsjs.Add("Formato de Mail Incorrecto");
                 result.FueCorrecto = false;
             }
 
-            if (!Regex.IsMatch(pCliente.Celular, regexTelefonos))
+            if ((pCliente.Celular != "") && !(Regex.IsMatch(pCliente.Celular, regexTelefonos)))
             {
                 result.listaMsjs.Add("El celular no es valido");
                 result.FueCorrecto = false;
             }
-            if ((pCliente.FechaNacimiento < DateTime.Now))
+            if ((pCliente.FechaNacimiento != DateTime.MinValue) &&  (pCliente.FechaNacimiento < DateTime.Now))
             {
-                if (!Regex.IsMatch(pCliente.FechaNacimiento.ToString(), regexFechas))
+                if (!Regex.IsMatch(pCliente.FechaNacimiento.ToString(), regexFechas) )
                 {
                     result.listaMsjs.Add("La fecha nacimiento no es valida");
                     result.FueCorrecto = false;
@@ -126,24 +126,26 @@ namespace Logica
             }
             else
             {
-                result.listaMsjs.Add("La fecha nacimiento debe ser menor al día de hoy");
-                result.FueCorrecto = false;
+                if ((pCliente.FechaNacimiento != DateTime.MinValue) && Regex.IsMatch(pCliente.FechaNacimiento.ToString(), regexFechas))
+                {
+                    result.listaMsjs.Add("La fecha nacimiento debe ser menor al día de hoy");
+                    result.FueCorrecto = false;
+                }
             }
-
-            if (!Regex.IsMatch(pCliente.Domicilio, regexDomicilio))
+            if ((pCliente.Domicilio != "") && !Regex.IsMatch(pCliente.Domicilio, regexDomicilio))
             {
-                result.listaMsjs.Add("El domicilio no es valido");
-                result.FueCorrecto = false;
+                    result.listaMsjs.Add("El domicilio no es valido");
+                    result.FueCorrecto = false;
             }
-            if (!Regex.IsMatch(pCliente.CodPostal.ToString(), regexNumerosa))
+            if ((pCliente.CodPostal != 0) && !Regex.IsMatch(pCliente.CodPostal.ToString(), regexNumerosa))
             {
-                result.listaMsjs.Add("El CodigoPostal no es valido");
-                result.FueCorrecto = false;
+                    result.listaMsjs.Add("El CodigoPostal no es valido");
+                    result.FueCorrecto = false;
             }
-            if (!Regex.IsMatch(pCliente.Localidad, regexLetras))
+            if ((pCliente.Localidad != "") && !Regex.IsMatch(pCliente.Localidad, regexLetras))
             {
-                result.listaMsjs.Add("La localidad no es valida");
-                result.FueCorrecto = false;
+                    result.listaMsjs.Add("La localidad no es valida");
+                    result.FueCorrecto = false;
             }
 
             return result;
