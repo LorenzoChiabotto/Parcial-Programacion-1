@@ -367,7 +367,8 @@ namespace Logica
         public Resultado modificarEliminarLugarPago(LugarDePago pLugarDePago, bool pSeModifica)
         {
             listaLugarPago = getLugaresPago();
-            Resultado result = validarComercio(pLugarDePago,true);
+            Resultado result = new Resultado();
+            result.FueCorrecto = true;
 
             if (result.FueCorrecto)
             {
