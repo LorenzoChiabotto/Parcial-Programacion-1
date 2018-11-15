@@ -40,6 +40,8 @@ namespace Formularios
             lblNroPrestamo.Text = $"{prestamo.NumCredito}";
             lblSucursal.Text = $"{prestamo.Sucursal.Ubicacion}";
             lblTasa.Text = $"{prestamo.Tasa}%";
+            lbMontoCuota.Text = $"${prestamo.MontoCuota}";
+
 
             if (!prestamo.Completado())
             {
