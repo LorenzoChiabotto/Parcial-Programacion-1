@@ -185,7 +185,7 @@ namespace Logica
                 result.FueCorrecto = false;
             }
             if (prestamo.Cliente != null) { 
-                if (prestamo.MontoCredito + (prestamo.MontoCredito * prestamo.Tasa) / 100 > prestamo.Cliente.MontoMaximoAutorizar)
+                if (prestamo.MontoCredito  > prestamo.Cliente.MontoMaximoAutorizar)
                 {
                     result.listaMsjs.Add($"El monto de credito no puede ser mayor al autorizado para el cliente (${prestamo.Cliente.MontoMaximoAutorizar})");
                     result.FueCorrecto = false;
