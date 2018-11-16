@@ -13,7 +13,7 @@ namespace Logica
     public enum Sexo { MASCULINO, FEMENINO }
     public class Empresa
     {
-        private string path = @"C:\Users\loren\Documents\prog1-tp-net-2018\Archivos\";
+        private string path = @"C:\Users\USER\Desktop\CommitCorreciones\Archivos";
 
         public List<Cliente> listaCliente;
         public List<Prestamo> listaPrestamo = new List<Prestamo>();
@@ -86,7 +86,7 @@ namespace Logica
             }
             else
             {
-                if (!pSeModifica && this.getClientes(null,null).Exists(x => x.TipoDoc == pCliente.TipoDoc && x.Documento == pCliente.Documento))
+                if (!pSeModifica && this.getClientes(null,null).Exists(x => (x.TipoDoc == pCliente.TipoDoc) && (x.Documento == pCliente.Documento)))
                 {
                     result.listaMsjs.Add("Este Cliente ya existe");
                     result.FueCorrecto = false;
@@ -187,7 +187,7 @@ namespace Logica
             if (prestamo.Cliente != null) { 
                 if ((prestamo.MontoCredito + (prestamo.MontoCredito * prestamo.Tasa) / 100 ) > prestamo.Cliente.MontoMaximoAutorizar)
                 {
-                    result.listaMsjs.Add($"El monto de credito no puede ser mayor al autorizado para el cliente (${prestamo.Cliente.MontoMaximoAutorizar})");
+                    result.listaMsjs.Add($"El monto de credito más la tasa de interés no puede ser superior al monto máximo autorizado para el cliente (${prestamo.Cliente.MontoMaximoAutorizar})");
                     result.FueCorrecto = false;
                 }
             }
