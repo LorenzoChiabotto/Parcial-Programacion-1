@@ -13,7 +13,7 @@ namespace Logica
     public enum Sexo { MASCULINO, FEMENINO }
     public class Empresa
     {
-        private string path = @"C:\Users\USER\Desktop\CommitCorreciones\Archivos";
+        private string path = @"C:\Users\loren\Documents\prog1-tp-net-2018\Archivos\";
 
         public List<Cliente> listaCliente;
         public List<Prestamo> listaPrestamo = new List<Prestamo>();
@@ -32,7 +32,7 @@ namespace Logica
             result.FueCorrecto = true;
             string regexLetras, regexDomicilio;
 
-            if (pSeModifica && !this.listaSucursal.Exists(x => x.ID == pSucursal.ID))
+            if (pSeModifica && !this.getSucursales().Exists(x => x.ID == pSucursal.ID))
             {
                 result.listaMsjs.Add("Esta sucursal no existe");
                 result.FueCorrecto = false;
@@ -63,7 +63,7 @@ namespace Logica
             Resultado result = new Resultado();
             result.FueCorrecto = true;
 
-            if (pSeModifica && !this.listaComercio.Exists(x => x.ID == pComercio.ID))
+            if (pSeModifica && !this.getComercios().Exists(x => x.ID == pComercio.ID))
             {
                 result.listaMsjs.Add("Este comercio no existe");
                 result.FueCorrecto = false;
@@ -79,14 +79,14 @@ namespace Logica
             Resultado result = new Resultado();
             result.FueCorrecto = true;
 
-            if (pSeModifica && !this.listaCliente.Exists(x => x.TipoDoc == pCliente.TipoDoc && x.Documento == pCliente.Documento))
+            if (pSeModifica && !this.getClientes(null,null).Exists(x => x.TipoDoc == pCliente.TipoDoc && x.Documento == pCliente.Documento))
             {
                 result.listaMsjs.Add("Esta sucursal no existe");
                 result.FueCorrecto = false;
             }
             else
             {
-                if (!pSeModifica && this.listaCliente.Exists(x => x.TipoDoc == pCliente.TipoDoc && x.Documento == pCliente.Documento))
+                if (!pSeModifica && this.getClientes(null,null).Exists(x => x.TipoDoc == pCliente.TipoDoc && x.Documento == pCliente.Documento))
                 {
                     result.listaMsjs.Add("Este Cliente ya existe");
                     result.FueCorrecto = false;
@@ -238,6 +238,7 @@ namespace Logica
             Resultado result = validarSucursal(pSucursal,false);
 
             listaSucursal = getSucursales();
+
             if (listaSucursal.Count == 0)
             {
                 pSucursal.ID = 1;
@@ -619,7 +620,6 @@ namespace Logica
                 {
                     conte = reader.ReadToEnd();
                 }
-
                 return JsonConvert.DeserializeObject<List<Prestamo>>(conte).Where(x => x.Baja != true).ToList();
             }
             catch (Exception)
@@ -691,7 +691,10 @@ namespace Logica
         }
         public float obtenerPromedioTasas()
         {
-            return getPrestamo().Average(x => x.Tasa);
+            if(getPrestamo().Count() > 0) { 
+                return getPrestamo().Average(x => x.Tasa);
+            }
+            return 0;
         }
         public float obtenerMontoTotalRecaudado()
         {

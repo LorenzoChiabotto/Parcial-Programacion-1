@@ -17,6 +17,36 @@ namespace Formularios
         Prestamo prestamo;
         IGrillaPrestamos owner;
 
+
+        private void armarGrilla()
+        {
+            this.dgvPagos.AutoGenerateColumns = false;
+            this.dgvPagos.ColumnCount = 4;
+
+            this.dgvPagos.Columns[0].HeaderText = "Nro";
+            this.dgvPagos.Columns[0].DataPropertyName = "Numero";
+
+            this.dgvPagos.Columns[1].HeaderText = "Fecha";
+            this.dgvPagos.Columns[1].DataPropertyName = "FechaCobro";
+
+
+            this.dgvPagos.Columns[2].HeaderText = "Estado";
+            this.dgvPagos.Columns[2].DataPropertyName = "Estado";
+
+            this.dgvPagos.Columns[3].HeaderText = "Lugar de Pago";
+            this.dgvPagos.Columns[3].DataPropertyName = "Lugar";
+
+        }
+
+        private void ActualizardgvPagos()
+        {
+            if (prestamo != null)
+            {
+                this.dgvPagos.DataSource = prestamo.ListaPagos;
+                this.dgvPagos.Refresh();
+            }
+        }
+
         public void HabilitarDeshabilitar(bool EstaActivo)
         {
             cbLugarPago.Enabled = EstaActivo;
@@ -33,15 +63,15 @@ namespace Formularios
                 HabilitarDeshabilitar(false);
             }
 
-            lblComercio.Text = $"{prestamo.ComercioAdherido.Ciudad} - {prestamo.ComercioAdherido.Direccion}";
+            lblComercio.Text = $"{prestamo.ComercioAdherido.RazonSocial} ({prestamo.ComercioAdherido.Ubicacion})";
             lblCuotas.Text = $"{prestamo.CuotasPagas()} / {prestamo.CantidadCuotas}";
             lblFecha.Text = $"{prestamo.FechaCredito.ToShortDateString()}";
             lblMonto.Text = $"$ {prestamo.MontoCredito}";
             lblNroPrestamo.Text = $"{prestamo.NumCredito}";
             lblSucursal.Text = $"{prestamo.Sucursal.Ubicacion}";
-            lblTasa.Text = $"{prestamo.Tasa}%";
+            lblTasa.Text = $"{prestamo.Tasa}% (${prestamo.MontoInteres})";
             lbMontoCuota.Text = $"${prestamo.MontoCuota}";
-
+            lblPagado.Text = $"${prestamo.TotalPagado}";
 
             if (!prestamo.Completado())
             {
@@ -58,6 +88,7 @@ namespace Formularios
 
         private void DetallePrestamo_Load(object sender, EventArgs e)
         {
+            armarGrilla();
             owner = this.Owner as IGrillaPrestamos;
 
             if(owner != null)
@@ -71,6 +102,7 @@ namespace Formularios
                 lblNroDoc.Text = $"{prestamo.Cliente.Documento}";
                 lblTipoDoc.Text = $"{prestamo.Cliente.TipoDoc.ToString()}";
 
+                ActualizardgvPagos();
             }
         }
 
@@ -79,12 +111,19 @@ namespace Formularios
             if (!string.IsNullOrWhiteSpace(cbLugarPago.Text)) { 
                 if(owner != null)
                 {
-                    Resultado resultado = owner.ActualizarPagos(prestamo,cbLugarPago.SelectedItem as LugarDePago);
-
-                    if (resultado.FueCorrecto)
+                    var result = MessageBox.Show($"Seguro que cargar un pago en {((LugarDePago)cbLugarPago.SelectedItem).RazonSocial}?"
+                                                    , "CUIDADO", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (result == DialogResult.Yes)
                     {
-                        CargarDetallePrestamo();
-                        MessageBox.Show("Pago Realizado con éxito");
+                        Resultado resultado = owner.ActualizarPagos(prestamo, cbLugarPago.SelectedItem as LugarDePago);
+
+                        if (resultado.FueCorrecto)
+                        {
+                            CargarDetallePrestamo();
+                            MessageBox.Show("Pago Realizado con éxito");
+                            ActualizardgvPagos();
+                            lblPagado.Text = $"${prestamo.TotalPagado}";
+                        }
                     }
                 }
             }

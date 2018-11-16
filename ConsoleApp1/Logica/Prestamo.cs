@@ -37,11 +37,11 @@ namespace Logica
             this.MontoCuota = ((float)this.MontoCredito+(this.MontoCredito*this.Tasa/100)) / cantCu;
 
             ListaPagos = new List<Pago>();
-            this.ListaPagos.Add(new Pago(this.FechaCredito.AddDays(60)));
+            this.ListaPagos.Add(new Pago(this.FechaCredito.AddDays(60),1));
 
             for (int i = 1; i < this.CantidadCuotas; i++)
             {
-                this.ListaPagos.Add(new Pago(this.FechaCredito.AddDays(60).AddMonths(i)));
+                this.ListaPagos.Add(new Pago(this.FechaCredito.AddDays(60).AddMonths(i),i+1));
             }
         }
 
@@ -67,6 +67,11 @@ namespace Logica
         public int CuotasPagas()
         {
             return this.ListaPagos.Where(x => x.Pagado == true).ToList().Count;
+        }
+
+        public float TotalPagado
+        {
+            get { return this.MontoCuota * this.CuotasPagas(); }
         }
 
         public string NombCliente

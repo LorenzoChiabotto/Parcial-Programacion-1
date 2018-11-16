@@ -22,6 +22,41 @@ namespace Formularios
         Comercio comercio;
         float monto;
       
+        public void actualizarDatosCliente()
+        {
+            if (cliente == null)
+            {
+                lblCheckCliente.Text = "✘";
+                lblCheckCliente.ForeColor = Color.Red;
+            }
+            else
+            {
+                lblCheckCliente.Text = "✔";
+                lblCheckCliente.ForeColor = Color.Green;
+
+                lblMontoMaximo.Text = $"${cliente.MontoMaximoAutorizar}";
+            }
+        }
+
+        public void actualizarDatosMontos()
+        {
+            if(sucursal != null)
+            {
+                if (!string.IsNullOrWhiteSpace(txtMontoCredito.Text))
+                {
+                    lblMontoTotal.Text = $"${monto + (monto * sucursal.TasaInteres / 100)}";
+                    if (string.IsNullOrWhiteSpace(txtCuotas.Text) || int.Parse(txtCuotas.Text) == 0)
+                    {
+                        lblMontoCuota.Text = "";
+                    }
+                    else
+                    {
+                        lblMontoCuota.Text = $"${(monto + (monto * sucursal.TasaInteres / 100))/int.Parse(txtCuotas.Text)}";
+                    }
+                }
+            }
+        }
+
         public AltaPrestamo(Cliente cl)
         {
             InitializeComponent();
@@ -53,6 +88,8 @@ namespace Formularios
                 cbTipoDocumento.SelectedItem = cliente.TipoDoc;
                 txtDocumento.Text = cliente.Documento.ToString();
             }
+
+            actualizarDatosCliente();
         }
 
         private void btGuardar_Click(object sender, EventArgs e)
@@ -159,6 +196,7 @@ namespace Formularios
             sucursal = cbSucursal.SelectedItem as Sucursal;
 
             lblValorTasa.Text = $"{sucursal.TasaInteres.ToString()}% - (${monto*(sucursal.TasaInteres/100)})";
+            actualizarDatosMontos();
         }
 
         private void cbComercio_SelectedIndexChanged(object sender, EventArgs e)
@@ -168,11 +206,20 @@ namespace Formularios
 
         private void txtMontoCredito_TextChanged(object sender, EventArgs e)
         {
-            monto = float.Parse(txtMontoCredito.Text);
-            if(sucursal != null)
+            if (!string.IsNullOrWhiteSpace(txtMontoCredito.Text))
             {
-                lblValorTasa.Text = $"{sucursal.TasaInteres.ToString()}% - (${monto * (sucursal.TasaInteres / 100)})";
+                monto = float.Parse(txtMontoCredito.Text);
+                if (sucursal != null)
+                {
+                    lblValorTasa.Text = $"{sucursal.TasaInteres.ToString()}% - (${monto * (sucursal.TasaInteres / 100)})";
+                }
             }
+            else
+            {
+                monto = 0;
+            }
+
+            actualizarDatosMontos();
         }
 
         private void txtDocumento_TextChanged(object sender, EventArgs e)
@@ -181,6 +228,7 @@ namespace Formularios
             {
                 cliente = owner.ObtenerCliente(int.Parse(txtDocumento.Text), (TipoDocumento)cbTipoDocumento.SelectedItem).FirstOrDefault();
             }
+            actualizarDatosCliente();
         }
 
         private void txtDNI_keypress(object sender, KeyPressEventArgs e)
@@ -220,17 +268,16 @@ namespace Formularios
 
         private void txt_MontoKeyPress(object sender, KeyPressEventArgs e)
         {
-
             CultureInfo cc = System.Threading.Thread.CurrentThread.CurrentCulture;
 
-            if (char.IsNumber(e.KeyChar) ||
-
-                (e.KeyChar.ToString() == cc.NumberFormat.NumberDecimalSeparator) || (Char.IsControl(e.KeyChar)))
+            if (char.IsNumber(e.KeyChar)
+                    || (e.KeyChar.ToString() == cc.NumberFormat.NumberDecimalSeparator)
+                    || (Char.IsControl(e.KeyChar)))
+            {
                 e.Handled = false;
-
+            }
             else
             {
-
                 e.Handled = true;
             }
 
@@ -242,6 +289,12 @@ namespace Formularios
             {
                 cliente = owner.ObtenerCliente(int.Parse(txtDocumento.Text), (TipoDocumento)cbTipoDocumento.SelectedItem).FirstOrDefault();
             }
+            actualizarDatosCliente();
+        }
+
+        private void txtCuotas_TextChanged(object sender, EventArgs e)
+        {
+            actualizarDatosMontos();
         }
     }
 }
