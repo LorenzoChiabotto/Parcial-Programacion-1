@@ -52,6 +52,9 @@ namespace Formularios
 
             if (Modifica)
             {
+                cbTipoDocumento.Enabled = false;
+                txtDNI.Enabled = false;
+                lbTituloMenu.Text = "Modificación Cliente";
                 cbTipoDocumento.SelectedItem = cliente.TipoDoc;
 
                 txtDNI.Text = cliente.Documento.ToString();
@@ -92,7 +95,7 @@ namespace Formularios
                 MessageBox.Show("Complete todos los campos obligatorios", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else
-            {
+            {              
                 cliente.Documento = Convert.ToInt32(txtDNI.Text);
                 cliente.NombreCompleto = txtNombreCompleto.Text;
                 cliente.Email = txtCorreo.Text;
@@ -104,7 +107,7 @@ namespace Formularios
                 cliente.Domicilio = txtDomicilio.Text;
                 cliente.CodPostal = string.IsNullOrWhiteSpace(txtCodigoPostal.Text) ? 0 : int.Parse(txtCodigoPostal.Text);
                 cliente.Localidad = txtLocalidad.Text;
-
+                cliente.TipoDoc = (TipoDocumento)cbTipoDocumento.SelectedItem;
                 DateTime nacimiento;
                 DateTime.TryParse(this.mkTxtFechaNacimiento.Text, out nacimiento);
                 cliente.FechaNacimiento = nacimiento;
