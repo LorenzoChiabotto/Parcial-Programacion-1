@@ -338,6 +338,7 @@
             this.cbLugarPago.Name = "cbLugarPago";
             this.cbLugarPago.Size = new System.Drawing.Size(121, 21);
             this.cbLugarPago.TabIndex = 3;
+            this.cbLugarPago.SelectedIndexChanged += new System.EventHandler(this.cbLugarPago_SelectedIndexChanged);
             // 
             // label13
             // 

@@ -51,30 +51,27 @@
             this.dgvPrestamos.AllowUserToAddRows = false;
             this.dgvPrestamos.AllowUserToDeleteRows = false;
             this.dgvPrestamos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvPrestamos.Location = new System.Drawing.Point(45, 102);
-            this.dgvPrestamos.Margin = new System.Windows.Forms.Padding(4);
+            this.dgvPrestamos.Location = new System.Drawing.Point(34, 83);
             this.dgvPrestamos.Name = "dgvPrestamos";
             this.dgvPrestamos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvPrestamos.Size = new System.Drawing.Size(931, 337);
+            this.dgvPrestamos.Size = new System.Drawing.Size(698, 274);
             this.dgvPrestamos.TabIndex = 0;
             // 
             // lbTituloMenu
             // 
             this.lbTituloMenu.AutoSize = true;
             this.lbTituloMenu.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbTituloMenu.Location = new System.Drawing.Point(13, 9);
-            this.lbTituloMenu.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbTituloMenu.Location = new System.Drawing.Point(10, 7);
             this.lbTituloMenu.Name = "lbTituloMenu";
-            this.lbTituloMenu.Size = new System.Drawing.Size(137, 29);
+            this.lbTituloMenu.Size = new System.Drawing.Size(107, 24);
             this.lbTituloMenu.TabIndex = 29;
             this.lbTituloMenu.Text = "Prestamos";
             // 
             // btDetalle
             // 
-            this.btDetalle.Location = new System.Drawing.Point(729, 447);
-            this.btDetalle.Margin = new System.Windows.Forms.Padding(4);
+            this.btDetalle.Location = new System.Drawing.Point(547, 363);
             this.btDetalle.Name = "btDetalle";
-            this.btDetalle.Size = new System.Drawing.Size(247, 33);
+            this.btDetalle.Size = new System.Drawing.Size(185, 27);
             this.btDetalle.TabIndex = 30;
             this.btDetalle.Text = "VER DETALLE";
             this.btDetalle.UseVisualStyleBackColor = true;
@@ -84,9 +81,10 @@
             // 
             this.rbTodos.AutoSize = true;
             this.rbTodos.Checked = true;
-            this.rbTodos.Location = new System.Drawing.Point(28, 20);
+            this.rbTodos.Location = new System.Drawing.Point(21, 16);
+            this.rbTodos.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.rbTodos.Name = "rbTodos";
-            this.rbTodos.Size = new System.Drawing.Size(69, 21);
+            this.rbTodos.Size = new System.Drawing.Size(55, 17);
             this.rbTodos.TabIndex = 31;
             this.rbTodos.TabStop = true;
             this.rbTodos.Text = "Todos";
@@ -95,9 +93,10 @@
             // rbVip
             // 
             this.rbVip.AutoSize = true;
-            this.rbVip.Location = new System.Drawing.Point(103, 20);
+            this.rbVip.Location = new System.Drawing.Point(77, 16);
+            this.rbVip.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.rbVip.Name = "rbVip";
-            this.rbVip.Size = new System.Drawing.Size(50, 21);
+            this.rbVip.Size = new System.Drawing.Size(42, 17);
             this.rbVip.TabIndex = 32;
             this.rbVip.TabStop = true;
             this.rbVip.Text = "VIP";
@@ -106,9 +105,10 @@
             // rbRegular
             // 
             this.rbRegular.AutoSize = true;
-            this.rbRegular.Location = new System.Drawing.Point(159, 20);
+            this.rbRegular.Location = new System.Drawing.Point(119, 16);
+            this.rbRegular.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.rbRegular.Name = "rbRegular";
-            this.rbRegular.Size = new System.Drawing.Size(79, 21);
+            this.rbRegular.Size = new System.Drawing.Size(62, 17);
             this.rbRegular.TabIndex = 33;
             this.rbRegular.TabStop = true;
             this.rbRegular.Text = "Regular";
@@ -119,70 +119,81 @@
             this.groupBox1.Controls.Add(this.rbRegular);
             this.groupBox1.Controls.Add(this.rbTodos);
             this.groupBox1.Controls.Add(this.rbVip);
-            this.groupBox1.Location = new System.Drawing.Point(627, 43);
+            this.groupBox1.Location = new System.Drawing.Point(470, 35);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(244, 52);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Size = new System.Drawing.Size(183, 42);
             this.groupBox1.TabIndex = 34;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Tipo Cliente";
             // 
             // mskHasta
             // 
-            this.mskHasta.Location = new System.Drawing.Point(511, 63);
+            this.mskHasta.Location = new System.Drawing.Point(383, 51);
+            this.mskHasta.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.mskHasta.Mask = "00/00/0000";
             this.mskHasta.Name = "mskHasta";
-            this.mskHasta.Size = new System.Drawing.Size(100, 22);
+            this.mskHasta.Size = new System.Drawing.Size(76, 20);
             this.mskHasta.TabIndex = 35;
             this.mskHasta.ValidatingType = typeof(System.DateTime);
             // 
             // mskDesde
             // 
-            this.mskDesde.Location = new System.Drawing.Point(391, 62);
+            this.mskDesde.Location = new System.Drawing.Point(293, 50);
+            this.mskDesde.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.mskDesde.Mask = "00/00/0000";
             this.mskDesde.Name = "mskDesde";
-            this.mskDesde.Size = new System.Drawing.Size(100, 22);
+            this.mskDesde.Size = new System.Drawing.Size(76, 20);
             this.mskDesde.TabIndex = 36;
             this.mskDesde.ValidatingType = typeof(System.DateTime);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(388, 43);
+            this.label1.Location = new System.Drawing.Point(291, 35);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(49, 17);
+            this.label1.Size = new System.Drawing.Size(38, 13);
             this.label1.TabIndex = 37;
             this.label1.Text = "Desde";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(508, 43);
+            this.label2.Location = new System.Drawing.Point(381, 35);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(45, 17);
+            this.label2.Size = new System.Drawing.Size(35, 13);
             this.label2.TabIndex = 38;
             this.label2.Text = "Hasta";
             // 
             // txtNombre
             // 
-            this.txtNombre.Location = new System.Drawing.Point(186, 62);
+            this.txtNombre.Location = new System.Drawing.Point(140, 50);
+            this.txtNombre.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtNombre.MaxLength = 30;
             this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(199, 22);
+            this.txtNombre.Size = new System.Drawing.Size(150, 20);
             this.txtNombre.TabIndex = 39;
+            this.txtNombre.TextChanged += new System.EventHandler(this.txtNombre_TextChanged);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(183, 43);
+            this.label3.Location = new System.Drawing.Point(137, 35);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(51, 17);
+            this.label3.Size = new System.Drawing.Size(39, 13);
             this.label3.TabIndex = 40;
             this.label3.Text = "Cliente";
             // 
             // btFiltrar
             // 
-            this.btFiltrar.Location = new System.Drawing.Point(877, 54);
+            this.btFiltrar.Location = new System.Drawing.Point(658, 44);
+            this.btFiltrar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btFiltrar.Name = "btFiltrar";
-            this.btFiltrar.Size = new System.Drawing.Size(99, 41);
+            this.btFiltrar.Size = new System.Drawing.Size(74, 33);
             this.btFiltrar.TabIndex = 41;
             this.btFiltrar.Text = "Filtrar";
             this.btFiltrar.UseVisualStyleBackColor = true;
@@ -190,9 +201,9 @@
             // 
             // GrillaPrestamos
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1007, 519);
+            this.ClientSize = new System.Drawing.Size(755, 422);
             this.Controls.Add(this.btFiltrar);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtNombre);
@@ -204,7 +215,6 @@
             this.Controls.Add(this.btDetalle);
             this.Controls.Add(this.lbTituloMenu);
             this.Controls.Add(this.dgvPrestamos);
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "GrillaPrestamos";
             this.Text = "ListarPrestamos";
             this.Load += new System.EventHandler(this.GrillaPrestamos_Load);

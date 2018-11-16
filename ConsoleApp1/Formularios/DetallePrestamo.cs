@@ -89,5 +89,10 @@ namespace Formularios
                 }
             }
         }
+
+        private void cbLugarPago_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
